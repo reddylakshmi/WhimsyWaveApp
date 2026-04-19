@@ -31,7 +31,7 @@ struct OrderReviewView: View {
                                 Text(item.product.name).font(.subheadline).lineLimit(1)
                                 Spacer()
                                 Text("x\(item.quantity)").font(.caption).foregroundStyle(.secondary)
-                                Text(formatPrice(item.lineTotal)).font(.subheadline)
+                                Text(PriceFormatter.format(item.lineTotal)).font(.subheadline)
                             }
                         }
                     }
@@ -44,7 +44,7 @@ struct OrderReviewView: View {
                         HStack {
                             Text("Total").font(.headline)
                             Spacer()
-                            Text(formatPrice(feature.total)).font(.title3.bold())
+                            Text(PriceFormatter.format(feature.total)).font(.title3.bold())
                         }
                     }
                     .padding(AppSpacing.md)
@@ -94,16 +94,10 @@ struct OrderReviewView: View {
         HStack {
             Text(label).font(.subheadline).foregroundStyle(.secondary)
             Spacer()
-            Text(highlight && value == 0 ? "FREE" : formatPrice(value))
+            Text(highlight && value == 0 ? "FREE" : PriceFormatter.format(value))
                 .font(.subheadline)
                 .foregroundStyle(highlight && value == 0 ? .green : .primary)
         }
     }
 
-    private func formatPrice(_ value: Decimal) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencyCode = "USD"
-        return formatter.string(from: value as NSDecimalNumber) ?? "$0.00"
-    }
 }

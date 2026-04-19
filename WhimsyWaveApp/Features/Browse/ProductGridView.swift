@@ -4,10 +4,12 @@ struct ProductGridView: View {
     let products: [Product]
     var onProductTapped: (Product) -> Void = { _ in }
 
-    private let columns = [
-        GridItem(.flexible(), spacing: AppSpacing.md),
-        GridItem(.flexible(), spacing: AppSpacing.md)
-    ]
+    @Environment(\.horizontalSizeClass) private var sizeClass
+
+    private var columns: [GridItem] {
+        let count = sizeClass == .regular ? 3 : 2
+        return Array(repeating: GridItem(.flexible(), spacing: AppSpacing.md), count: count)
+    }
 
     var body: some View {
         LazyVGrid(columns: columns, spacing: AppSpacing.md) {
@@ -61,5 +63,8 @@ struct ProductGridCard: View {
                 Text("(\(product.reviewCount))").font(.caption2).foregroundStyle(.secondary)
             }
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(product.name) by \(product.brand), \(product.displayPrice)\(product.isOnSale ? ", on sale" : ""), rated \(String(format: "%.1f", product.rating)) stars")
+        .accessibilityHint("Double tap to view product details")
     }
 }

@@ -30,7 +30,7 @@ struct DeliveryOptionsView: View {
                                         .foregroundStyle(.secondary)
                                 }
                                 Spacer()
-                                Text(option.price == 0 ? "FREE" : formatPrice(option.price))
+                                Text(option.price == 0 ? "FREE" : PriceFormatter.format(option.price))
                                     .font(.subheadline.bold())
                                     .foregroundStyle(option.price == 0 ? .green : .primary)
                                 Image(systemName: selected.id == option.id ? "checkmark.circle.fill" : "circle")
@@ -69,10 +69,4 @@ struct DeliveryOptionsView: View {
         }
     }
 
-    private func formatPrice(_ value: Decimal) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencyCode = "USD"
-        return formatter.string(from: value as NSDecimalNumber) ?? "$0.00"
-    }
 }

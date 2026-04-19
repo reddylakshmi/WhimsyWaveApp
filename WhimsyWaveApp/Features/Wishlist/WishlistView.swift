@@ -42,7 +42,10 @@ struct WishlistView: View {
                                     .frame(width: AppConstants.Layout.minTapTarget, height: AppConstants.Layout.minTapTarget)
                             }
                             .buttonStyle(.borderless)
+                            .accessibilityLabel("Move \(item.product.name) to cart")
                         }
+                        .accessibilityElement(children: .combine)
+                        .accessibilityHint("Double tap to view. Swipe left to remove.")
                         .swipeActions(edge: .trailing) {
                             Button(role: .destructive) {
                                 Task { await feature.removeItem(productId: item.product.id) }
@@ -55,7 +58,9 @@ struct WishlistView: View {
                 }
             }
             .navigationTitle("Wishlist")
+            .refreshable { await feature.loadWishlist() }
             .task { await feature.loadWishlist() }
+            .errorAlert($feature.error)
         }
     }
 }

@@ -52,27 +52,27 @@ final class LiveUserRepository: IUserRepository, @unchecked Sendable {
     }
 
     func addAddress(_ address: Address, userId: String) async throws -> User {
-        let dto: UserDTO = try await apiClient.request(.userProfile(id: userId))
+        let dto: UserDTO = try await apiClient.request(.addAddress(userId: userId), body: address)
         return UserMapper.map(dto)
     }
 
     func updateAddress(_ address: Address, userId: String) async throws -> User {
-        let dto: UserDTO = try await apiClient.request(.userProfile(id: userId))
+        let dto: UserDTO = try await apiClient.request(.updateAddress(userId: userId, addressId: address.id), body: address)
         return UserMapper.map(dto)
     }
 
     func deleteAddress(addressId: String, userId: String) async throws -> User {
-        let dto: UserDTO = try await apiClient.request(.userProfile(id: userId))
+        let dto: UserDTO = try await apiClient.request(.deleteAddress(userId: userId, addressId: addressId))
         return UserMapper.map(dto)
     }
 
     func addPaymentMethod(_ method: PaymentMethod, userId: String) async throws -> User {
-        let dto: UserDTO = try await apiClient.request(.userProfile(id: userId))
+        let dto: UserDTO = try await apiClient.request(.addPaymentMethod(userId: userId), body: method)
         return UserMapper.map(dto)
     }
 
     func deletePaymentMethod(methodId: String, userId: String) async throws -> User {
-        let dto: UserDTO = try await apiClient.request(.userProfile(id: userId))
+        let dto: UserDTO = try await apiClient.request(.deletePaymentMethod(userId: userId, methodId: methodId))
         return UserMapper.map(dto)
     }
 }

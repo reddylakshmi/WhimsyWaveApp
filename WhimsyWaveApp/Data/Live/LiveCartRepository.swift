@@ -33,6 +33,6 @@ final class LiveCartRepository: ICartRepository, @unchecked Sendable {
     }
 
     func clearCart() async throws {
-        _ = try await getCart()
+        let _: CartDTO = try await apiClient.request(.clearCart(userId: userId))
     }
 }

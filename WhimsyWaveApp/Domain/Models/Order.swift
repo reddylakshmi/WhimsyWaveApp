@@ -19,7 +19,7 @@ struct Order: Identifiable, Equatable, Sendable, Codable {
     var displayTotal: String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
-        formatter.currencyCode = "USD"
+        formatter.currencyCode = AppConstants.Currency.code
         return formatter.string(from: totalAmount as NSDecimalNumber) ?? "$0.00"
     }
 }

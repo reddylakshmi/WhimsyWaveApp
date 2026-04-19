@@ -7,6 +7,7 @@ struct HomeView: View {
     var onSeeAllTapped: (HomeSection) -> Void = { _ in }
     var onSearchTapped: () -> Void = {}
     var onNotificationsTapped: () -> Void = {}
+    @Environment(\.horizontalSizeClass) private var sizeClass
 
     var body: some View {
         NavigationStack {
@@ -66,7 +67,7 @@ struct HomeView: View {
                             url: banner.imageURL,
                             cornerRadius: AppConstants.Layout.cardCornerRadius
                         )
-                        .frame(width: 300, height: AppConstants.Image.bannerHeight)
+                        .frame(width: sizeClass == .regular ? 420 : 300, height: AppConstants.Image.bannerHeight)
 
                         LinearGradient(
                             colors: [.black.opacity(0.6), .clear],
@@ -85,7 +86,7 @@ struct HomeView: View {
                         }
                         .padding(AppSpacing.md)
                     }
-                    .frame(width: 300, height: AppConstants.Image.bannerHeight)
+                    .frame(width: sizeClass == .regular ? 420 : 300, height: AppConstants.Image.bannerHeight)
                 }
             }
             .padding(.horizontal, AppSpacing.md)
@@ -156,7 +157,7 @@ struct HomeView: View {
     private func productCard(_ product: Product) -> some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
             RemoteImageView(url: product.primaryImage, cornerRadius: AppConstants.Layout.cornerRadius)
-                .frame(width: 160, height: 160)
+                .frame(width: sizeClass == .regular ? 200 : 160, height: sizeClass == .regular ? 200 : 160)
 
             Text(product.brand)
                 .font(.caption)
@@ -189,9 +190,10 @@ struct HomeView: View {
                     .foregroundStyle(.secondary)
             }
         }
-        .frame(width: 160)
+        .frame(width: sizeClass == .regular ? 200 : 160)
         .accessibilityElement(children: .combine)
         .accessibilityLabel("\(product.name) by \(product.brand), \(product.displayPrice)\(product.isOnSale ? ", on sale" : ""), rated \(String(format: "%.1f", product.rating)) stars")
+        .accessibilityHint("Double tap to view product details")
     }
 
     private var loadingView: some View {

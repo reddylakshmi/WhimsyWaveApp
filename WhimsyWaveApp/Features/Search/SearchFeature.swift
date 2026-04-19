@@ -13,8 +13,10 @@ final class SearchFeature {
     var error: String?
 
     private let searchRepository: ISearchRepository
-    private let cartRepository: ICartRepository
+    private let searchUseCase: SearchProductsUseCase
+    private let addToCartUseCase: AddToCartUseCase
     private let analytics: AnalyticsClient
+    private var suggestionTask: Task<Void, Never>?
 
     init(
         searchRepository: ISearchRepository = MockServiceProvider.searchRepository,
@@ -22,7 +24,8 @@ final class SearchFeature {
         analytics: AnalyticsClient = MockServiceProvider.analyticsClient
     ) {
         self.searchRepository = searchRepository
-        self.cartRepository = cartRepository
+        self.searchUseCase = SearchProductsUseCase(searchRepository: searchRepository)
+        self.addToCartUseCase = AddToCartUseCase(cartRepository: cartRepository)
         self.analytics = analytics
     }
 
@@ -39,7 +42,7 @@ final class SearchFeature {
         isSearching = true
         isLoading = true
         do {
-            let result = try await searchRepository.search(query: query, filter: filter, page: 0)
+            let result = try await searchUseCase.execute(query: query, filter: filter, page: 0)
             results = result.products
             analytics.track(.searchPerformed(query: query, resultCount: result.totalCount))
             await searchRepository.saveRecentSearch(query)
@@ -48,6 +51,15 @@ final class SearchFeature {
             self.error = (error as? APIError)?.userFacingMessage ?? error.localizedDescription
         }
         isLoading = false
+    }
+
+    func debouncedFetchSuggestions() {
+        suggestionTask?.cancel()
+        suggestionTask = Task {
+            try? await Task.sleep(for: .milliseconds(AppConstants.Search.debounceMilliseconds))
+            guard !Task.isCancelled else { return }
+            await fetchSuggestions()
+        }
     }
 
     func fetchSuggestions() async {
@@ -68,7 +80,7 @@ final class SearchFeature {
     }
 
     func addToCart(product: Product) async {
-        _ = try? await cartRepository.addItem(product, variant: nil, quantity: 1)
+        _ = try? await addToCartUseCase.execute(product: product)
         analytics.track(.addedToCart(productId: product.id, quantity: 1))
     }
 }

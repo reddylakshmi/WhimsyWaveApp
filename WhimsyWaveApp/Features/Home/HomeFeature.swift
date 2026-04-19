@@ -8,14 +8,14 @@ final class HomeFeature {
     var isLoading = false
     var error: String?
 
-    private let productRepository: IProductRepository
+    private let fetchHomeUseCase: FetchHomeUseCase
     private let analytics: AnalyticsClient
 
     init(
         productRepository: IProductRepository = MockServiceProvider.productRepository,
         analytics: AnalyticsClient = MockServiceProvider.analyticsClient
     ) {
-        self.productRepository = productRepository
+        self.fetchHomeUseCase = FetchHomeUseCase(productRepository: productRepository)
         self.analytics = analytics
     }
 
@@ -32,7 +32,7 @@ final class HomeFeature {
         isLoading = true
         error = nil
         do {
-            let loaded = try await productRepository.fetchHomeSections()
+            let loaded = try await fetchHomeUseCase.execute()
             sections = loaded
             banners = loaded.first(where: { $0.type == .heroBanner })?.banners ?? []
         } catch {

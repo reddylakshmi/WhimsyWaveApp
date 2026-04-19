@@ -1,15 +1,18 @@
 import Foundation
 
+/// Delegates to ServiceContainer.current for all services.
+/// This allows features to reference a stable type while the actual
+/// implementation (mock vs live) is controlled at app launch.
 enum MockServiceProvider {
-    static let productRepository: IProductRepository = MockProductRepository()
-    static let cartRepository: ICartRepository = MockCartRepository()
-    static let orderRepository: IOrderRepository = MockOrderRepository()
-    static let authRepository: IAuthRepository = MockAuthRepository()
-    static let userRepository: IUserRepository = MockUserRepository()
-    static let searchRepository: ISearchRepository = MockSearchRepository()
-    static let wishlistRepository: IWishlistRepository = MockWishlistRepository()
-    static let analyticsClient: AnalyticsClient = .noop
-    static let featureFlagClient: FeatureFlagClient = .live
+    static var productRepository: IProductRepository { ServiceContainer.current.productRepository }
+    static var cartRepository: ICartRepository { ServiceContainer.current.cartRepository }
+    static var orderRepository: IOrderRepository { ServiceContainer.current.orderRepository }
+    static var authRepository: IAuthRepository { ServiceContainer.current.authRepository }
+    static var userRepository: IUserRepository { ServiceContainer.current.userRepository }
+    static var searchRepository: ISearchRepository { ServiceContainer.current.searchRepository }
+    static var wishlistRepository: IWishlistRepository { ServiceContainer.current.wishlistRepository }
+    static var analyticsClient: AnalyticsClient { ServiceContainer.current.analyticsClient }
+    static var featureFlagClient: FeatureFlagClient { ServiceContainer.current.featureFlagClient }
 }
 
 final class MockSearchRepository: ISearchRepository, @unchecked Sendable {

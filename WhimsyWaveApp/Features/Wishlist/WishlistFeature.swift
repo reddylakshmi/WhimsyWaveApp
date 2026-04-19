@@ -8,7 +8,7 @@ final class WishlistFeature {
     var error: String?
 
     private let wishlistRepository: IWishlistRepository
-    private let cartRepository: ICartRepository
+    private let addToCartUseCase: AddToCartUseCase
     private let analytics: AnalyticsClient
 
     init(
@@ -17,7 +17,7 @@ final class WishlistFeature {
         analytics: AnalyticsClient = MockServiceProvider.analyticsClient
     ) {
         self.wishlistRepository = wishlistRepository
-        self.cartRepository = cartRepository
+        self.addToCartUseCase = AddToCartUseCase(cartRepository: cartRepository)
         self.analytics = analytics
     }
 
@@ -42,7 +42,7 @@ final class WishlistFeature {
 
     func moveToCart(_ item: WishlistItem) async {
         do {
-            _ = try await cartRepository.addItem(item.product, variant: nil, quantity: 1)
+            _ = try await addToCartUseCase.execute(product: item.product)
             items = try await wishlistRepository.removeFromWishlist(productId: item.product.id)
             analytics.track(.addedToCart(productId: item.product.id, quantity: 1))
         } catch {

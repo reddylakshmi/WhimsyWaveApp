@@ -117,7 +117,16 @@ struct CheckoutAddressFormView: View {
     @State private var zipCode = ""
     @State private var phone = ""
 
+    @State private var hasAttemptedSave = false
+
     private var isEditing: Bool { address != nil }
+    private var isZipValid: Bool { zipCode.isEmpty || zipCode.allSatisfy(\.isNumber) && zipCode.count <= 5 }
+    private var isPhoneValid: Bool { phone.isEmpty || phone.filter(\.isNumber).count >= 10 }
+    private var isFormValid: Bool {
+        !fullName.isEmpty && !street.isEmpty && !city.isEmpty && !state.isEmpty
+        && zipCode.count == 5 && zipCode.allSatisfy(\.isNumber)
+        && phone.filter(\.isNumber).count >= 10
+    }
 
     var body: some View {
         Form {
@@ -132,9 +141,17 @@ struct CheckoutAddressFormView: View {
             Section("Contact") {
                 TextField("Full Name", text: $fullName)
                     .textContentType(.name)
+                if hasAttemptedSave && fullName.isEmpty {
+                    Text("Full name is required")
+                        .font(.caption).foregroundStyle(.red)
+                }
                 TextField("Phone", text: $phone)
                     .textContentType(.telephoneNumber)
                     .keyboardType(.phonePad)
+                if hasAttemptedSave && !isPhoneValid {
+                    Text("Enter a valid 10-digit phone number")
+                        .font(.caption).foregroundStyle(.red)
+                }
             }
             Section("Address") {
                 TextField("Street Address", text: $street)
@@ -148,6 +165,10 @@ struct CheckoutAddressFormView: View {
                 TextField("ZIP Code", text: $zipCode)
                     .textContentType(.postalCode)
                     .keyboardType(.numberPad)
+                if hasAttemptedSave && (zipCode.count != 5 || !zipCode.allSatisfy(\.isNumber)) {
+                    Text("Enter a valid 5-digit ZIP code")
+                        .font(.caption).foregroundStyle(.red)
+                }
             }
         }
         .navigationTitle(isEditing ? "Edit Address" : "Add Address")
@@ -157,8 +178,10 @@ struct CheckoutAddressFormView: View {
                 Button("Cancel") { dismiss() }
             }
             ToolbarItem(placement: .confirmationAction) {
-                Button("Save") { save() }
-                    .disabled(fullName.isEmpty || street.isEmpty || city.isEmpty || state.isEmpty || zipCode.isEmpty)
+                Button("Save") {
+                    hasAttemptedSave = true
+                    if isFormValid { save() }
+                }
             }
         }
         .onAppear {

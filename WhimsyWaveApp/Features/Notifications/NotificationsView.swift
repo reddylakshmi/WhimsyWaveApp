@@ -58,6 +58,9 @@ struct NotificationsView: View {
             }
         }
         .padding(.vertical, AppSpacing.xs)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("\(notification.isRead ? "" : "Unread. ")\(notification.title). \(notification.body)")
+        .accessibilityHint(notification.isRead ? "" : "Double tap to mark as read")
     }
 
     private func iconForType(_ type: AppNotificationType) -> String {

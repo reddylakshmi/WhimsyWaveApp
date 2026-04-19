@@ -54,4 +54,24 @@ enum AppConstants {
     enum Session {
         static let timeoutMinutes = AppConfiguration.current.sessionTimeoutMinutes
     }
+
+    enum Currency {
+        static let code = "USD"
+    }
+
+    enum Shipping {
+        static let standardCost = Decimal.zero
+        static let expeditedCost = Decimal(string: "14.99")!
+        static let expressCost = Decimal(string: "29.99")!
+        static let freeShippingThreshold: Decimal = 49
+        static let standardShippingCost = Decimal(string: "9.99")!
+    }
+
+    enum Tax {
+        static let rate = Decimal(string: "0.0825")!
+    }
+
+    enum Order {
+        static let numberPrefix = "HF-2026-"
+    }
 }

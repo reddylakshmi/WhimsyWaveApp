@@ -100,7 +100,9 @@ struct AppView: View {
                 ScrollView {
                     ProductGridView(products: section.products, onProductTapped: { product in
                         app.showingSeeAllProducts = nil
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        Task {
+                            try? await Task.sleep(for: .milliseconds(300))
+
                             app.showingProductDetail = product
                         }
                     })
@@ -165,7 +167,9 @@ struct AppView: View {
                     feature: app.searchFeature,
                     onProductTapped: { product in
                         app.showingSearch = false
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        Task {
+                            try? await Task.sleep(for: .milliseconds(300))
+
                             app.showingProductDetail = product
                         }
                     }

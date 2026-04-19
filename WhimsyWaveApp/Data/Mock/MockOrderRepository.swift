@@ -18,15 +18,16 @@ final class MockOrderRepository: IOrderRepository, @unchecked Sendable {
             )
         }
         let subtotal = cart.totalPrice
-        let tax = subtotal * Decimal(string: "0.0825")!
+        let tax = subtotal * AppConstants.Tax.rate
+        let shipping = subtotal > AppConstants.Shipping.freeShippingThreshold ? Decimal.zero : AppConstants.Shipping.standardShippingCost
         let order = Order(
             id: UUID().uuidString,
-            orderNumber: "HF-2026-\(Int.random(in: 10000...99999))",
+            orderNumber: "\(AppConstants.Order.numberPrefix)\(Int.random(in: 10000...99999))",
             items: items,
             subtotal: subtotal,
-            shippingCost: subtotal > 49 ? 0 : Decimal(string: "9.99")!,
+            shippingCost: shipping,
             tax: tax,
-            totalAmount: subtotal + tax + (subtotal > 49 ? 0 : Decimal(string: "9.99")!),
+            totalAmount: subtotal + tax + shipping,
             status: .placed,
             createdAt: .now,
             updatedAt: .now,

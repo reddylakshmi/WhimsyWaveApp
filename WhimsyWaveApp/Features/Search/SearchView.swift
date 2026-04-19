@@ -24,7 +24,7 @@ struct SearchView: View {
                 Task { await feature.search() }
             }
             .onChange(of: feature.query) {
-                Task { await feature.fetchSuggestions() }
+                feature.debouncedFetchSuggestions()
             }
             .task { await feature.onAppear() }
         }
@@ -35,8 +35,10 @@ struct SearchView: View {
         if feature.isSearching && !feature.results.isEmpty {
             searchResults
         } else if feature.isLoading {
-            ProgressView()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            ScrollView {
+                SearchResultsSkeleton()
+                    .padding(.top, AppSpacing.md)
+            }
         } else {
             preSearchContent
         }
@@ -141,14 +143,17 @@ struct SearchView: View {
                 }
             } label: {
                 Image(systemName: "plus")
-                    .font(.system(size: 16, weight: .bold))
+                    .font(.body.bold())
                     .foregroundStyle(.white)
                     .frame(width: AppConstants.Layout.minTapTarget, height: AppConstants.Layout.minTapTarget)
                     .background(Circle().fill(.blue))
             }
             .buttonStyle(.plain)
+            .accessibilityLabel("Add \(product.name) to cart")
         }
         .padding(.vertical, AppSpacing.xs)
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel("\(product.name) by \(product.brand), \(product.displayPrice)")
     }
 
     private func toastView(name: String) -> some View {
@@ -165,12 +170,12 @@ struct SearchView: View {
     }
 
     private func showToast(for name: String) {
-        let generator = UIImpactFeedbackGenerator(style: .medium)
-        generator.impactOccurred()
+        HapticFeedback.medium()
         withAnimation(.spring(response: AppConstants.Animation.springResponse)) {
             addedProductName = name
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + AppConstants.Animation.toastDisplayDuration) {
+        Task {
+            try? await Task.sleep(for: .seconds(AppConstants.Animation.toastDisplayDuration))
             withAnimation(.easeOut) { addedProductName = nil }
         }
     }

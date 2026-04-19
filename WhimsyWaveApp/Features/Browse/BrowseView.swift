@@ -7,9 +7,11 @@ struct BrowseView: View {
     var body: some View {
         NavigationStack {
             if feature.isLoading && feature.categories.isEmpty {
-                ProgressView()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .navigationTitle("Browse")
+                ScrollView {
+                    ProductGridSkeleton()
+                        .padding(.top, AppSpacing.md)
+                }
+                .navigationTitle("Browse")
             } else {
                 ScrollView {
                     LazyVStack(spacing: 0, pinnedViews: .sectionHeaders) {
@@ -24,10 +26,12 @@ struct BrowseView: View {
                         }
                     }
                 }
+                .refreshable { await feature.refresh() }
                 .navigationTitle("Browse")
             }
         }
         .task { await feature.loadCategories() }
+        .errorAlert($feature.error)
     }
 
     private var categoryBar: some View {
@@ -76,9 +80,8 @@ struct BrowseView: View {
     @ViewBuilder
     private var productContent: some View {
         if feature.isLoading && feature.selectedCategory != nil {
-            ProgressView()
-                .frame(maxWidth: .infinity)
-                .padding(.top, 100)
+            ProductGridSkeleton(itemCount: 4)
+                .padding(.top, AppSpacing.md)
         } else if feature.products.isEmpty && feature.selectedCategory != nil {
             ContentUnavailableView("No products found", systemImage: "magnifyingglass", description: Text("Try selecting a different category"))
                 .padding(.top, AppSpacing.xl)

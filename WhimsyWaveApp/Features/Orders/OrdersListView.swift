@@ -51,6 +51,9 @@ struct OrdersListView: View {
             }
         }
         .padding(.vertical, AppSpacing.xs)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Order \(order.orderNumber), \(order.status.displayName), \(order.items.count) items, \(order.displayTotal)")
+        .accessibilityHint("Double tap to view order details")
     }
 
     private func statusColor(_ status: OrderStatus) -> Color {

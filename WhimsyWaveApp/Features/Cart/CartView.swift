@@ -4,6 +4,7 @@ struct CartView: View {
     @Bindable var feature: CartFeature
     var onCheckout: () -> Void = {}
     var onProductTapped: (Product) -> Void = { _ in }
+    @State private var itemToRemove: CartItem?
 
     var body: some View {
         NavigationStack {
@@ -11,14 +12,31 @@ struct CartView: View {
                 if feature.cart.isEmpty && !feature.isLoading {
                     ContentUnavailableView("Your cart is empty", systemImage: "cart", description: Text("Items you add will appear here"))
                 } else if feature.isLoading && feature.cart.isEmpty {
-                    ProgressView()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    CartSkeleton()
                 } else {
                     cartContent
                 }
             }
             .navigationTitle("Cart")
+            .refreshable { await feature.loadCart() }
             .task { await feature.loadCart() }
+            .errorAlert($feature.error)
+            .confirmationDialog("Remove Item", isPresented: Binding(
+                get: { itemToRemove != nil },
+                set: { if !$0 { itemToRemove = nil } }
+            ), titleVisibility: .visible) {
+                Button("Remove", role: .destructive) {
+                    if let item = itemToRemove {
+                        HapticFeedback.medium()
+                        Task { await feature.removeItem(item) }
+                    }
+                }
+                Button("Cancel", role: .cancel) { itemToRemove = nil }
+            } message: {
+                if let item = itemToRemove {
+                    Text("Remove \(item.product.name) from your cart?")
+                }
+            }
         }
     }
 
@@ -30,7 +48,7 @@ struct CartView: View {
                         item: item,
                         onIncrement: { Task { await feature.incrementQuantity(item) } },
                         onDecrement: { Task { await feature.decrementQuantity(item) } },
-                        onRemove: { Task { await feature.removeItem(item) } },
+                        onRemove: { itemToRemove = item },
                         onTap: { onProductTapped(item.product) }
                     )
                 }
@@ -128,7 +146,7 @@ struct CartItemRow: View {
 
                     Spacer()
 
-                    Text(formatPrice(item.lineTotal))
+                    Text(PriceFormatter.format(item.lineTotal))
                         .font(.subheadline.bold())
                 }
             }
@@ -141,10 +159,4 @@ struct CartItemRow: View {
         }
     }
 
-    private func formatPrice(_ value: Decimal) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencyCode = "USD"
-        return formatter.string(from: value as NSDecimalNumber) ?? "$0.00"
-    }
 }

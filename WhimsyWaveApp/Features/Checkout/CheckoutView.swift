@@ -19,6 +19,7 @@ struct CheckoutView: View {
                 }
             }
             .task { await feature.loadUserData() }
+            .errorAlert($feature.error)
             .sheet(item: $feature.placedOrder) { order in
                 OrderConfirmationView(order: order) { dismiss() }
             }
@@ -40,6 +41,8 @@ struct CheckoutView: View {
                     Text(step.title)
                         .font(.caption2)
                         .foregroundStyle(step == feature.currentStep ? .primary : .secondary)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
                 }
                 if step != CheckoutStepType.allCases.last {
                     Rectangle()
@@ -50,6 +53,8 @@ struct CheckoutView: View {
         }
         .padding(.horizontal, AppSpacing.md)
         .padding(.vertical, AppSpacing.sm)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("Checkout step \(feature.currentStep.rawValue + 1) of \(CheckoutStepType.allCases.count): \(feature.currentStep.title)")
     }
 
     @ViewBuilder

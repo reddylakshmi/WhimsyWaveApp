@@ -14,7 +14,7 @@ final class ProductDetailFeature {
     var error: String?
 
     private let productRepository: IProductRepository
-    private let cartRepository: ICartRepository
+    private let addToCartUseCase: AddToCartUseCase
     private let wishlistRepository: IWishlistRepository
     private let analytics: AnalyticsClient
 
@@ -27,7 +27,7 @@ final class ProductDetailFeature {
     ) {
         self.product = product
         self.productRepository = productRepository
-        self.cartRepository = cartRepository
+        self.addToCartUseCase = AddToCartUseCase(cartRepository: cartRepository)
         self.wishlistRepository = wishlistRepository
         self.analytics = analytics
     }
@@ -55,12 +55,14 @@ final class ProductDetailFeature {
         guard let product else { return }
         isAddingToCart = true
         do {
-            _ = try await cartRepository.addItem(product, variant: selectedVariant, quantity: quantity)
+            _ = try await addToCartUseCase.execute(product: product, variant: selectedVariant, quantity: quantity)
             analytics.track(.addedToCart(productId: product.id, quantity: quantity))
+            HapticFeedback.success()
             addedToCart = true
             try await Task.sleep(for: .seconds(AppConstants.Animation.toastDisplayDuration))
             addedToCart = false
         } catch {
+            HapticFeedback.error()
             self.error = "Failed to add to cart"
         }
         isAddingToCart = false
@@ -70,6 +72,7 @@ final class ProductDetailFeature {
         guard let product else { return }
         let wasInWishlist = isInWishlist
         isInWishlist.toggle()
+        HapticFeedback.light()
         do {
             if wasInWishlist {
                 _ = try await wishlistRepository.removeFromWishlist(productId: product.id)

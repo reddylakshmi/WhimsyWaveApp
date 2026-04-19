@@ -101,6 +101,16 @@ struct CheckoutAddCardFormView: View {
     @State private var expiryDate = ""
     @State private var cvv = ""
     @State private var cardholderName = ""
+    @State private var hasAttemptedSave = false
+
+    private var isCardNumberValid: Bool { cardNumber.filter(\.isNumber).count >= 13 }
+    private var isCVVValid: Bool { cvv.count >= 3 && cvv.allSatisfy(\.isNumber) }
+    private var isExpiryValid: Bool {
+        let parts = expiryDate.split(separator: "/")
+        guard parts.count == 2, let month = Int(parts[0]), let _ = Int(parts[1]) else { return false }
+        return month >= 1 && month <= 12
+    }
+    private var isFormValid: Bool { !cardholderName.isEmpty && isCardNumberValid && isExpiryValid && isCVVValid }
 
     var body: some View {
         Form {
@@ -115,16 +125,28 @@ struct CheckoutAddCardFormView: View {
             Section("Card Details") {
                 TextField("Cardholder Name", text: $cardholderName)
                     .textContentType(.name)
+                if hasAttemptedSave && cardholderName.isEmpty {
+                    Text("Cardholder name is required")
+                        .font(.caption).foregroundStyle(.red)
+                }
                 TextField("Card Number", text: $cardNumber)
                     .textContentType(.creditCardNumber)
                     .keyboardType(.numberPad)
+                if hasAttemptedSave && !isCardNumberValid {
+                    Text("Enter a valid card number")
+                        .font(.caption).foregroundStyle(.red)
+                }
                 HStack {
                     TextField("MM/YY", text: $expiryDate)
-                        .keyboardType(.numberPad)
+                        .keyboardType(.numbersAndPunctuation)
                     Divider()
                     TextField("CVV", text: $cvv)
                         .keyboardType(.numberPad)
                         .frame(maxWidth: 80)
+                }
+                if hasAttemptedSave && (!isExpiryValid || !isCVVValid) {
+                    Text("Enter valid expiry (MM/YY) and CVV")
+                        .font(.caption).foregroundStyle(.red)
                 }
             }
         }
@@ -135,8 +157,10 @@ struct CheckoutAddCardFormView: View {
                 Button("Cancel") { dismiss() }
             }
             ToolbarItem(placement: .confirmationAction) {
-                Button("Save") { save() }
-                    .disabled(cardholderName.isEmpty || cardNumber.count < 4 || expiryDate.isEmpty || cvv.isEmpty)
+                Button("Save") {
+                    hasAttemptedSave = true
+                    if isFormValid { save() }
+                }
             }
         }
     }

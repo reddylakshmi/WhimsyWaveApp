@@ -4,24 +4,47 @@ struct RemoteImageView: View {
     let url: String
     var cornerRadius: CGFloat = AppConstants.Layout.cornerRadius
 
+    @State private var image: UIImage?
+    @State private var isFailed = false
+
     var body: some View {
-        AsyncImage(url: URL(string: url)) { phase in
-            switch phase {
-            case .success(let image):
-                image
+        Group {
+            if let image {
+                Image(uiImage: image)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-            case .failure:
+            } else if isFailed {
                 placeholder
-            case .empty:
-                ProgressView()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(Color.gray.opacity(0.05))
-            @unknown default:
-                placeholder
+            } else {
+                loadingView
             }
         }
         .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+        .task(id: url) {
+            await loadImage()
+        }
+    }
+
+    private func loadImage() async {
+        isFailed = false
+        image = nil
+        guard let imageURL = URL(string: url) else {
+            isFailed = true
+            return
+        }
+        if let loaded = await ImageCache.shared.image(for: imageURL) {
+            image = loaded
+        } else {
+            isFailed = true
+        }
+    }
+
+    private var loadingView: some View {
+        Rectangle()
+            .fill(Color.gray.opacity(0.08))
+            .overlay {
+                ProgressView()
+            }
     }
 
     private var placeholder: some View {

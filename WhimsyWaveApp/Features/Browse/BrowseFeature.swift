@@ -36,6 +36,15 @@ final class BrowseFeature {
         isLoading = false
     }
 
+    func refresh() async {
+        if let category = selectedCategory {
+            await selectCategory(category)
+        } else {
+            categories = []
+            await loadCategories()
+        }
+    }
+
     func selectCategory(_ category: Category) async {
         selectedCategory = category
         isLoading = true

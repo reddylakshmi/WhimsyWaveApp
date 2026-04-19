@@ -8,6 +8,7 @@ final class OrdersFeature {
     var isLoading = false
     var error: String?
 
+    private let fetchOrdersUseCase: FetchOrdersUseCase
     private let orderRepository: IOrderRepository
     private let analytics: AnalyticsClient
 
@@ -15,6 +16,7 @@ final class OrdersFeature {
         orderRepository: IOrderRepository = MockServiceProvider.orderRepository,
         analytics: AnalyticsClient = MockServiceProvider.analyticsClient
     ) {
+        self.fetchOrdersUseCase = FetchOrdersUseCase(orderRepository: orderRepository)
         self.orderRepository = orderRepository
         self.analytics = analytics
     }
@@ -22,7 +24,7 @@ final class OrdersFeature {
     func loadOrders() async {
         isLoading = true
         do {
-            orders = try await orderRepository.fetchOrders()
+            orders = try await fetchOrdersUseCase.execute()
         } catch {
             self.error = (error as? APIError)?.userFacingMessage ?? error.localizedDescription
         }

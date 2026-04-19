@@ -25,8 +25,8 @@ struct DeliveryOption: Identifiable, Equatable, Sendable {
     let isExpress: Bool
 
     static let standard = DeliveryOption(id: "DEL-001", name: "Standard Shipping", estimatedDays: "5-7 business days", price: 0, isExpress: false)
-    static let expedited = DeliveryOption(id: "DEL-002", name: "Expedited Shipping", estimatedDays: "2-3 business days", price: Decimal(string: "14.99")!, isExpress: false)
-    static let express = DeliveryOption(id: "DEL-003", name: "Express Shipping", estimatedDays: "1 business day", price: Decimal(string: "29.99")!, isExpress: true)
+    static let expedited = DeliveryOption(id: "DEL-002", name: "Expedited Shipping", estimatedDays: "2-3 business days", price: AppConstants.Shipping.expeditedCost, isExpress: false)
+    static let express = DeliveryOption(id: "DEL-003", name: "Express Shipping", estimatedDays: "1 business day", price: AppConstants.Shipping.expressCost, isExpress: true)
 
     static let allOptions: [DeliveryOption] = [.standard, .expedited, .express]
 }
@@ -44,9 +44,8 @@ final class CheckoutFeature {
     var placedOrder: Order?
     var error: String?
 
-    private let orderRepository: IOrderRepository
+    private let checkoutUseCase: CheckoutUseCase
     private let userRepository: IUserRepository
-    private let cartRepository: ICartRepository
     private let analytics: AnalyticsClient
 
     init(
@@ -57,15 +56,14 @@ final class CheckoutFeature {
         analytics: AnalyticsClient = MockServiceProvider.analyticsClient
     ) {
         self.cart = cart
-        self.orderRepository = orderRepository
+        self.checkoutUseCase = CheckoutUseCase(orderRepository: orderRepository, cartRepository: cartRepository)
         self.userRepository = userRepository
-        self.cartRepository = cartRepository
         self.analytics = analytics
     }
 
     var subtotal: Decimal { cart.totalPrice }
     var shippingCost: Decimal { selectedDelivery.price }
-    var tax: Decimal { subtotal * Decimal(string: "0.0825")! }
+    var tax: Decimal { subtotal * AppConstants.Tax.rate }
     var total: Decimal { subtotal + shippingCost + tax }
 
     func loadUserData() async {
@@ -83,6 +81,7 @@ final class CheckoutFeature {
 
     func nextStep() {
         if let next = CheckoutStepType(rawValue: currentStep.rawValue + 1) {
+            HapticFeedback.light()
             analytics.track(.checkoutStepCompleted(step: CheckoutStep(rawValue: currentStep.title.lowercased()) ?? .shippingAddress))
             currentStep = next
         }
@@ -101,11 +100,12 @@ final class CheckoutFeature {
         }
         isPlacingOrder = true
         do {
-            let order = try await orderRepository.placeOrder(cart: cart, address: address, payment: payment)
-            try await cartRepository.clearCart()
+            let order = try await checkoutUseCase.execute(cart: cart, address: address, payment: payment)
             placedOrder = order
+            HapticFeedback.success()
             analytics.track(.orderCompleted(orderId: order.id, total: order.totalAmount))
         } catch {
+            HapticFeedback.error()
             self.error = (error as? APIError)?.userFacingMessage ?? error.localizedDescription
         }
         isPlacingOrder = false

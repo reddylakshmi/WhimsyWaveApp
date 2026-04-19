@@ -3,6 +3,7 @@ import SwiftUI
 struct OrderDetailView: View {
     let order: Order
     var onCancel: () -> Void = {}
+    @State private var showingCancelConfirmation = false
 
     var body: some View {
         ScrollView {
@@ -35,7 +36,7 @@ struct OrderDetailView: View {
                                 Text("Qty: \(item.quantity)").font(.caption).foregroundStyle(.secondary)
                             }
                             Spacer()
-                            Text(formatPrice(item.lineTotal)).font(.subheadline)
+                            Text(PriceFormatter.format(item.lineTotal)).font(.subheadline)
                         }
                     }
                 }
@@ -62,7 +63,9 @@ struct OrderDetailView: View {
 
                 // Cancel
                 if order.status == .placed || order.status == .confirmed {
-                    Button(role: .destructive, action: onCancel) {
+                    Button(role: .destructive) {
+                        showingCancelConfirmation = true
+                    } label: {
                         Text("Cancel Order")
                             .font(.headline)
                             .frame(maxWidth: .infinity)
@@ -75,20 +78,23 @@ struct OrderDetailView: View {
         }
         .navigationTitle("Order #\(order.orderNumber)")
         .navigationBarTitleDisplayMode(.inline)
+        .confirmationDialog("Cancel Order", isPresented: $showingCancelConfirmation, titleVisibility: .visible) {
+            Button("Cancel Order", role: .destructive) {
+                HapticFeedback.medium()
+                onCancel()
+            }
+            Button("Keep Order", role: .cancel) {}
+        } message: {
+            Text("Are you sure you want to cancel this order? This action cannot be undone.")
+        }
     }
 
     private func priceRow(_ label: String, value: Decimal) -> some View {
         HStack {
             Text(label).font(.subheadline).foregroundStyle(.secondary)
             Spacer()
-            Text(value == 0 ? "FREE" : formatPrice(value)).font(.subheadline)
+            Text(value == 0 ? "FREE" : PriceFormatter.format(value)).font(.subheadline)
         }
     }
 
-    private func formatPrice(_ value: Decimal) -> String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencyCode = "USD"
-        return formatter.string(from: value as NSDecimalNumber) ?? "$0.00"
-    }
 }

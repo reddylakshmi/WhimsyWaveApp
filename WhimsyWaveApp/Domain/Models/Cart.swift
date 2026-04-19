@@ -18,7 +18,7 @@ struct Cart: Equatable, Sendable {
     var displayTotal: String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
-        formatter.currencyCode = "USD"
+        formatter.currencyCode = AppConstants.Currency.code
         return formatter.string(from: totalPrice as NSDecimalNumber) ?? "$0.00"
     }
 

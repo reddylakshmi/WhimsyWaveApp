@@ -30,7 +30,7 @@ final class LiveOrderRepository: IOrderRepository, @unchecked Sendable {
     }
 
     func cancelOrder(id: String) async throws -> Order {
-        let dto: OrderDTO = try await apiClient.request(.orderDetail(id: id))
+        let dto: OrderDTO = try await apiClient.request(.cancelOrder(id: id))
         return OrderMapper.map(dto)
     }
 }

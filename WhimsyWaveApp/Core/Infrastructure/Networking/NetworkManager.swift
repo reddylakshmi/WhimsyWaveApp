@@ -74,10 +74,17 @@ enum APIEndpoint: Sendable {
     case orderDetail(id: String)
     case userProfile(id: String)
     case updateProfile(id: String)
+    case addAddress(userId: String)
+    case updateAddress(userId: String, addressId: String)
+    case deleteAddress(userId: String, addressId: String)
+    case addPaymentMethod(userId: String)
+    case deletePaymentMethod(userId: String, methodId: String)
     case wishlist(userId: String)
     case addToWishlist(userId: String)
     case removeFromWishlist(userId: String, productId: String)
     case reviews(productId: String, page: Int)
+    case cancelOrder(id: String)
+    case clearCart(userId: String)
     case login
     case register
     case refreshToken
@@ -88,11 +95,12 @@ enum APIEndpoint: Sendable {
             return .product
         case .searchProducts:
             return .search
-        case .cart, .addToCart, .updateCartItem, .removeCartItem, .checkout:
+        case .cart, .addToCart, .updateCartItem, .removeCartItem, .clearCart, .checkout:
             return .cart
-        case .orders, .orderDetail:
+        case .orders, .orderDetail, .cancelOrder:
             return .order
-        case .userProfile, .updateProfile, .wishlist, .addToWishlist, .removeFromWishlist:
+        case .userProfile, .updateProfile, .addAddress, .updateAddress, .deleteAddress,
+             .addPaymentMethod, .deletePaymentMethod, .wishlist, .addToWishlist, .removeFromWishlist:
             return .user
         case .login, .register, .refreshToken:
             return .auth
@@ -115,10 +123,17 @@ enum APIEndpoint: Sendable {
         case .orderDetail(let id): return "/orders/\(id)"
         case .userProfile(let id): return "/users/\(id)"
         case .updateProfile(let id): return "/users/\(id)"
+        case .addAddress(let userId): return "/users/\(userId)/addresses"
+        case .updateAddress(let userId, let addressId): return "/users/\(userId)/addresses/\(addressId)"
+        case .deleteAddress(let userId, let addressId): return "/users/\(userId)/addresses/\(addressId)"
+        case .addPaymentMethod(let userId): return "/users/\(userId)/payment-methods"
+        case .deletePaymentMethod(let userId, let methodId): return "/users/\(userId)/payment-methods/\(methodId)"
         case .wishlist(let userId): return "/users/\(userId)/wishlist"
         case .addToWishlist(let userId): return "/users/\(userId)/wishlist"
         case .removeFromWishlist(let userId, let productId): return "/users/\(userId)/wishlist/\(productId)"
         case .reviews(let productId, _): return "/products/\(productId)/reviews"
+        case .cancelOrder(let id): return "/orders/\(id)/cancel"
+        case .clearCart(let userId): return "/users/\(userId)/cart"
         case .login: return "/auth/login"
         case .register: return "/auth/register"
         case .refreshToken: return "/auth/refresh"
@@ -131,11 +146,12 @@ enum APIEndpoint: Sendable {
              .searchProducts, .cart, .orders, .orderDetail, .userProfile,
              .wishlist, .reviews:
             return .get
-        case .addToCart, .checkout, .addToWishlist, .login, .register, .refreshToken:
+        case .addToCart, .checkout, .addToWishlist, .addAddress, .addPaymentMethod,
+             .login, .register, .refreshToken, .cancelOrder:
             return .post
-        case .updateCartItem, .updateProfile:
+        case .updateCartItem, .updateProfile, .updateAddress:
             return .put
-        case .removeCartItem, .removeFromWishlist:
+        case .removeCartItem, .removeFromWishlist, .deleteAddress, .deletePaymentMethod, .clearCart:
             return .delete
         }
     }
