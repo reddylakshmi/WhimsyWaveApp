@@ -6,19 +6,28 @@ struct BrowseView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
-                if feature.isLoading && feature.categories.isEmpty {
-                    ProgressView()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else {
-                    categoryBar
-                    Divider()
-                    productContent
+            if feature.isLoading && feature.categories.isEmpty {
+                ProgressView()
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .navigationTitle("Browse")
+            } else {
+                ScrollView {
+                    LazyVStack(spacing: 0, pinnedViews: .sectionHeaders) {
+                        Section {
+                            productContent
+                        } header: {
+                            VStack(spacing: 0) {
+                                categoryBar
+                                Divider()
+                            }
+                            .background(.background)
+                        }
+                    }
                 }
+                .navigationTitle("Browse")
             }
-            .navigationTitle("Browse")
-            .task { await feature.loadCategories() }
         }
+        .task { await feature.loadCategories() }
     }
 
     private var categoryBar: some View {
@@ -68,25 +77,18 @@ struct BrowseView: View {
     private var productContent: some View {
         if feature.isLoading && feature.selectedCategory != nil {
             ProgressView()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .frame(maxWidth: .infinity)
+                .padding(.top, 100)
         } else if feature.products.isEmpty && feature.selectedCategory != nil {
             ContentUnavailableView("No products found", systemImage: "magnifyingglass", description: Text("Try selecting a different category"))
+                .padding(.top, AppSpacing.xl)
         } else if feature.selectedCategory == nil {
-            ScrollView {
-                VStack(alignment: .leading, spacing: AppSpacing.lg) {
-                    Text("Select a category to browse")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding(.top, AppSpacing.xxl)
-                }
-            }
+            ContentUnavailableView("Select a category", systemImage: "square.grid.2x2", description: Text("Choose a category above to browse products"))
+                .padding(.top, AppSpacing.xl)
         } else {
-            ScrollView {
-                ProductGridView(products: feature.products, onProductTapped: onProductTapped)
-                    .padding(.top, AppSpacing.md)
-                    .padding(.bottom, AppSpacing.xl)
-            }
+            ProductGridView(products: feature.products, onProductTapped: onProductTapped)
+                .padding(.top, AppSpacing.md)
+                .padding(.bottom, AppSpacing.xl)
         }
     }
 }

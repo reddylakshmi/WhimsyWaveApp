@@ -1,9 +1,11 @@
 import SwiftUI
 
 struct ShippingAddressView: View {
-    let addresses: [Address]
+    @Binding var addresses: [Address]
     @Binding var selected: Address?
     let onNext: () -> Void
+    @State private var showingAddForm = false
+    @State private var editingAddress: Address?
 
     var body: some View {
         VStack {
@@ -31,9 +33,18 @@ struct ShippingAddressView: View {
                                         .foregroundStyle(.secondary)
                                 }
                                 Spacer()
-                                Image(systemName: selected?.id == address.id ? "checkmark.circle.fill" : "circle")
-                                    .foregroundStyle(selected?.id == address.id ? .blue : .gray)
-                                    .font(.title3)
+                                VStack(spacing: AppSpacing.sm) {
+                                    Image(systemName: selected?.id == address.id ? "checkmark.circle.fill" : "circle")
+                                        .foregroundStyle(selected?.id == address.id ? .blue : .gray)
+                                        .font(.title3)
+                                    Button {
+                                        editingAddress = address
+                                    } label: {
+                                        Text("Edit")
+                                            .font(.caption)
+                                            .foregroundStyle(.blue)
+                                    }
+                                }
                             }
                             .padding(AppSpacing.md)
                             .background(
@@ -43,6 +54,26 @@ struct ShippingAddressView: View {
                         }
                         .buttonStyle(.plain)
                     }
+
+                    Button {
+                        showingAddForm = true
+                    } label: {
+                        HStack {
+                            Image(systemName: "plus.circle.fill")
+                                .font(.title3)
+                            Text("Add New Address")
+                                .font(.headline)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(AppSpacing.md)
+                        .background(
+                            RoundedRectangle(cornerRadius: AppConstants.Layout.cornerRadius)
+                                .stroke(style: StrokeStyle(lineWidth: 1, dash: [6]))
+                                .foregroundStyle(.blue.opacity(0.5))
+                        )
+                    }
+                    .buttonStyle(.plain)
+                    .foregroundStyle(.blue)
                 }
                 .padding(AppSpacing.md)
             }
@@ -58,5 +89,113 @@ struct ShippingAddressView: View {
             .disabled(selected == nil)
             .padding(AppSpacing.md)
         }
+        .sheet(isPresented: $showingAddForm) {
+            NavigationStack {
+                CheckoutAddressFormView(addresses: $addresses, selected: $selected, address: nil)
+            }
+        }
+        .sheet(item: $editingAddress) { address in
+            NavigationStack {
+                CheckoutAddressFormView(addresses: $addresses, selected: $selected, address: address)
+            }
+        }
+    }
+}
+
+struct CheckoutAddressFormView: View {
+    @Binding var addresses: [Address]
+    @Binding var selected: Address?
+    let address: Address?
+    @Environment(\.dismiss) private var dismiss
+
+    @State private var label = "Home"
+    @State private var fullName = ""
+    @State private var street = ""
+    @State private var apartment = ""
+    @State private var city = ""
+    @State private var state = ""
+    @State private var zipCode = ""
+    @State private var phone = ""
+
+    private var isEditing: Bool { address != nil }
+
+    var body: some View {
+        Form {
+            Section("Address Label") {
+                Picker("Label", selection: $label) {
+                    Text("Home").tag("Home")
+                    Text("Office").tag("Office")
+                    Text("Other").tag("Other")
+                }
+                .pickerStyle(.segmented)
+            }
+            Section("Contact") {
+                TextField("Full Name", text: $fullName)
+                    .textContentType(.name)
+                TextField("Phone", text: $phone)
+                    .textContentType(.telephoneNumber)
+                    .keyboardType(.phonePad)
+            }
+            Section("Address") {
+                TextField("Street Address", text: $street)
+                    .textContentType(.streetAddressLine1)
+                TextField("Apt, Suite, Unit (optional)", text: $apartment)
+                    .textContentType(.streetAddressLine2)
+                TextField("City", text: $city)
+                    .textContentType(.addressCity)
+                TextField("State", text: $state)
+                    .textContentType(.addressState)
+                TextField("ZIP Code", text: $zipCode)
+                    .textContentType(.postalCode)
+                    .keyboardType(.numberPad)
+            }
+        }
+        .navigationTitle(isEditing ? "Edit Address" : "Add Address")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Cancel") { dismiss() }
+            }
+            ToolbarItem(placement: .confirmationAction) {
+                Button("Save") { save() }
+                    .disabled(fullName.isEmpty || street.isEmpty || city.isEmpty || state.isEmpty || zipCode.isEmpty)
+            }
+        }
+        .onAppear {
+            if let address {
+                label = address.label
+                fullName = address.fullName
+                street = address.street
+                apartment = address.apartment ?? ""
+                city = address.city
+                state = address.state
+                zipCode = address.zipCode
+                phone = address.phone
+            }
+        }
+    }
+
+    private func save() {
+        let newAddress = Address(
+            id: address?.id ?? UUID().uuidString,
+            label: label,
+            fullName: fullName,
+            street: street,
+            apartment: apartment.isEmpty ? nil : apartment,
+            city: city,
+            state: state,
+            zipCode: zipCode,
+            phone: phone,
+            isDefault: false
+        )
+        if isEditing {
+            if let index = addresses.firstIndex(where: { $0.id == newAddress.id }) {
+                addresses[index] = newAddress
+            }
+        } else {
+            addresses.append(newAddress)
+        }
+        selected = newAddress
+        dismiss()
     }
 }

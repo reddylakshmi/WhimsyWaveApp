@@ -28,10 +28,8 @@ struct OrderDetailView: View {
                     Text("Items").font(.headline)
                     ForEach(order.items) { item in
                         HStack(spacing: AppSpacing.md) {
-                            RoundedRectangle(cornerRadius: AppConstants.Layout.cornerRadius)
-                                .fill(Color.gray.opacity(0.1))
+                            RemoteImageView(url: item.image, cornerRadius: AppConstants.Layout.cornerRadius)
                                 .frame(width: 50, height: 50)
-                                .overlay { Image(systemName: "photo").foregroundStyle(.quaternary).font(.caption) }
                             VStack(alignment: .leading) {
                                 Text(item.name).font(.subheadline).lineLimit(1)
                                 Text("Qty: \(item.quantity)").font(.caption).foregroundStyle(.secondary)

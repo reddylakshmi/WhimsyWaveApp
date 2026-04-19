@@ -9,6 +9,7 @@ struct User: Equatable, Identifiable, Sendable, Codable {
     let phone: String?
     let avatarURL: String?
     let addresses: [Address]
+    let paymentMethods: [PaymentMethod]
     let defaultAddressId: String?
     let memberSince: Date
     let membershipTier: MembershipTier
@@ -25,6 +26,21 @@ struct User: Equatable, Identifiable, Sendable, Codable {
 
     var defaultAddress: Address? {
         addresses.first { $0.id == defaultAddressId } ?? addresses.first
+    }
+
+    func with(
+        addresses: [Address]? = nil,
+        paymentMethods: [PaymentMethod]? = nil
+    ) -> User {
+        User(
+            id: id, email: email, username: username,
+            firstName: firstName, lastName: lastName,
+            phone: phone, avatarURL: avatarURL,
+            addresses: addresses ?? self.addresses,
+            paymentMethods: paymentMethods ?? self.paymentMethods,
+            defaultAddressId: defaultAddressId,
+            memberSince: memberSince, membershipTier: membershipTier
+        )
     }
 }
 

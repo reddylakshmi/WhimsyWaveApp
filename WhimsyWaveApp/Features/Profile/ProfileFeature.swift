@@ -83,4 +83,63 @@ final class ProfileFeature {
             AppLogger.error("Failed to load profile: \(error)", category: .networking)
         }
     }
+
+    // MARK: - Address Management
+
+    func addAddress(_ address: Address) async {
+        guard let userId = user?.id else { return }
+        isLoading = true
+        do {
+            user = try await userRepository.addAddress(address, userId: userId)
+        } catch {
+            errorMessage = "Failed to add address."
+        }
+        isLoading = false
+    }
+
+    func updateAddress(_ address: Address) async {
+        guard let userId = user?.id else { return }
+        isLoading = true
+        do {
+            user = try await userRepository.updateAddress(address, userId: userId)
+        } catch {
+            errorMessage = "Failed to update address."
+        }
+        isLoading = false
+    }
+
+    func deleteAddress(_ addressId: String) async {
+        guard let userId = user?.id else { return }
+        isLoading = true
+        do {
+            user = try await userRepository.deleteAddress(addressId: addressId, userId: userId)
+        } catch {
+            errorMessage = "Failed to delete address."
+        }
+        isLoading = false
+    }
+
+    // MARK: - Payment Management
+
+    func addPaymentMethod(_ method: PaymentMethod) async {
+        guard let userId = user?.id else { return }
+        isLoading = true
+        do {
+            user = try await userRepository.addPaymentMethod(method, userId: userId)
+        } catch {
+            errorMessage = "Failed to add payment method."
+        }
+        isLoading = false
+    }
+
+    func deletePaymentMethod(_ methodId: String) async {
+        guard let userId = user?.id else { return }
+        isLoading = true
+        do {
+            user = try await userRepository.deletePaymentMethod(methodId: methodId, userId: userId)
+        } catch {
+            errorMessage = "Failed to delete payment method."
+        }
+        isLoading = false
+    }
 }

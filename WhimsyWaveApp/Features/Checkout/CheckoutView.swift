@@ -56,11 +56,11 @@ struct CheckoutView: View {
     private var stepContent: some View {
         switch feature.currentStep {
         case .shipping:
-            ShippingAddressView(addresses: feature.addresses, selected: $feature.selectedAddress, onNext: { feature.nextStep() })
+            ShippingAddressView(addresses: $feature.addresses, selected: $feature.selectedAddress, onNext: { feature.nextStep() })
         case .delivery:
             DeliveryOptionsView(selected: $feature.selectedDelivery, onNext: { feature.nextStep() }, onBack: { feature.previousStep() })
         case .payment:
-            PaymentView(methods: feature.paymentMethods, selected: $feature.selectedPayment, onNext: { feature.nextStep() }, onBack: { feature.previousStep() })
+            PaymentView(methods: $feature.paymentMethods, selected: $feature.selectedPayment, onNext: { feature.nextStep() }, onBack: { feature.previousStep() })
         case .review:
             OrderReviewView(feature: feature)
         }

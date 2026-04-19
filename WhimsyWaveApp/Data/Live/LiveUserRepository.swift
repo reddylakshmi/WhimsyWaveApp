@@ -56,7 +56,22 @@ final class LiveUserRepository: IUserRepository, @unchecked Sendable {
         return UserMapper.map(dto)
     }
 
+    func updateAddress(_ address: Address, userId: String) async throws -> User {
+        let dto: UserDTO = try await apiClient.request(.userProfile(id: userId))
+        return UserMapper.map(dto)
+    }
+
     func deleteAddress(addressId: String, userId: String) async throws -> User {
+        let dto: UserDTO = try await apiClient.request(.userProfile(id: userId))
+        return UserMapper.map(dto)
+    }
+
+    func addPaymentMethod(_ method: PaymentMethod, userId: String) async throws -> User {
+        let dto: UserDTO = try await apiClient.request(.userProfile(id: userId))
+        return UserMapper.map(dto)
+    }
+
+    func deletePaymentMethod(methodId: String, userId: String) async throws -> User {
         let dto: UserDTO = try await apiClient.request(.userProfile(id: userId))
         return UserMapper.map(dto)
     }

@@ -9,6 +9,18 @@ struct AppView: View {
                 HomeView(
                     feature: app.homeFeature,
                     onProductTapped: { app.showingProductDetail = $0 },
+                    onCategoryTapped: { category in
+                        app.selectedTab = .browse
+                        Task { await app.browseFeature.selectCategory(category) }
+                    },
+                    onSeeAllTapped: { section in
+                        switch section.type {
+                        case .categories:
+                            app.selectedTab = .browse
+                        default:
+                            app.showingSeeAllProducts = section
+                        }
+                    },
                     onSearchTapped: { app.showingSearch = true },
                     onNotificationsTapped: { app.showingNotifications = true }
                 )
@@ -40,6 +52,7 @@ struct AppView: View {
                     onProductTapped: { app.showingProductDetail = $0 }
                 )
             }
+            .badge(app.wishlistFeature.items.count)
 
             Tab("Profile", systemImage: "person", value: .profile) {
                 if app.profileFeature.isAuthenticated {
@@ -54,19 +67,64 @@ struct AppView: View {
                 }
             }
         }
-        .sheet(item: $app.showingProductDetail) { product in
+        .onChange(of: app.showingProductDetail) { _, newProduct in
+            if let product = newProduct {
+                app.productDetailFeature = ProductDetailFeature(product: product)
+            }
+        }
+        .sheet(item: $app.showingProductDetail) { _ in
+            if let feature = app.productDetailFeature {
+                NavigationStack {
+                    ProductDetailView(
+                        feature: feature,
+                        onCartUpdated: { Task { await app.cartFeature.loadCart() } },
+                        onWishlistUpdated: { Task { await app.wishlistFeature.loadWishlist() } }
+                    )
+                        .toolbar {
+                            ToolbarItem(placement: .topBarLeading) {
+                                Button {
+                                    app.showingProductDetail = nil
+                                } label: {
+                                    HStack(spacing: 4) {
+                                        Image(systemName: "chevron.left")
+                                        Text("Back")
+                                    }
+                                }
+                            }
+                        }
+                }
+            }
+        }
+        .sheet(item: $app.showingSeeAllProducts) { section in
             NavigationStack {
-                ProductDetailView(feature: ProductDetailFeature(product: product))
-                    .toolbar {
-                        ToolbarItem(placement: .topBarLeading) {
-                            Button("Close") {
-                                app.showingProductDetail = nil
+                ScrollView {
+                    ProductGridView(products: section.products, onProductTapped: { product in
+                        app.showingSeeAllProducts = nil
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            app.showingProductDetail = product
+                        }
+                    })
+                    .padding(.top, AppSpacing.md)
+                    .padding(.bottom, AppSpacing.xl)
+                }
+                .navigationTitle(section.title)
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            app.showingSeeAllProducts = nil
+                        } label: {
+                            HStack(spacing: 4) {
+                                Image(systemName: "chevron.left")
+                                Text("Back")
                             }
                         }
                     }
+                }
             }
         }
-        .sheet(isPresented: $app.showingCheckout) {
+        .sheet(isPresented: $app.showingCheckout, onDismiss: {
+            Task { await app.cartFeature.loadCart() }
+        }) {
             CheckoutView(feature: CheckoutFeature(cart: app.cartFeature.cart))
         }
         .sheet(isPresented: $app.showingLogin) {
@@ -114,7 +172,14 @@ struct AppView: View {
                 )
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
-                        Button("Close") { app.showingSearch = false }
+                        Button {
+                            app.showingSearch = false
+                        } label: {
+                            HStack(spacing: 4) {
+                                Image(systemName: "chevron.left")
+                                Text("Back")
+                            }
+                        }
                     }
                 }
             }
@@ -124,7 +189,14 @@ struct AppView: View {
                 NotificationsView(feature: app.notificationsFeature)
                     .toolbar {
                         ToolbarItem(placement: .topBarLeading) {
-                            Button("Close") { app.showingNotifications = false }
+                            Button {
+                                app.showingNotifications = false
+                            } label: {
+                                HStack(spacing: 4) {
+                                    Image(systemName: "chevron.left")
+                                    Text("Back")
+                                }
+                            }
                         }
                     }
             }
@@ -134,7 +206,14 @@ struct AppView: View {
                 OrdersListView(feature: app.ordersFeature)
                     .toolbar {
                         ToolbarItem(placement: .topBarLeading) {
-                            Button("Close") { app.showingOrders = false }
+                            Button {
+                                app.showingOrders = false
+                            } label: {
+                                HStack(spacing: 4) {
+                                    Image(systemName: "chevron.left")
+                                    Text("Back")
+                                }
+                            }
                         }
                     }
             }

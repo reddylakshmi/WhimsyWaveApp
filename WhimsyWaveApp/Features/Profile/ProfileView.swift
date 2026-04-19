@@ -42,12 +42,12 @@ struct ProfileView: View {
                         Label("Order History", systemImage: "bag")
                     }
                     NavigationLink {
-                        Text("Saved Addresses")
+                        AddressListView(feature: feature)
                     } label: {
                         Label("Addresses", systemImage: "mappin.and.ellipse")
                     }
                     NavigationLink {
-                        Text("Payment Methods")
+                        PaymentMethodsView(feature: feature)
                     } label: {
                         Label("Payment Methods", systemImage: "creditcard")
                     }

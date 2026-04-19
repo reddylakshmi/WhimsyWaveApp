@@ -83,12 +83,8 @@ struct CartItemRow: View {
     var body: some View {
         HStack(alignment: .top, spacing: AppSpacing.md) {
             Button(action: onTap) {
-                RoundedRectangle(cornerRadius: AppConstants.Layout.cornerRadius)
-                    .fill(Color.gray.opacity(0.1))
+                RemoteImageView(url: item.product.primaryImage, cornerRadius: AppConstants.Layout.cornerRadius)
                     .frame(width: 70, height: 70)
-                    .overlay {
-                        Image(systemName: "photo").foregroundStyle(.quaternary)
-                    }
             }
             .buttonStyle(.plain)
 

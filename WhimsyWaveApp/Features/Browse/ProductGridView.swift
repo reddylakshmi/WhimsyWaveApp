@@ -27,14 +27,8 @@ struct ProductGridCard: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            RoundedRectangle(cornerRadius: AppConstants.Layout.cornerRadius)
-                .fill(Color.gray.opacity(0.1))
+            RemoteImageView(url: product.primaryImage, cornerRadius: AppConstants.Layout.cornerRadius)
                 .aspectRatio(1, contentMode: .fit)
-                .overlay {
-                    Image(systemName: "photo")
-                        .font(.largeTitle)
-                        .foregroundStyle(.quaternary)
-                }
                 .overlay(alignment: .topTrailing) {
                     if product.isOnSale, let discount = product.discountPercentage {
                         Text("-\(discount)%")

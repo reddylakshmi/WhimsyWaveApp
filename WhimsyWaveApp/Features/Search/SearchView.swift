@@ -112,12 +112,8 @@ struct SearchView: View {
 
     private func searchResultRow(_ product: Product) -> some View {
         HStack(spacing: AppSpacing.md) {
-            RoundedRectangle(cornerRadius: AppConstants.Layout.cornerRadius)
-                .fill(Color.gray.opacity(0.1))
+            RemoteImageView(url: product.primaryImage, cornerRadius: AppConstants.Layout.cornerRadius)
                 .frame(width: AppConstants.Image.thumbnailSize, height: AppConstants.Image.thumbnailSize)
-                .overlay {
-                    Image(systemName: "photo").foregroundStyle(.quaternary)
-                }
 
             VStack(alignment: .leading, spacing: AppSpacing.xs) {
                 Text(product.name).font(.subheadline).lineLimit(2)

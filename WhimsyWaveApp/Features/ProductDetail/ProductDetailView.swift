@@ -2,6 +2,8 @@ import SwiftUI
 
 struct ProductDetailView: View {
     @Bindable var feature: ProductDetailFeature
+    var onCartUpdated: () -> Void = {}
+    var onWishlistUpdated: () -> Void = {}
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -15,7 +17,7 @@ struct ProductDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button { Task { await feature.toggleWishlist() } } label: {
+                Button { Task { await feature.toggleWishlist(); onWishlistUpdated() } } label: {
                     Image(systemName: feature.isInWishlist ? "heart.fill" : "heart")
                         .foregroundStyle(feature.isInWishlist ? .red : .primary)
                 }
@@ -29,20 +31,16 @@ struct ProductDetailView: View {
             }
         }
         .animation(.spring(response: AppConstants.Animation.springResponse), value: feature.addedToCart)
+        .task { await feature.checkWishlistStatus() }
     }
 
     private func productContent(_ product: Product) -> some View {
         ScrollView {
             VStack(alignment: .leading, spacing: AppSpacing.md) {
                 // Image area
-                RoundedRectangle(cornerRadius: AppConstants.Layout.cardCornerRadius)
-                    .fill(Color.gray.opacity(0.1))
+                RemoteImageView(url: product.primaryImage, cornerRadius: AppConstants.Layout.cardCornerRadius)
                     .frame(height: AppConstants.Image.productDetailSize)
-                    .overlay {
-                        Image(systemName: "photo")
-                            .font(.system(size: 60))
-                            .foregroundStyle(.quaternary)
-                    }
+                    .clipped()
 
                 VStack(alignment: .leading, spacing: AppSpacing.sm) {
                     Text(product.brand)
@@ -210,7 +208,10 @@ struct ProductDetailView: View {
                 }
                 Spacer()
                 Button {
-                    Task { await feature.addToCart() }
+                    Task {
+                        await feature.addToCart()
+                        onCartUpdated()
+                    }
                 } label: {
                     HStack {
                         if feature.isAddingToCart {

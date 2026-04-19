@@ -10,6 +10,7 @@ extension User {
         phone: "+1 (555) 234-5678",
         avatarURL: nil,
         addresses: [.mockHome, .mockOffice],
+        paymentMethods: [.mockVisa, .mockMastercard, .mockApplePay],
         defaultAddressId: "ADDR-001",
         memberSince: Date().addingTimeInterval(-365 * 86400),
         membershipTier: .gold
@@ -24,6 +25,7 @@ extension User {
         phone: nil,
         avatarURL: nil,
         addresses: [],
+        paymentMethods: [],
         defaultAddressId: nil,
         memberSince: .now,
         membershipTier: .standard

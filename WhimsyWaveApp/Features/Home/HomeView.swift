@@ -58,27 +58,38 @@ struct HomeView: View {
     }
 
     private func bannerCarousel(_ banners: [Banner]) -> some View {
-        TabView {
-            ForEach(banners) { banner in
-                VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                    Text(banner.title)
-                        .font(.title.bold())
-                    Text(banner.subtitle)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: AppSpacing.md) {
+                ForEach(banners) { banner in
+                    ZStack(alignment: .bottomLeading) {
+                        RemoteImageView(
+                            url: banner.imageURL,
+                            cornerRadius: AppConstants.Layout.cardCornerRadius
+                        )
+                        .frame(width: 300, height: AppConstants.Image.bannerHeight)
+
+                        LinearGradient(
+                            colors: [.black.opacity(0.6), .clear],
+                            startPoint: .bottom,
+                            endPoint: .center
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: AppConstants.Layout.cardCornerRadius))
+
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(banner.title)
+                                .font(.title3.bold())
+                                .foregroundStyle(.white)
+                            Text(banner.subtitle)
+                                .font(.caption)
+                                .foregroundStyle(.white.opacity(0.85))
+                        }
+                        .padding(AppSpacing.md)
+                    }
+                    .frame(width: 300, height: AppConstants.Image.bannerHeight)
                 }
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(AppSpacing.lg)
-                .frame(height: AppConstants.Image.bannerHeight)
-                .background(
-                    RoundedRectangle(cornerRadius: AppConstants.Layout.cardCornerRadius)
-                        .fill(.ultraThinMaterial)
-                )
-                .padding(.horizontal, AppSpacing.md)
             }
+            .padding(.horizontal, AppSpacing.md)
         }
-        .tabViewStyle(.page(indexDisplayMode: .always))
-        .frame(height: AppConstants.Image.bannerHeight + AppSpacing.lg)
     }
 
     private func categoriesGrid(_ section: HomeSection) -> some View {
@@ -144,14 +155,8 @@ struct HomeView: View {
 
     private func productCard(_ product: Product) -> some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            RoundedRectangle(cornerRadius: AppConstants.Layout.cornerRadius)
-                .fill(Color.gray.opacity(0.1))
+            RemoteImageView(url: product.primaryImage, cornerRadius: AppConstants.Layout.cornerRadius)
                 .frame(width: 160, height: 160)
-                .overlay {
-                    Image(systemName: "photo")
-                        .font(.largeTitle)
-                        .foregroundStyle(.quaternary)
-                }
 
             Text(product.brand)
                 .font(.caption)

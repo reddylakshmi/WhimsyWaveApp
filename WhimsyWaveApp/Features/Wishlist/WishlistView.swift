@@ -15,10 +15,8 @@ struct WishlistView: View {
                     List(feature.items) { item in
                         HStack(spacing: AppSpacing.md) {
                             Button { onProductTapped(item.product) } label: {
-                                RoundedRectangle(cornerRadius: AppConstants.Layout.cornerRadius)
-                                    .fill(Color.gray.opacity(0.1))
+                                RemoteImageView(url: item.product.primaryImage, cornerRadius: AppConstants.Layout.cornerRadius)
                                     .frame(width: 70, height: 70)
-                                    .overlay { Image(systemName: "photo").foregroundStyle(.quaternary) }
                             }
                             .buttonStyle(.plain)
 

@@ -11,9 +11,21 @@ enum UserMapper {
             phone: dto.phone,
             avatarURL: dto.avatarURL,
             addresses: (dto.addresses ?? []).map { mapAddress($0) },
+            paymentMethods: (dto.paymentMethods ?? []).map { mapPayment($0) },
             defaultAddressId: dto.defaultAddressId,
             memberSince: ISO8601DateFormatter().date(from: dto.memberSince) ?? .now,
             membershipTier: MembershipTier(rawValue: dto.membershipTier) ?? .standard
+        )
+    }
+
+    private static func mapPayment(_ dto: PaymentMethodDTO) -> PaymentMethod {
+        PaymentMethod(
+            id: dto.id,
+            type: PaymentType(rawValue: dto.type) ?? .visa,
+            lastFourDigits: dto.lastFourDigits,
+            expiryDate: dto.expiryDate,
+            cardholderName: dto.cardholderName,
+            isDefault: dto.isDefault ?? false
         )
     }
 

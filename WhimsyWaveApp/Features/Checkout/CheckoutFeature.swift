@@ -73,8 +73,8 @@ final class CheckoutFeature {
             let user = try await userRepository.fetchProfile(userId: "current")
             addresses = user.addresses
             selectedAddress = user.defaultAddress
-            paymentMethods = [.mockVisa, .mockMastercard, .mockApplePay]
-            selectedPayment = paymentMethods.first
+            paymentMethods = user.paymentMethods
+            selectedPayment = paymentMethods.first(where: { $0.isDefault }) ?? paymentMethods.first
         } catch {
             self.error = "Failed to load checkout data"
         }

@@ -11,5 +11,8 @@ protocol IUserRepository: Sendable {
     func fetchProfile(userId: String) async throws -> User
     func updateProfile(_ user: User) async throws -> User
     func addAddress(_ address: Address, userId: String) async throws -> User
+    func updateAddress(_ address: Address, userId: String) async throws -> User
     func deleteAddress(addressId: String, userId: String) async throws -> User
+    func addPaymentMethod(_ method: PaymentMethod, userId: String) async throws -> User
+    func deletePaymentMethod(methodId: String, userId: String) async throws -> User
 }

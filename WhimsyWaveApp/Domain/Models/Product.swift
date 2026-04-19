@@ -86,4 +86,21 @@ struct Product: Equatable, Identifiable, Sendable, Codable {
     var primaryImage: String {
         images.first?.url ?? ""
     }
+
+    var categoryIcon: String {
+        let cat = category.path.first ?? ""
+        switch cat {
+        case "Furniture": return "sofa.fill"
+        case "Lighting": return "lamp.desk.fill"
+        case "Bath": return "bathtub.fill"
+        case "Decor": return "photo.artframe"
+        case "Outdoor": return "leaf.fill"
+        case "Bedding": return "bed.double.fill"
+        case "Rugs": return "square.grid.3x3.fill"
+        case "Kitchen": return "fork.knife"
+        case "Smart Home": return "homekit"
+        case "Storage": return "archivebox.fill"
+        default: return "bag.fill"
+        }
+    }
 }

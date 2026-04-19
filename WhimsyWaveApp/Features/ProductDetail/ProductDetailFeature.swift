@@ -32,6 +32,11 @@ final class ProductDetailFeature {
         self.analytics = analytics
     }
 
+    func checkWishlistStatus() async {
+        guard let product else { return }
+        isInWishlist = await wishlistRepository.isInWishlist(productId: product.id)
+    }
+
     func loadProduct(id: String) async {
         isLoading = true
         do {
@@ -63,16 +68,18 @@ final class ProductDetailFeature {
 
     func toggleWishlist() async {
         guard let product else { return }
+        let wasInWishlist = isInWishlist
+        isInWishlist.toggle()
         do {
-            if isInWishlist {
+            if wasInWishlist {
                 _ = try await wishlistRepository.removeFromWishlist(productId: product.id)
                 analytics.track(.wishlistItemRemoved(productId: product.id))
             } else {
                 _ = try await wishlistRepository.addToWishlist(product)
                 analytics.track(.wishlistItemAdded(productId: product.id))
             }
-            isInWishlist.toggle()
         } catch {
+            isInWishlist = wasInWishlist
             self.error = "Failed to update wishlist"
         }
     }

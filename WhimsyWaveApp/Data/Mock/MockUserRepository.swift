@@ -39,17 +39,41 @@ final class MockUserRepository: IUserRepository, @unchecked Sendable {
 
     func addAddress(_ address: Address, userId: String) async throws -> User {
         try await Task.sleep(for: .milliseconds(200))
-        var updated = user
-        var addresses = updated.addresses
+        var addresses = user.addresses
         addresses.append(address)
-        user = User(id: updated.id, email: updated.email, username: updated.username, firstName: updated.firstName, lastName: updated.lastName, phone: updated.phone, avatarURL: updated.avatarURL, addresses: addresses, defaultAddressId: updated.defaultAddressId, memberSince: updated.memberSince, membershipTier: updated.membershipTier)
+        user = user.with(addresses: addresses)
         return user
     }
 
     func deleteAddress(addressId: String, userId: String) async throws -> User {
         try await Task.sleep(for: .milliseconds(200))
         let filtered = user.addresses.filter { $0.id != addressId }
-        user = User(id: user.id, email: user.email, username: user.username, firstName: user.firstName, lastName: user.lastName, phone: user.phone, avatarURL: user.avatarURL, addresses: filtered, defaultAddressId: user.defaultAddressId, memberSince: user.memberSince, membershipTier: user.membershipTier)
+        user = user.with(addresses: filtered)
+        return user
+    }
+
+    func updateAddress(_ address: Address, userId: String) async throws -> User {
+        try await Task.sleep(for: .milliseconds(200))
+        var addresses = user.addresses
+        if let index = addresses.firstIndex(where: { $0.id == address.id }) {
+            addresses[index] = address
+        }
+        user = user.with(addresses: addresses)
+        return user
+    }
+
+    func addPaymentMethod(_ method: PaymentMethod, userId: String) async throws -> User {
+        try await Task.sleep(for: .milliseconds(200))
+        var methods = user.paymentMethods
+        methods.append(method)
+        user = user.with(paymentMethods: methods)
+        return user
+    }
+
+    func deletePaymentMethod(methodId: String, userId: String) async throws -> User {
+        try await Task.sleep(for: .milliseconds(200))
+        let filtered = user.paymentMethods.filter { $0.id != methodId }
+        user = user.with(paymentMethods: filtered)
         return user
     }
 }

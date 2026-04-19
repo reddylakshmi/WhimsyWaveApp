@@ -14,6 +14,9 @@ final class AppReducer {
     let notificationsFeature = NotificationsFeature()
     let arFeature = ARFeature()
 
+    // Product detail (persists across re-renders)
+    var productDetailFeature: ProductDetailFeature?
+
     // Navigation
     var selectedTab: Tab = .home
     var showingCheckout = false
@@ -22,6 +25,7 @@ final class AppReducer {
     var showingSearch = false
     var showingNotifications = false
     var showingOrders = false
+    var showingSeeAllProducts: HomeSection?
     var deepLink: DeepLink?
 
     // Tracks what to do after successful login
