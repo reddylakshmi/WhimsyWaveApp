@@ -3,6 +3,7 @@ import Foundation
 struct AppConfiguration: Sendable {
     let environment: Environment
     let apiBaseURL: URL
+    let serviceURLs: ServiceURLs
     let imageBaseURL: URL
     let featureFlagURL: URL
     let analyticsKey: String
@@ -13,6 +14,15 @@ struct AppConfiguration: Sendable {
     let supportEmail: String
     let appStoreURL: URL
     let minimumAppVersion: String
+
+    struct ServiceURLs: Sendable {
+        let product: URL
+        let cart: URL
+        let order: URL
+        let user: URL
+        let auth: URL
+        let search: URL
+    }
 
     enum Environment: String, Sendable {
         case debug
@@ -29,9 +39,19 @@ struct AppConfiguration: Sendable {
         let env = infoPlistValue(for: "ENVIRONMENT")
         let environment = Environment(rawValue: env) ?? .debug
 
+        let serviceURLs = ServiceURLs(
+            product: url(for: "PRODUCT_SERVICE_URL"),
+            cart: url(for: "CART_SERVICE_URL"),
+            order: url(for: "ORDER_SERVICE_URL"),
+            user: url(for: "USER_SERVICE_URL"),
+            auth: url(for: "AUTH_SERVICE_URL"),
+            search: url(for: "SEARCH_SERVICE_URL")
+        )
+
         return AppConfiguration(
             environment: environment,
             apiBaseURL: url(for: "API_BASE_URL"),
+            serviceURLs: serviceURLs,
             imageBaseURL: url(for: "IMAGE_BASE_URL"),
             featureFlagURL: url(for: "FEATURE_FLAG_URL"),
             analyticsKey: infoPlistValue(for: "ANALYTICS_KEY"),
@@ -74,6 +94,12 @@ struct AppConfiguration: Sendable {
         let defaults: [String: String] = [
             "ENVIRONMENT": "debug",
             "API_BASE_URL": "https://api.whimsywave.com/v1",
+            "PRODUCT_SERVICE_URL": "https://api.whimsywave.com/v1",
+            "CART_SERVICE_URL": "https://api.whimsywave.com/v1",
+            "ORDER_SERVICE_URL": "https://api.whimsywave.com/v1",
+            "USER_SERVICE_URL": "https://api.whimsywave.com/v1",
+            "AUTH_SERVICE_URL": "https://api.whimsywave.com/v1",
+            "SEARCH_SERVICE_URL": "https://api.whimsywave.com/v1",
             "IMAGE_BASE_URL": "https://images.whimsywave.com",
             "FEATURE_FLAG_URL": "https://flags.whimsywave.com/v1",
             "ANALYTICS_KEY": "debug_analytics_key_2026",

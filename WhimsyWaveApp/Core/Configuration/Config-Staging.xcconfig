@@ -2,6 +2,12 @@
 // WhimsyWave — Staging Environment
 
 API_BASE_URL = https:/$()/staging-api.whimsywave.com/v1
+PRODUCT_SERVICE_URL = https:/$()/staging-api.whimsywave.com/v1
+CART_SERVICE_URL = https:/$()/staging-api.whimsywave.com/v1
+ORDER_SERVICE_URL = https:/$()/staging-api.whimsywave.com/v1
+USER_SERVICE_URL = https:/$()/staging-api.whimsywave.com/v1
+AUTH_SERVICE_URL = https:/$()/staging-api.whimsywave.com/v1
+SEARCH_SERVICE_URL = https:/$()/staging-api.whimsywave.com/v1
 IMAGE_BASE_URL = https:/$()/staging-images.whimsywave.com
 FEATURE_FLAG_URL = https:/$()/staging-flags.whimsywave.com/v1
 ANALYTICS_KEY = staging_analytics_key_2026

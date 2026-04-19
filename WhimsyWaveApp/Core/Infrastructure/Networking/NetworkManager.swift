@@ -39,6 +39,26 @@ enum APIError: Error, Equatable, Sendable {
     }
 }
 
+enum ServiceType: Sendable {
+    case product
+    case cart
+    case order
+    case user
+    case auth
+    case search
+
+    func baseURL(from config: AppConfiguration = .current) -> URL {
+        switch self {
+        case .product: return config.serviceURLs.product
+        case .cart: return config.serviceURLs.cart
+        case .order: return config.serviceURLs.order
+        case .user: return config.serviceURLs.user
+        case .auth: return config.serviceURLs.auth
+        case .search: return config.serviceURLs.search
+        }
+    }
+}
+
 enum APIEndpoint: Sendable {
     case homeContent
     case categories
@@ -61,6 +81,23 @@ enum APIEndpoint: Sendable {
     case login
     case register
     case refreshToken
+
+    var service: ServiceType {
+        switch self {
+        case .homeContent, .categories, .categoryProducts, .productDetail, .reviews:
+            return .product
+        case .searchProducts:
+            return .search
+        case .cart, .addToCart, .updateCartItem, .removeCartItem, .checkout:
+            return .cart
+        case .orders, .orderDetail:
+            return .order
+        case .userProfile, .updateProfile, .wishlist, .addToWishlist, .removeFromWishlist:
+            return .user
+        case .login, .register, .refreshToken:
+            return .auth
+        }
+    }
 
     var path: String {
         switch self {
@@ -143,15 +180,15 @@ protocol APIClientProtocol: Sendable {
 }
 
 final class LiveAPIClient: APIClientProtocol, Sendable {
-    private let baseURL: URL
+    private let config: AppConfiguration
     private let session: URLSession
     private let decoder: JSONDecoder
 
     init(
-        baseURL: URL = AppConfiguration.current.apiBaseURL,
+        config: AppConfiguration = .current,
         session: URLSession = .shared
     ) {
-        self.baseURL = baseURL
+        self.config = config
         self.session = session
 
         let decoder = JSONDecoder()
@@ -175,7 +212,8 @@ final class LiveAPIClient: APIClientProtocol, Sendable {
     }
 
     private func buildRequest(for endpoint: APIEndpoint) throws -> URLRequest {
-        var components = URLComponents(url: baseURL.appendingPathComponent(endpoint.path), resolvingAgainstBaseURL: true)
+        let serviceBaseURL = endpoint.service.baseURL(from: config)
+        var components = URLComponents(url: serviceBaseURL.appendingPathComponent(endpoint.path), resolvingAgainstBaseURL: true)
         components?.queryItems = endpoint.queryItems
 
         guard let url = components?.url else {
@@ -184,7 +222,7 @@ final class LiveAPIClient: APIClientProtocol, Sendable {
 
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
-        request.timeoutInterval = AppConfiguration.current.requestTimeoutSeconds
+        request.timeoutInterval = config.requestTimeoutSeconds
 
         if endpoint.requiresAuth {
             if let token = KeychainStore.load(for: .authToken) {
