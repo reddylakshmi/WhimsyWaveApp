@@ -1,0 +1,105 @@
+default_platform(:ios)
+
+platform :ios do
+  # ─── Build ───
+
+  desc "Build the app (Debug)"
+  lane :build_debug do
+    build_app(
+      scheme: "HarviFashionsApp",
+      configuration: "Debug",
+      skip_codesigning: true,
+      skip_archive: true,
+      derived_data_path: "build/DerivedData"
+    )
+  end
+
+  desc "Build the app (Release)"
+  lane :build_release do
+    build_app(
+      scheme: "HarviFashionsApp",
+      configuration: "Release",
+      export_method: "app-store",
+      derived_data_path: "build/DerivedData"
+    )
+  end
+
+  # ─── Test ───
+
+  desc "Run all unit tests"
+  lane :test do
+    run_tests(
+      scheme: "HarviFashionsApp",
+      device: "iPhone 16",
+      clean: true,
+      code_coverage: true,
+      derived_data_path: "build/DerivedData",
+      output_directory: "build/test_results",
+      result_bundle: true
+    )
+  end
+
+  # ─── Lint ───
+
+  desc "Run SwiftLint"
+  lane :lint do
+    swiftlint(
+      mode: :lint,
+      config_file: ".swiftlint.yml",
+      raise_if_swiftlint_error: true
+    )
+  end
+
+  # ─── Beta ───
+
+  desc "Push a new beta build to TestFlight"
+  lane :beta do
+    ensure_git_status_clean
+    increment_build_number
+    build_release
+    upload_to_testflight(
+      skip_waiting_for_build_processing: true
+    )
+    commit_version_bump(message: "Bump build number for TestFlight")
+    push_to_git_remote
+  end
+
+  # ─── Release ───
+
+  desc "Push a new release to the App Store"
+  lane :release do
+    ensure_git_status_clean
+    increment_build_number
+    build_release
+    upload_to_app_store(
+      submit_for_review: false,
+      automatic_release: false,
+      skip_screenshots: true
+    )
+    commit_version_bump(message: "Bump build number for App Store release")
+    push_to_git_remote
+    add_git_tag(tag: "v#{get_version_number}")
+    push_git_tags
+  end
+
+  # ─── Utilities ───
+
+  desc "Register new devices"
+  lane :register_device do |options|
+    register_devices(
+      devices: { options[:name] => options[:udid] }
+    )
+  end
+
+  desc "Sync certificates and profiles"
+  lane :sync_certs do
+    match(type: "appstore")
+    match(type: "development")
+  end
+
+  desc "Clean build artifacts"
+  lane :clean do
+    clear_derived_data
+    sh("rm -rf ../build")
+  end
+end

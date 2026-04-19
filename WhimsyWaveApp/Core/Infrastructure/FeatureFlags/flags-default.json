@@ -1,0 +1,12 @@
+{
+  "ar_view_enabled": false,
+  "new_checkout_flow": false,
+  "voice_search_enabled": false,
+  "recommendations_v2": true,
+  "in_app_chat_enabled": false,
+  "express_delivery_badge": true,
+  "social_sharing_enabled": true,
+  "price_alerts_enabled": false,
+  "one_page_checkout": false,
+  "debug_menu_enabled": false
+}

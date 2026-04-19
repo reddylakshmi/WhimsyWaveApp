@@ -1,0 +1,16 @@
+// Config-Debug.xcconfig
+// WhimsyWave — Debug Environment
+
+API_BASE_URL = https:/$()/api.whimsywave.com/v1
+IMAGE_BASE_URL = https:/$()/images.whimsywave.com
+FEATURE_FLAG_URL = https:/$()/flags.whimsywave.com/v1
+ANALYTICS_KEY = debug_analytics_key_2026
+ENVIRONMENT = debug
+REQUEST_TIMEOUT = 30
+DEFAULT_PAGE_SIZE = 20
+MAX_CART_ITEMS = 50
+SESSION_TIMEOUT_MINUTES = 60
+SUPPORT_EMAIL = support@whimsywave.com
+APP_STORE_URL = https:/$()/apps.apple.com/app/whimsy-wave/id123456789
+MINIMUM_APP_VERSION = 1.0.0
+ENABLE_LOGGING = YES
