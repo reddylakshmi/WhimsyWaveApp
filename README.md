@@ -15,7 +15,7 @@ An iOS e-commerce app for home decor and furniture, built with SwiftUI and the O
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-org/WhimsyWaveApp.git
+git clone https://github.com/reddylakshmi/WhimsyWaveApp.git
 cd WhimsyWaveApp
 ```
 
