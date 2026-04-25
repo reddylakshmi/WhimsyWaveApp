@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct AddressListView: View {
-    @Bindable var feature: ProfileFeature
+    @Bindable var feature: AccountFeature
     @State private var showingAddForm = false
     @State private var editingAddress: Address?
 
@@ -92,7 +92,7 @@ extension Address: @retroactive Hashable {
 }
 
 struct AddressFormView: View {
-    @Bindable var feature: ProfileFeature
+    @Bindable var feature: AccountFeature
     let address: Address?
     @Environment(\.dismiss) private var dismiss
 

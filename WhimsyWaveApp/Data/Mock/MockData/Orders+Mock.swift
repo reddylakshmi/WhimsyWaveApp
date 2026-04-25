@@ -18,7 +18,8 @@ extension Order {
         shippingAddress: .mockHome,
         paymentMethod: PaymentSummary(type: "Visa", lastFourDigits: "4242"),
         trackingNumber: "1Z999AA10123456784",
-        estimatedDelivery: nil
+        estimatedDelivery: nil,
+        currency: "USD"
     )
 
     static let mockShipped = Order(
@@ -37,7 +38,8 @@ extension Order {
         shippingAddress: .mockOffice,
         paymentMethod: PaymentSummary(type: "Mastercard", lastFourDigits: "8831"),
         trackingNumber: "9400111899223100456789",
-        estimatedDelivery: .init(earliest: Date().addingTimeInterval(2 * 86400), latest: Date().addingTimeInterval(4 * 86400))
+        estimatedDelivery: .init(earliest: Date().addingTimeInterval(2 * 86400), latest: Date().addingTimeInterval(4 * 86400)),
+        currency: "USD"
     )
 
     static let mockPlaced = Order(
@@ -57,7 +59,8 @@ extension Order {
         shippingAddress: .mockHome,
         paymentMethod: PaymentSummary(type: "Apple Pay", lastFourDigits: ""),
         trackingNumber: nil,
-        estimatedDelivery: .init(earliest: Date().addingTimeInterval(5 * 86400), latest: Date().addingTimeInterval(9 * 86400))
+        estimatedDelivery: .init(earliest: Date().addingTimeInterval(5 * 86400), latest: Date().addingTimeInterval(9 * 86400)),
+        currency: "USD"
     )
 
     static let mockProcessing = Order(
@@ -77,7 +80,8 @@ extension Order {
         shippingAddress: .mockHome,
         paymentMethod: PaymentSummary(type: "Visa", lastFourDigits: "4242"),
         trackingNumber: nil,
-        estimatedDelivery: .init(earliest: Date().addingTimeInterval(4 * 86400), latest: Date().addingTimeInterval(7 * 86400))
+        estimatedDelivery: .init(earliest: Date().addingTimeInterval(4 * 86400), latest: Date().addingTimeInterval(7 * 86400)),
+        currency: "USD"
     )
 
     static let mockCancelled = Order(
@@ -96,7 +100,8 @@ extension Order {
         shippingAddress: .mockHome,
         paymentMethod: PaymentSummary(type: "Mastercard", lastFourDigits: "8831"),
         trackingNumber: nil,
-        estimatedDelivery: nil
+        estimatedDelivery: nil,
+        currency: "USD"
     )
 
     static let mockOrders: [Order] = [.mockPlaced, .mockProcessing, .mockShipped, .mockDelivered, .mockCancelled]

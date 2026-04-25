@@ -10,7 +10,7 @@ final class AppReducer {
     let cartFeature = CartFeature()
     let ordersFeature = OrdersFeature()
     let wishlistFeature = WishlistFeature()
-    let profileFeature = ProfileFeature()
+    let accountFeature = AccountFeature()
     let notificationsFeature = NotificationsFeature()
     let arFeature = ARFeature()
 
@@ -32,10 +32,13 @@ final class AppReducer {
     var pendingAuthAction: PendingAuthAction?
 
     enum Tab: String, CaseIterable {
-        case home, browse, cart, wishlist, profile
+        case home, browse, cart, wishlist, account
 
         var title: String {
-            rawValue.capitalized
+            switch self {
+            case .account: return "Account"
+            default: return rawValue.capitalized
+            }
         }
 
         var icon: String {
@@ -44,7 +47,7 @@ final class AppReducer {
             case .browse: return "square.grid.2x2"
             case .cart: return "cart"
             case .wishlist: return "heart"
-            case .profile: return "person"
+            case .account: return "person"
             }
         }
     }
@@ -56,7 +59,7 @@ final class AppReducer {
 
     /// Call before any auth-required action. Returns true if already authenticated.
     func requireAuth(for action: PendingAuthAction) -> Bool {
-        if profileFeature.isAuthenticated {
+        if accountFeature.isAuthenticated {
             return true
         }
         pendingAuthAction = action
@@ -78,6 +81,17 @@ final class AppReducer {
         }
     }
 
+    /// Reloads all feature content after a region change
+    func reloadAllContent() {
+        Task {
+            browseFeature.categories = []
+            await homeFeature.refresh()
+            await browseFeature.loadCategories()
+            await cartFeature.clearCart()
+            await wishlistFeature.loadWishlist()
+        }
+    }
+
     func handleDeepLink(_ link: DeepLink) {
         switch link {
         case .home:
@@ -91,12 +105,12 @@ final class AppReducer {
         case .cart:
             selectedTab = .cart
         case .order:
-            selectedTab = .profile
+            selectedTab = .account
             showingOrders = true
         case .wishlist:
             selectedTab = .wishlist
         case .profile:
-            selectedTab = .profile
+            selectedTab = .account
         case .search(let query):
             selectedTab = .home
             searchFeature.query = query

@@ -26,19 +26,19 @@ struct HomeView: View {
                 }
             }
             .refreshable { await feature.refresh() }
-            .navigationTitle("Whimsy Wave")
+            .navigationTitle(Text("home.title"))
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     HStack(spacing: AppSpacing.sm) {
                         Button(action: onSearchTapped) {
                             Image(systemName: "magnifyingglass")
                         }
-                        .accessibilityLabel("Search products")
+                        .accessibilityLabel(Text("accessibility.searchProducts"))
 
                         Button(action: onNotificationsTapped) {
                             Image(systemName: "bell")
                         }
-                        .accessibilityLabel("Notifications")
+                        .accessibilityLabel(Text("accessibility.notifications"))
                     }
                 }
             }
@@ -148,7 +148,7 @@ struct HomeView: View {
                 }
             }
             Spacer()
-            Button("See All") { onSeeAllTapped(section) }
+            Button(String(localized: "action.seeAll", defaultValue: "See All")) { onSeeAllTapped(section) }
                 .font(.subheadline.bold())
         }
         .padding(.horizontal, AppSpacing.md)
@@ -210,11 +210,11 @@ struct HomeView: View {
 
     private func errorView(_ message: String) -> some View {
         ContentUnavailableView {
-            Label("Something Went Wrong", systemImage: "exclamationmark.triangle")
+            Label(String(localized: "error.title", defaultValue: "Something Went Wrong"), systemImage: "exclamationmark.triangle")
         } description: {
             Text(message)
         } actions: {
-            Button("Try Again") { Task { await feature.refresh() } }
+            Button(String(localized: "action.tryAgain", defaultValue: "Try Again")) { Task { await feature.refresh() } }
                 .buttonStyle(.borderedProminent)
         }
     }

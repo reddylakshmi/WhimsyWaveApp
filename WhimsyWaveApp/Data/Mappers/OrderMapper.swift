@@ -22,7 +22,8 @@ enum OrderMapper {
             shippingAddress: mapAddress(dto.shippingAddress),
             paymentMethod: PaymentSummary(type: dto.paymentType, lastFourDigits: dto.paymentLastFour),
             trackingNumber: dto.trackingNumber,
-            estimatedDelivery: mapDeliveryRange(earliest: dto.estimatedDeliveryEarliest, latest: dto.estimatedDeliveryLatest)
+            estimatedDelivery: mapDeliveryRange(earliest: dto.estimatedDeliveryEarliest, latest: dto.estimatedDeliveryLatest),
+            currency: dto.currency ?? "USD"
         )
     }
 

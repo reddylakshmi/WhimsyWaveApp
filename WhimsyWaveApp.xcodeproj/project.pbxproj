@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1FD4E2922F9C3EBE00FCC2AC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 1FD4E2912F9C3EBE00FCC2AC /* Localizable.xcstrings */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		1F34B5472F91E1D1008EC549 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -28,6 +32,7 @@
 		1F34B5392F91E1D0008EC549 /* WhimsyWaveApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhimsyWaveApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F34B5462F91E1D1008EC549 /* WhimsyWaveAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhimsyWaveAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F34B5502F91E1D1008EC549 /* WhimsyWaveAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhimsyWaveAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FD4E2912F9C3EBE00FCC2AC /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -81,6 +86,7 @@
 				1F34B5532F91E1D1008EC549 /* WhimsyWaveAppUITests */,
 				1F34B53A2F91E1D0008EC549 /* Products */,
 				1F0575CD2F92B50E000525F8 /* HarviKit */,
+				1FD4E2912F9C3EBE00FCC2AC /* Localizable.xcstrings */,
 			);
 			sourceTree = "<group>";
 		};
@@ -214,6 +220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FD4E2922F9C3EBE00FCC2AC /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

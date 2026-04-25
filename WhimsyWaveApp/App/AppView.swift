@@ -5,7 +5,7 @@ struct AppView: View {
 
     var body: some View {
         TabView(selection: $app.selectedTab) {
-            Tab("Home", systemImage: "house", value: .home) {
+            Tab("tab.home", systemImage: "house", value: .home) {
                 HomeView(
                     feature: app.homeFeature,
                     onProductTapped: { app.showingProductDetail = $0 },
@@ -26,14 +26,14 @@ struct AppView: View {
                 )
             }
 
-            Tab("Browse", systemImage: "square.grid.2x2", value: .browse) {
+            Tab("tab.browse", systemImage: "square.grid.2x2", value: .browse) {
                 BrowseView(
                     feature: app.browseFeature,
                     onProductTapped: { app.showingProductDetail = $0 }
                 )
             }
 
-            Tab("Cart", systemImage: "cart", value: .cart) {
+            Tab("tab.cart", systemImage: "cart", value: .cart) {
                 CartView(
                     feature: app.cartFeature,
                     onCheckout: {
@@ -46,7 +46,7 @@ struct AppView: View {
             }
             .badge(app.cartFeature.cart.itemCount)
 
-            Tab("Wishlist", systemImage: "heart", value: .wishlist) {
+            Tab(String(localized: "tab.wishlist", defaultValue: "Wishlist"), systemImage: "heart", value: .wishlist) {
                 WishlistView(
                     feature: app.wishlistFeature,
                     onProductTapped: { app.showingProductDetail = $0 }
@@ -54,14 +54,15 @@ struct AppView: View {
             }
             .badge(app.wishlistFeature.items.count)
 
-            Tab("Profile", systemImage: "person", value: .profile) {
-                if app.profileFeature.isAuthenticated {
-                    ProfileView(
-                        feature: app.profileFeature,
-                        onOrdersTapped: { app.showingOrders = true }
+            Tab(String(localized: "tab.account", defaultValue: "Account"), systemImage: "person", value: .account) {
+                if app.accountFeature.isAuthenticated {
+                    AccountView(
+                        feature: app.accountFeature,
+                        onOrdersTapped: { app.showingOrders = true },
+                        onRegionChanged: { app.reloadAllContent() }
                     )
                 } else {
-                    GuestProfileView(
+                    GuestAccountView(
                         onSignInTapped: { app.showingLogin = true }
                     )
                 }
@@ -87,7 +88,7 @@ struct AppView: View {
                                 } label: {
                                     HStack(spacing: 4) {
                                         Image(systemName: "chevron.left")
-                                        Text("Back")
+                                        Text("nav.back")
                                     }
                                 }
                             }
@@ -117,7 +118,7 @@ struct AppView: View {
                         } label: {
                             HStack(spacing: 4) {
                                 Image(systemName: "chevron.left")
-                                Text("Back")
+                                Text("nav.back")
                             }
                         }
                     }
@@ -136,7 +137,7 @@ struct AppView: View {
                         HStack(spacing: AppSpacing.sm) {
                             Image(systemName: "lock.shield")
                                 .foregroundStyle(.blue)
-                            Text("Sign in to complete your purchase")
+                            Text("auth.signInCheckout")
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
                         }
@@ -144,19 +145,19 @@ struct AppView: View {
                         .frame(maxWidth: .infinity)
                         .background(Color.blue.opacity(0.08))
                     }
-                    LoginView(feature: app.profileFeature, onLoginSuccess: {
+                    LoginView(feature: app.accountFeature, onLoginSuccess: {
                         app.handleLoginSuccess()
                     })
                 }
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
-                        Button("Cancel") {
+                        Button(String(localized: "nav.cancel", defaultValue: "Cancel")) {
                             app.showingLogin = false
                             app.pendingAuthAction = nil
                         }
                     }
                 }
-                .navigationTitle(app.pendingAuthAction == .checkout ? "Sign In to Checkout" : "Sign In")
+                .navigationTitle(app.pendingAuthAction == .checkout ? String(localized: "auth.signInToCheckout", defaultValue: "Sign In to Checkout") : String(localized: "action.signIn", defaultValue: "Sign In"))
                 .navigationBarTitleDisplayMode(.inline)
             }
             .presentationDetents([.large])
@@ -181,7 +182,7 @@ struct AppView: View {
                         } label: {
                             HStack(spacing: 4) {
                                 Image(systemName: "chevron.left")
-                                Text("Back")
+                                Text("nav.back")
                             }
                         }
                     }
@@ -198,7 +199,7 @@ struct AppView: View {
                             } label: {
                                 HStack(spacing: 4) {
                                     Image(systemName: "chevron.left")
-                                    Text("Back")
+                                    Text("nav.back")
                                 }
                             }
                         }
@@ -215,7 +216,7 @@ struct AppView: View {
                             } label: {
                                 HStack(spacing: 4) {
                                     Image(systemName: "chevron.left")
-                                    Text("Back")
+                                    Text("nav.back")
                                 }
                             }
                         }
@@ -225,9 +226,9 @@ struct AppView: View {
     }
 }
 
-// MARK: - Guest Profile View (when not signed in)
+// MARK: - Guest Account View (when not signed in)
 
-struct GuestProfileView: View {
+struct GuestAccountView: View {
     var onSignInTapped: () -> Void
 
     var body: some View {
@@ -239,9 +240,9 @@ struct GuestProfileView: View {
                     Image(systemName: "person.crop.circle")
                         .font(.system(size: 80))
                         .foregroundStyle(.secondary)
-                    Text("Welcome to Whimsy Wave")
+                    Text("guest.welcome")
                         .font(.title2.bold())
-                    Text("Sign in to track orders, save favorites, and get personalized recommendations.")
+                    Text("guest.subtitle")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)
@@ -249,7 +250,7 @@ struct GuestProfileView: View {
                 }
 
                 Button(action: onSignInTapped) {
-                    Text("Sign In")
+                    Text("action.signIn")
                         .font(.headline)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
@@ -262,7 +263,7 @@ struct GuestProfileView: View {
                 Spacer()
                 Spacer()
             }
-            .navigationTitle("Profile")
+            .navigationTitle(Text("tab.account"))
         }
     }
 }

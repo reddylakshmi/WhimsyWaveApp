@@ -544,8 +544,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "79"
             endingLineNumber = "79"
-            landmarkName = "productContent"
-            landmarkType = "24">
+            landmarkName = "BrowseView"
+            landmarkType = "14">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -616,7 +616,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "165B48C5-9B27-482B-96F2-C1B8E23BCA4C"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WhimsyWaveApp/Features/Browse/BrowseView.swift"
@@ -624,7 +624,23 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
             endingLineNumber = "36"
-            landmarkName = "categoryBar"
+            landmarkName = "BrowseView"
+            landmarkType = "14">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3554C9AB-D73C-47C5-B362-14400CAE497D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WhimsyWaveApp/Features/Cart/CartView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "9"
+            endingLineNumber = "9"
+            landmarkName = "body"
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>

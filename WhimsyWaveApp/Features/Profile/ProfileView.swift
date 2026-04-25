@@ -1,8 +1,9 @@
 import SwiftUI
 
-struct ProfileView: View {
-    @Bindable var feature: ProfileFeature
+struct AccountView: View {
+    @Bindable var feature: AccountFeature
     var onOrdersTapped: () -> Void = {}
+    var onRegionChanged: (() -> Void)?
 
     var body: some View {
         NavigationStack {
@@ -19,7 +20,7 @@ struct ProfileView: View {
                             }
 
                         VStack(alignment: .leading, spacing: AppSpacing.xxs) {
-                            Text(feature.user?.fullName ?? "Guest User")
+                            Text(feature.user?.fullName ?? String(localized: "guest.user", defaultValue: "Guest User"))
                                 .font(.headline)
                             Text(feature.user?.email ?? "")
                                 .font(.subheadline)
@@ -37,32 +38,34 @@ struct ProfileView: View {
                     .padding(.vertical, AppSpacing.sm)
                 }
 
-                Section("Shopping") {
+                RegionPickerSection(onRegionChanged: onRegionChanged)
+
+                Section(String(localized: "account.shopping", defaultValue: "Shopping")) {
                     Button(action: onOrdersTapped) {
-                        Label("Order History", systemImage: "bag")
+                        Label(String(localized: "account.orderHistory", defaultValue: "Order History"), systemImage: "bag")
                     }
                     NavigationLink {
                         AddressListView(feature: feature)
                     } label: {
-                        Label("Addresses", systemImage: "mappin.and.ellipse")
+                        Label(String(localized: "account.addresses", defaultValue: "Addresses"), systemImage: "mappin.and.ellipse")
                     }
                     NavigationLink {
                         PaymentMethodsView(feature: feature)
                     } label: {
-                        Label("Payment Methods", systemImage: "creditcard")
+                        Label(String(localized: "account.paymentMethods", defaultValue: "Payment Methods"), systemImage: "creditcard")
                     }
                 }
 
-                Section("Preferences") {
+                Section(String(localized: "account.preferences", defaultValue: "Preferences")) {
                     NavigationLink {
                         SettingsView()
                     } label: {
-                        Label("Settings", systemImage: "gearshape")
+                        Label(String(localized: "account.settings", defaultValue: "Settings"), systemImage: "gearshape")
                     }
                     NavigationLink {
-                        Text("Help & Support")
+                        Text(String(localized: "account.helpSupport", defaultValue: "Help & Support"))
                     } label: {
-                        Label("Help & Support", systemImage: "questionmark.circle")
+                        Label(String(localized: "account.helpSupport", defaultValue: "Help & Support"), systemImage: "questionmark.circle")
                     }
                 }
 
@@ -72,14 +75,117 @@ struct ProfileView: View {
                     } label: {
                         HStack {
                             Spacer()
-                            Text("Log Out").fontWeight(.bold)
+                            Text("action.logOut").fontWeight(.bold)
                             Spacer()
                         }
                     }
                 }
             }
-            .navigationTitle("Profile")
+            .navigationTitle(Text("tab.account"))
             .task { await feature.loadProfile() }
         }
+    }
+}
+
+// MARK: - Region Picker Section
+
+struct RegionPickerSection: View {
+    var onRegionChanged: (() -> Void)?
+    @State private var showingRegionPicker = false
+
+    private var regionManager: RegionManager { RegionManager.shared }
+
+    var body: some View {
+        Section(String(localized: "region.title", defaultValue: "Country / Region")) {
+            Button {
+                showingRegionPicker = true
+            } label: {
+                HStack {
+                    Label {
+                        Text(regionManager.currentRegion.displayName)
+                            .foregroundStyle(.primary)
+                    } icon: {
+                        Text(regionManager.currentRegion.flag)
+                            .font(.title2)
+                    }
+                    Spacer()
+                    Text(regionManager.currentRegion.currencyCode)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                    Image(systemName: "chevron.right")
+                        .font(.caption)
+                        .foregroundStyle(.tertiary)
+                }
+            }
+            .accessibilityLabel(String(localized: "region.title", defaultValue: "Country / Region") + ": \(regionManager.currentRegion.displayName), \(regionManager.currentRegion.currencyCode)")
+            .accessibilityHint(String(localized: "accessibility.changeRegion", defaultValue: "Tap to change your country and currency"))
+        }
+        .sheet(isPresented: $showingRegionPicker) {
+            RegionPickerView(onRegionChanged: onRegionChanged)
+        }
+    }
+}
+
+// MARK: - Region Picker View
+
+struct RegionPickerView: View {
+    var onRegionChanged: (() -> Void)?
+    @Environment(\.dismiss) private var dismiss
+
+    private var regionManager: RegionManager { RegionManager.shared }
+
+    var body: some View {
+        NavigationStack {
+            List {
+                ForEach(Region.allCases) { region in
+                    regionRow(region)
+                }
+            }
+            .navigationTitle(Text("region.select"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(String(localized: "nav.cancel", defaultValue: "Cancel")) { dismiss() }
+                }
+            }
+        }
+        .presentationDetents([.medium, .large])
+    }
+
+    private func regionRow(_ region: Region) -> some View {
+        let isSelected = regionManager.currentRegion == region
+        return Button {
+            if !isSelected {
+                HapticFeedback.medium()
+                regionManager.currentRegion = region
+                onRegionChanged?()
+            }
+            dismiss()
+        } label: {
+            HStack(spacing: AppSpacing.md) {
+                Text(region.flag)
+                    .font(.largeTitle)
+
+                VStack(alignment: .leading, spacing: AppSpacing.xxs) {
+                    Text(region.displayName)
+                        .font(.headline)
+                        .foregroundStyle(.primary)
+                    Text("\(String(localized: "region.currency", defaultValue: "Currency")): \(region.currencyCode) (\(region.currencySymbol))")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+
+                Spacer()
+
+                if isSelected {
+                    Image(systemName: "checkmark.circle.fill")
+                        .foregroundStyle(Color.accentColor)
+                        .font(.title3)
+                }
+            }
+            .padding(.vertical, AppSpacing.xs)
+        }
+        .accessibilityLabel("\(region.displayName), \(region.currencyCode)")
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 }

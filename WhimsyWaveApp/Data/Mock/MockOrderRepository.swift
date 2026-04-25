@@ -18,8 +18,9 @@ final class MockOrderRepository: IOrderRepository, @unchecked Sendable {
             )
         }
         let subtotal = cart.totalPrice
-        let tax = subtotal * AppConstants.Tax.rate
-        let shipping = subtotal > AppConstants.Shipping.freeShippingThreshold ? Decimal.zero : AppConstants.Shipping.standardShippingCost
+        let region = await RegionManager.shared.currentRegion
+        let tax = subtotal * region.taxRate
+        let shipping = subtotal > region.freeShippingThreshold ? Decimal.zero : region.standardShippingCost
         let order = Order(
             id: UUID().uuidString,
             orderNumber: "\(AppConstants.Order.numberPrefix)\(Int.random(in: 10000...99999))",
@@ -34,7 +35,8 @@ final class MockOrderRepository: IOrderRepository, @unchecked Sendable {
             shippingAddress: address,
             paymentMethod: PaymentSummary(type: payment.type.displayName, lastFourDigits: payment.lastFourDigits),
             trackingNumber: nil,
-            estimatedDelivery: .init(earliest: Date().addingTimeInterval(5 * 86400), latest: Date().addingTimeInterval(9 * 86400))
+            estimatedDelivery: .init(earliest: Date().addingTimeInterval(5 * 86400), latest: Date().addingTimeInterval(9 * 86400)),
+            currency: region.currencyCode
         )
         orders.insert(order, at: 0)
         return order
@@ -64,7 +66,9 @@ final class MockOrderRepository: IOrderRepository, @unchecked Sendable {
             subtotal: original.subtotal, shippingCost: original.shippingCost, tax: original.tax,
             totalAmount: original.totalAmount, status: .cancelled, createdAt: original.createdAt,
             updatedAt: .now, shippingAddress: original.shippingAddress,
-            paymentMethod: original.paymentMethod, trackingNumber: nil, estimatedDelivery: nil
+            paymentMethod: original.paymentMethod,
+            trackingNumber: nil, estimatedDelivery: nil,
+            currency: original.currency
         )
         orders[index] = cancelled
         return cancelled

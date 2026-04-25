@@ -888,6 +888,50 @@ extension Product {
         createdAt: Date().addingTimeInterval(-60 * 86400)
     )
 
+    // MARK: - Region-Aware Product Conversion
+
+    /// Creates a regionalized copy of a USD product by converting prices using the region's multiplier
+    func regionalized(for region: Region) -> Product {
+        guard region != .us else { return self }
+        let multiplier = region.priceMultiplier
+        return Product(
+            id: id,
+            name: name,
+            brand: brand,
+            description: description,
+            price: (price * multiplier).roundedToTwo,
+            salePrice: salePrice.map { ($0 * multiplier).roundedToTwo },
+            currency: region.currencyCode,
+            images: images,
+            category: category,
+            rating: rating,
+            reviewCount: reviewCount,
+            specs: specs,
+            variants: variants.map { variant in
+                ProductVariant(
+                    id: variant.id,
+                    name: variant.name,
+                    color: variant.color,
+                    size: variant.size,
+                    additionalPrice: (variant.additionalPrice * multiplier).roundedToTwo,
+                    isInStock: variant.isInStock
+                )
+            },
+            tags: tags,
+            isInStock: isInStock,
+            stockCount: stockCount,
+            estimatedDelivery: estimatedDelivery,
+            isFeatured: isFeatured,
+            isNew: isNew,
+            createdAt: createdAt
+        )
+    }
+
+    /// Returns all mock products converted for the given region
+    static func mockProducts(for region: Region) -> [Product] {
+        mockProducts.map { $0.regionalized(for: region) }
+    }
+
     // MARK: - All Products
 
     static let mockProducts: [Product] = [

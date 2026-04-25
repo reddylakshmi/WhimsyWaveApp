@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @Bindable var feature: ProfileFeature
+    @Bindable var feature: AccountFeature
     var onLoginSuccess: (() -> Void)?
     @State private var isRegisterMode = false
 

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct PaymentMethodsView: View {
-    @Bindable var feature: ProfileFeature
+    @Bindable var feature: AccountFeature
     @State private var showingAddForm = false
 
     var body: some View {
@@ -82,7 +82,7 @@ struct PaymentMethodsView: View {
 }
 
 struct AddCardFormView: View {
-    @Bindable var feature: ProfileFeature
+    @Bindable var feature: AccountFeature
     @Environment(\.dismiss) private var dismiss
 
     @State private var cardType: PaymentType = .visa

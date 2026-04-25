@@ -2,7 +2,7 @@ import Foundation
 import Observation
 
 @Observable @MainActor
-final class ProfileFeature {
+final class AccountFeature {
     var user: User?
     var isAuthenticated = false
     var username = ""

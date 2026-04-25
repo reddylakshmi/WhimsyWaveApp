@@ -15,6 +15,7 @@ struct OrderDTO: Codable, Sendable {
     let paymentType: String
     let paymentLastFour: String
     let trackingNumber: String?
+    let currency: String?
     let estimatedDeliveryEarliest: String?
     let estimatedDeliveryLatest: String?
 }

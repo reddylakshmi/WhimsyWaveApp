@@ -16,10 +16,12 @@ struct Order: Identifiable, Equatable, Sendable, Codable {
     let trackingNumber: String?
     let estimatedDelivery: DateRange?
 
+    let currency: String
+
     var displayTotal: String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
-        formatter.currencyCode = AppConstants.Currency.code
+        formatter.currencyCode = currency
         return formatter.string(from: totalAmount as NSDecimalNumber) ?? "$0.00"
     }
 }

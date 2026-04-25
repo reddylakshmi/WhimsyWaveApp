@@ -9,6 +9,7 @@ enum PreferencesStore {
         case selectedTheme
         case notificationsEnabled
         case biometricAuthEnabled
+        case selectedRegion
     }
 
     private static let defaults = UserDefaults.standard
