@@ -11,11 +11,11 @@ struct CheckoutView: View {
                 Divider()
                 stepContent
             }
-            .navigationTitle("Checkout")
+            .navigationTitle("checkout.title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") { dismiss() }
+                    Button("nav.cancel") { dismiss() }
                 }
             }
             .task { await feature.loadUserData() }
@@ -54,7 +54,7 @@ struct CheckoutView: View {
         .padding(.horizontal, AppSpacing.md)
         .padding(.vertical, AppSpacing.sm)
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("Checkout step \(feature.currentStep.rawValue + 1) of \(CheckoutStepType.allCases.count): \(feature.currentStep.title)")
+        .accessibilityLabel("accessibility.checkoutStep \(feature.currentStep.rawValue + 1) \(CheckoutStepType.allCases.count) \(feature.currentStep.title)")
     }
 
     @ViewBuilder
@@ -71,4 +71,3 @@ struct CheckoutView: View {
         }
     }
 }
-

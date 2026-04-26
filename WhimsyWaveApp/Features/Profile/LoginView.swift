@@ -13,21 +13,21 @@ struct LoginView: View {
                 Image(systemName: "bag.circle.fill")
                     .font(.system(size: 100))
                     .foregroundStyle(Color.accentColor)
-                Text("Whimsy Wave")
+                Text("app.name")
                     .font(.system(size: 34, weight: .bold, design: .rounded))
-                Text(isRegisterMode ? "Create your account" : "Welcome back")
+                Text(isRegisterMode ? "auth.createAccount" : "auth.welcomeBack")
                     .foregroundStyle(.secondary)
             }
 
             VStack(spacing: AppSpacing.md) {
                 if isRegisterMode {
-                    inputField(placeholder: "Email Address", text: $feature.email, icon: "envelope")
+                    inputField(placeholder: "form.emailAddress", text: $feature.email, icon: "envelope")
                         .keyboardType(.emailAddress)
                 }
-                inputField(placeholder: "Username", text: $feature.username, icon: "person")
+                inputField(placeholder: "form.username", text: $feature.username, icon: "person")
                     .autocorrectionDisabled()
                     .textInputAutocapitalization(.never)
-                secureField(placeholder: "Password", text: $feature.password)
+                secureField(placeholder: "form.password", text: $feature.password)
             }
             .padding(.horizontal, AppSpacing.md)
 
@@ -54,7 +54,7 @@ struct LoginView: View {
                     if feature.isLoading {
                         ProgressView().tint(.white)
                     } else {
-                        Text(isRegisterMode ? "Sign Up" : "Sign In").fontWeight(.bold)
+                        Text(isRegisterMode ? "auth.signUp" : "action.signIn").fontWeight(.bold)
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -70,8 +70,8 @@ struct LoginView: View {
                 withAnimation { isRegisterMode.toggle() }
             } label: {
                 HStack {
-                    Text(isRegisterMode ? "Already have an account?" : "New here?")
-                    Text(isRegisterMode ? "Login" : "Create Account").bold()
+                    Text(isRegisterMode ? "auth.haveAccount" : "auth.newHere")
+                    Text(isRegisterMode ? "auth.login" : "auth.createAccountAction").bold()
                 }
                 .font(.footnote)
             }
@@ -82,7 +82,7 @@ struct LoginView: View {
         .background(Color(uiColor: .systemGroupedBackground))
     }
 
-    private func inputField(placeholder: String, text: Binding<String>, icon: String) -> some View {
+    private func inputField(placeholder: LocalizedStringKey, text: Binding<String>, icon: String) -> some View {
         HStack {
             Image(systemName: icon).foregroundStyle(.secondary)
             TextField(placeholder, text: text)
@@ -92,7 +92,7 @@ struct LoginView: View {
         .clipShape(RoundedRectangle(cornerRadius: AppConstants.Layout.buttonCornerRadius))
     }
 
-    private func secureField(placeholder: String, text: Binding<String>) -> some View {
+    private func secureField(placeholder: LocalizedStringKey, text: Binding<String>) -> some View {
         HStack {
             Image(systemName: "lock").foregroundStyle(.secondary)
             SecureField(placeholder, text: text)

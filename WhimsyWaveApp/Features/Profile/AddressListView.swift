@@ -22,16 +22,16 @@ struct AddressListView: View {
                 }
             } else {
                 ContentUnavailableView {
-                    Label("No Addresses", systemImage: "mappin.slash")
+                    Label("address.empty.title", systemImage: "mappin.slash")
                 } description: {
-                    Text("Add a shipping address to get started.")
+                    Text("address.empty.description")
                 } actions: {
-                    Button("Add Address") { showingAddForm = true }
+                    Button("address.add") { showingAddForm = true }
                         .buttonStyle(.borderedProminent)
                 }
             }
         }
-        .navigationTitle("Addresses")
+        .navigationTitle("account.addresses")
         .toolbar {
             if feature.user?.addresses.isEmpty == false {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -59,7 +59,7 @@ struct AddressListView: View {
                 Text(address.label)
                     .font(.headline)
                 if address.isDefault {
-                    Text("Default")
+                    Text("badge.default")
                         .font(.caption2.bold())
                         .padding(.horizontal, AppSpacing.sm)
                         .padding(.vertical, 2)
@@ -67,7 +67,7 @@ struct AddressListView: View {
                         .foregroundStyle(Color.accentColor)
                 }
                 Spacer()
-                Button("Edit") { editingAddress = address }
+                Button("action.edit") { editingAddress = address }
                     .font(.subheadline)
             }
             Text(address.fullName)
@@ -110,49 +110,49 @@ struct AddressFormView: View {
 
     var body: some View {
         Form {
-            Section("Address Label") {
-                Picker("Label", selection: $label) {
-                    Text("Home").tag("Home")
-                    Text("Office").tag("Office")
-                    Text("Other").tag("Other")
+            Section("form.addressLabel") {
+                Picker("form.label", selection: $label) {
+                    Text("form.home").tag("Home")
+                    Text("form.office").tag("Office")
+                    Text("form.other").tag("Other")
                 }
                 .pickerStyle(.segmented)
             }
 
-            Section("Contact") {
-                TextField("Full Name", text: $fullName)
+            Section("form.contact") {
+                TextField(text: $fullName) { Text("form.fullName") }
                     .textContentType(.name)
-                TextField("Phone", text: $phone)
+                TextField(text: $phone) { Text("form.phone") }
                     .textContentType(.telephoneNumber)
                     .keyboardType(.phonePad)
             }
 
-            Section("Address") {
-                TextField("Street Address", text: $street)
+            Section("form.address") {
+                TextField(text: $street) { Text("form.streetAddress") }
                     .textContentType(.streetAddressLine1)
-                TextField("Apt, Suite, Unit (optional)", text: $apartment)
+                TextField(text: $apartment) { Text("form.apartment") }
                     .textContentType(.streetAddressLine2)
-                TextField("City", text: $city)
+                TextField(text: $city) { Text("form.city") }
                     .textContentType(.addressCity)
-                TextField("State", text: $state)
+                TextField(text: $state) { Text("form.state") }
                     .textContentType(.addressState)
-                TextField("ZIP Code", text: $zipCode)
+                TextField(text: $zipCode) { Text("form.zipCode") }
                     .textContentType(.postalCode)
                     .keyboardType(.numberPad)
             }
 
             Section {
-                Toggle("Set as default address", isOn: $isDefault)
+                Toggle("form.setDefaultAddress", isOn: $isDefault)
             }
         }
-        .navigationTitle(isEditing ? "Edit Address" : "Add Address")
+        .navigationTitle(isEditing ? "address.edit" : "address.add")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel") { dismiss() }
+                Button("nav.cancel") { dismiss() }
             }
             ToolbarItem(placement: .confirmationAction) {
-                Button("Save") { save() }
+                Button("action.save") { save() }
                     .disabled(fullName.isEmpty || street.isEmpty || city.isEmpty || state.isEmpty || zipCode.isEmpty)
             }
         }

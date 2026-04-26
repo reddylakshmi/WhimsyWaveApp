@@ -6,23 +6,23 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
-            Section("Notifications") {
-                Toggle("Push Notifications", isOn: $notificationsEnabled)
+            Section("settings.notifications") {
+                Toggle("settings.pushNotifications", isOn: $notificationsEnabled)
             }
 
-            Section("Security") {
-                Toggle("Face ID / Touch ID", isOn: $biometricAuth)
+            Section("settings.security") {
+                Toggle("settings.biometric", isOn: $biometricAuth)
             }
 
-            Section("About") {
+            Section("settings.about") {
                 HStack {
-                    Text("Version")
+                    Text("settings.version")
                     Spacer()
                     Text(AppConfiguration.current.minimumAppVersion)
                         .foregroundStyle(.secondary)
                 }
                 HStack {
-                    Text("Environment")
+                    Text("settings.environment")
                     Spacer()
                     Text(AppConfiguration.current.environment.rawValue.capitalized)
                         .foregroundStyle(.secondary)
@@ -30,10 +30,14 @@ struct SettingsView: View {
             }
 
             Section {
-                Link("Contact Support", destination: URL(string: "mailto:\(AppConfiguration.current.supportEmail)")!)
-                Link("Rate the App", destination: AppConfiguration.current.appStoreURL)
+                Link(destination: URL(string: "mailto:\(AppConfiguration.current.supportEmail)")!) {
+                    Text("settings.contactSupport")
+                }
+                Link(destination: AppConfiguration.current.appStoreURL) {
+                    Text("settings.rateApp")
+                }
             }
         }
-        .navigationTitle("Settings")
+        .navigationTitle("settings.title")
     }
 }

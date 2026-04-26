@@ -1,0 +1,2167 @@
+{
+  "banners" : [
+    {
+      "backgroundColor" : "#E8F5E9",
+      "deepLink" : "whimsywave:\/\/promotion\/victoria-day",
+      "id" : "BNR-CAFR-001",
+      "imageURL" : "https:\/\/picsum.photos\/seed\/casale\/800\/400",
+      "subtitle" : "Jusqu'à 40 % de rabais en magasin",
+      "title" : "Soldes de la fête de la Reine"
+    },
+    {
+      "backgroundColor" : "#E3F2FD",
+      "deepLink" : "whimsywave:\/\/category\/CAT-004",
+      "id" : "BNR-CAFR-002",
+      "imageURL" : "https:\/\/picsum.photos\/seed\/canew\/800\/400",
+      "subtitle" : "Découvrez les designs canadiens",
+      "title" : "Nouveautés"
+    },
+    {
+      "backgroundColor" : "#FFF3E0",
+      "id" : "BNR-CAFR-003",
+      "imageURL" : "https:\/\/picsum.photos\/seed\/cashipping\/800\/400",
+      "subtitle" : "Pour les commandes de plus de 65,00 $",
+      "title" : "Livraison gratuite"
+    },
+    {
+      "backgroundColor" : "#FCE4EC",
+      "id" : "BNR-CAFR-004",
+      "imageURL" : "https:\/\/picsum.photos\/seed\/canadian\/800\/400",
+      "subtitle" : "Magasinez les collections artisanales locales",
+      "title" : "Fièrement canadien"
+    }
+  ],
+  "categories" : [
+    {
+      "id" : "CAT-001",
+      "image" : "sofa.fill",
+      "name" : "Mobilier",
+      "productCount" : 2450,
+      "subcategories" : [
+        {
+          "id" : "CAT-001-1",
+          "image" : "sofa.fill",
+          "name" : "Salon",
+          "parentId" : "CAT-001",
+          "productCount" : 850,
+          "subcategories" : [
+
+          ]
+        },
+        {
+          "id" : "CAT-001-2",
+          "image" : "bed.double.fill",
+          "name" : "Chambre",
+          "parentId" : "CAT-001",
+          "productCount" : 620,
+          "subcategories" : [
+
+          ]
+        },
+        {
+          "id" : "CAT-001-3",
+          "image" : "fork.knife",
+          "name" : "Salle à manger",
+          "parentId" : "CAT-001",
+          "productCount" : 430,
+          "subcategories" : [
+
+          ]
+        },
+        {
+          "id" : "CAT-001-4",
+          "image" : "desktopcomputer",
+          "name" : "Bureau",
+          "parentId" : "CAT-001",
+          "productCount" : 350,
+          "subcategories" : [
+
+          ]
+        },
+        {
+          "id" : "CAT-001-5",
+          "image" : "refrigerator.fill",
+          "name" : "Cuisine",
+          "parentId" : "CAT-001",
+          "productCount" : 200,
+          "subcategories" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "CAT-002",
+      "image" : "lamp.desk.fill",
+      "name" : "Éclairage",
+      "productCount" : 1230,
+      "subcategories" : [
+
+      ]
+    },
+    {
+      "id" : "CAT-003",
+      "image" : "bathtub.fill",
+      "name" : "Salle de bain",
+      "productCount" : 890,
+      "subcategories" : [
+
+      ]
+    },
+    {
+      "id" : "CAT-004",
+      "image" : "photo.artframe",
+      "name" : "Décoration",
+      "productCount" : 3200,
+      "subcategories" : [
+
+      ]
+    },
+    {
+      "id" : "CAT-005",
+      "image" : "leaf.fill",
+      "name" : "Extérieur",
+      "productCount" : 1560,
+      "subcategories" : [
+
+      ]
+    },
+    {
+      "id" : "CAT-006",
+      "image" : "bed.double.fill",
+      "name" : "Literie",
+      "productCount" : 980,
+      "subcategories" : [
+
+      ]
+    },
+    {
+      "id" : "CAT-007",
+      "image" : "square.grid.3x3.fill",
+      "name" : "Tapis",
+      "productCount" : 720,
+      "subcategories" : [
+
+      ]
+    },
+    {
+      "id" : "CAT-008",
+      "image" : "fork.knife",
+      "name" : "Cuisine",
+      "productCount" : 1450,
+      "subcategories" : [
+
+      ]
+    },
+    {
+      "id" : "CAT-009",
+      "image" : "homekit",
+      "name" : "Maison intelligente",
+      "productCount" : 340,
+      "subcategories" : [
+
+      ]
+    },
+    {
+      "id" : "CAT-010",
+      "image" : "archivebox.fill",
+      "name" : "Rangement",
+      "productCount" : 670,
+      "subcategories" : [
+
+      ]
+    }
+  ],
+  "checksum" : "",
+  "homeSections" : [
+    {
+      "bannerIds" : [
+        "BNR-CAFR-001",
+        "BNR-CAFR-002",
+        "BNR-CAFR-003",
+        "BNR-CAFR-004"
+      ],
+      "categoryIds" : [
+
+      ],
+      "id" : "HS-CA_FR-001",
+      "productIds" : [
+
+      ],
+      "sortOrder" : 0,
+      "title" : "En vedette",
+      "type" : "heroBanner"
+    },
+    {
+      "bannerIds" : [
+
+      ],
+      "categoryIds" : [
+        "CAT-001",
+        "CAT-002",
+        "CAT-003",
+        "CAT-004",
+        "CAT-005",
+        "CAT-006",
+        "CAT-007",
+        "CAT-008",
+        "CAT-009",
+        "CAT-010"
+      ],
+      "id" : "HS-CA_FR-002",
+      "productIds" : [
+
+      ],
+      "sortOrder" : 1,
+      "title" : "Magasiner par catégorie",
+      "type" : "categories"
+    },
+    {
+      "bannerIds" : [
+
+      ],
+      "categoryIds" : [
+
+      ],
+      "id" : "HS-CA_FR-003",
+      "productIds" : [
+        "PRD-001",
+        "PRD-003",
+        "PRD-005",
+        "PRD-010",
+        "PRD-013",
+        "PRD-014",
+        "PRD-016",
+        "PRD-020",
+        "PRD-021",
+        "PRD-028"
+      ],
+      "sortOrder" : 2,
+      "subtitle" : "Sélectionnés pour vous",
+      "title" : "Nos coups de cœur",
+      "type" : "featuredProducts"
+    },
+    {
+      "bannerIds" : [
+
+      ],
+      "categoryIds" : [
+
+      ],
+      "id" : "HS-CA_FR-004",
+      "productIds" : [
+        "PRD-001",
+        "PRD-003",
+        "PRD-005",
+        "PRD-007",
+        "PRD-009",
+        "PRD-012",
+        "PRD-013",
+        "PRD-015",
+        "PRD-016",
+        "PRD-018",
+        "PRD-020",
+        "PRD-021",
+        "PRD-023",
+        "PRD-025",
+        "PRD-027",
+        "PRD-029",
+        "PRD-030"
+      ],
+      "sortOrder" : 3,
+      "subtitle" : "Offres à durée limitée",
+      "title" : "Offres du jour",
+      "type" : "onSale"
+    },
+    {
+      "bannerIds" : [
+
+      ],
+      "categoryIds" : [
+
+      ],
+      "id" : "HS-CA_FR-005",
+      "productIds" : [
+        "PRD-006",
+        "PRD-009",
+        "PRD-015",
+        "PRD-017",
+        "PRD-018",
+        "PRD-023",
+        "PRD-026"
+      ],
+      "sortOrder" : 4,
+      "title" : "Nouveautés",
+      "type" : "newArrivals"
+    },
+    {
+      "bannerIds" : [
+
+      ],
+      "categoryIds" : [
+
+      ],
+      "id" : "HS-CA_FR-006",
+      "productIds" : [
+        "PRD-001",
+        "PRD-002",
+        "PRD-003",
+        "PRD-004",
+        "PRD-005",
+        "PRD-006",
+        "PRD-007",
+        "PRD-008"
+      ],
+      "sortOrder" : 5,
+      "title" : "Tendances actuelles",
+      "type" : "trendingNow"
+    }
+  ],
+  "products" : [
+    {
+      "brand" : "Serta",
+      "category" : {
+        "path" : [
+          "Mobilier",
+          "Salon",
+          "Canapés"
+        ]
+      },
+      "createdAt" : 1774573391.026222,
+      "currency" : "CAD",
+      "description" : "Transformez votre espace de vie avec ce canapé convertible polyvalent. Coussins en mousse à mémoire de forme, mécanisme de conversion facile et tissu haute performance résistant aux taches.",
+      "estimatedDelivery" : {
+        "earliest" : 1777424591.026221,
+        "latest" : 1777770191.026221
+      },
+      "id" : "PRD-001",
+      "images" : [
+        {
+          "alt" : "Serta sofa front view",
+          "url" : "https:\/\/picsum.photos\/seed\/sofa\/600\/600"
+        },
+        {
+          "alt" : "Serta sofa side view",
+          "url" : "https:\/\/picsum.photos\/seed\/sofa2\/600\/600"
+        }
+      ],
+      "isFeatured" : true,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Canapé convertible Serta",
+      "price" : 1223.99,
+      "rating" : 4.6,
+      "reviewCount" : 1284,
+      "salePrice" : 883.99,
+      "specs" : [
+        {
+          "label" : "Dimensions",
+          "value" : "213 cm L x 91 cm P x 86 cm H"
+        },
+        {
+          "label" : "Matériau",
+          "value" : "Tissu haute performance"
+        },
+        {
+          "label" : "Capacité",
+          "value" : "272 kg"
+        },
+        {
+          "label" : "Assemblage",
+          "value" : "Requis"
+        }
+      ],
+      "stockCount" : 23,
+      "tags" : [
+        "bestseller",
+        "free-shipping"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Gray",
+          "id" : "V-001A",
+          "isInStock" : true,
+          "name" : "Charcoal Gray"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Blue",
+          "id" : "V-001B",
+          "isInStock" : true,
+          "name" : "Navy Blue"
+        },
+        {
+          "additionalPrice" : 68,
+          "color" : "Cream",
+          "id" : "V-001C",
+          "isInStock" : false,
+          "name" : "Cream"
+        }
+      ]
+    },
+    {
+      "brand" : "Walker Edison",
+      "category" : {
+        "path" : [
+          "Mobilier",
+          "Salle à manger",
+          "Tables"
+        ]
+      },
+      "createdAt" : 1771981391.026235,
+      "currency" : "CAD",
+      "description" : "Apportez chaleur et caractère à votre salle à manger avec cette table en bois massif de style fermier. Finition vieillie à la main pour un look unique.",
+      "estimatedDelivery" : {
+        "earliest" : 1777597391.026235,
+        "latest" : 1778029391.026235
+      },
+      "id" : "PRD-002",
+      "images" : [
+        {
+          "alt" : "Farmhouse dining table",
+          "url" : "https:\/\/picsum.photos\/seed\/diningtable\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Table de salle à manger rustique Walker Edison",
+      "price" : 679.99,
+      "rating" : 4.3,
+      "reviewCount" : 856,
+      "specs" : [
+        {
+          "label" : "Dimensions",
+          "value" : "183 cm L x 91 cm P x 76 cm H"
+        },
+        {
+          "label" : "Matériau",
+          "value" : "Pin massif"
+        },
+        {
+          "label" : "Places",
+          "value" : "6 à 8 personnes"
+        }
+      ],
+      "stockCount" : 15,
+      "tags" : [
+        "eco-friendly"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "Brightech",
+      "category" : {
+        "path" : [
+          "Éclairage",
+          "Lampadaires"
+        ]
+      },
+      "createdAt" : 1773277391.026242,
+      "currency" : "CAD",
+      "description" : "Illuminez n'importe quelle pièce avec ce lampadaire moderne et élégant. LED à intensité variable avec trois températures de couleur et un profil mince.",
+      "estimatedDelivery" : {
+        "earliest" : 1777338191.026242,
+        "latest" : 1777510991.026242
+      },
+      "id" : "PRD-003",
+      "images" : [
+        {
+          "alt" : "Floor lamp in living room",
+          "url" : "https:\/\/picsum.photos\/seed\/floorlamp\/600\/600"
+        }
+      ],
+      "isFeatured" : true,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Lampadaire LED Brightech Sky",
+      "price" : 95.19,
+      "rating" : 4.7,
+      "reviewCount" : 2341,
+      "salePrice" : 74.79,
+      "specs" : [
+        {
+          "label" : "Hauteur",
+          "value" : "183 cm"
+        },
+        {
+          "label" : "Puissance",
+          "value" : "30 W LED"
+        },
+        {
+          "label" : "Températures",
+          "value" : "3000K\/4000K\/5000K"
+        }
+      ],
+      "stockCount" : 142,
+      "tags" : [
+        "energy-efficient",
+        "top-rated"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Black",
+          "id" : "V-003A",
+          "isInStock" : true,
+          "name" : "Matte Black"
+        },
+        {
+          "additionalPrice" : 13.6,
+          "color" : "Silver",
+          "id" : "V-003B",
+          "isInStock" : true,
+          "name" : "Brushed Nickel"
+        }
+      ]
+    },
+    {
+      "brand" : "Zinus",
+      "category" : {
+        "path" : [
+          "Mobilier",
+          "Chambre",
+          "Lits"
+        ]
+      },
+      "createdAt" : 1769389391.026245,
+      "currency" : "CAD",
+      "description" : "Dormez avec style avec ce cadre de lit plateforme capitonné. Pas de sommier nécessaire. Assemblage sans outil en moins d'une heure.",
+      "estimatedDelivery" : {
+        "earliest" : 1777424591.0262442,
+        "latest" : 1777770191.026245
+      },
+      "id" : "PRD-004",
+      "images" : [
+        {
+          "alt" : "Platform bed frame",
+          "url" : "https:\/\/picsum.photos\/seed\/bedframe\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Cadre de lit plateforme Zinus",
+      "price" : 407.99,
+      "rating" : 4.5,
+      "reviewCount" : 3412,
+      "specs" : [
+        {
+          "label" : "Taille",
+          "value" : "Grand (Queen)"
+        },
+        {
+          "label" : "Matériau",
+          "value" : "Tissu capitonné"
+        },
+        {
+          "label" : "Capacité",
+          "value" : "318 kg"
+        }
+      ],
+      "stockCount" : 67,
+      "tags" : [
+        "bestseller"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : -136,
+          "id" : "V-004A",
+          "isInStock" : true,
+          "name" : "Twin",
+          "size" : "Twin"
+        },
+        {
+          "additionalPrice" : 0,
+          "id" : "V-004B",
+          "isInStock" : true,
+          "name" : "Queen",
+          "size" : "Queen"
+        },
+        {
+          "additionalPrice" : 136,
+          "id" : "V-004C",
+          "isInStock" : true,
+          "name" : "King",
+          "size" : "King"
+        }
+      ]
+    },
+    {
+      "brand" : "nuLOOM",
+      "category" : {
+        "path" : [
+          "Tapis",
+          "Tapis de salon"
+        ]
+      },
+      "createdAt" : 1775437391.0262508,
+      "currency" : "CAD",
+      "description" : "Ajoutez texture et chaleur à n'importe quelle pièce avec ce tapis d'inspiration marocaine. Fabrication mécanique pour la durabilité avec une pile douce en polypropylène.",
+      "estimatedDelivery" : {
+        "earliest" : 1777338191.0262508,
+        "latest" : 1777597391.0262508
+      },
+      "id" : "PRD-005",
+      "images" : [
+        {
+          "alt" : "Moroccan area rug",
+          "url" : "https:\/\/picsum.photos\/seed\/arearug\/600\/600"
+        }
+      ],
+      "isFeatured" : true,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Tapis marocain nuLOOM Blythe",
+      "price" : 244.79,
+      "rating" : 4.4,
+      "reviewCount" : 5678,
+      "salePrice" : 176.79,
+      "specs" : [
+        {
+          "label" : "Taille",
+          "value" : "244 cm x 305 cm"
+        },
+        {
+          "label" : "Matériau",
+          "value" : "Polypropylène"
+        },
+        {
+          "label" : "Hauteur de pile",
+          "value" : "0,9 cm"
+        }
+      ],
+      "stockCount" : 200,
+      "tags" : [
+        "top-rated",
+        "free-shipping"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "Christopher Knight",
+      "category" : {
+        "path" : [
+          "Mobilier",
+          "Cuisine",
+          "Tabourets de bar"
+        ]
+      },
+      "createdAt" : 1776733391.0262542,
+      "currency" : "CAD",
+      "description" : "Rehaussez votre îlot de cuisine avec ces tabourets élégants en cuir reconstitué. Pieds en fer robustes avec embouts protecteurs.",
+      "estimatedDelivery" : {
+        "earliest" : 1777510991.026253,
+        "latest" : 1777856591.026253
+      },
+      "id" : "PRD-006",
+      "images" : [
+        {
+          "alt" : "Bar stools set",
+          "url" : "https:\/\/picsum.photos\/seed\/barstools\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : true,
+      "name" : "Tabourets de comptoir Christopher Knight (lot de 2)",
+      "price" : 217.59,
+      "rating" : 4.2,
+      "reviewCount" : 923,
+      "specs" : [
+        {
+          "label" : "Hauteur",
+          "value" : "66 cm (hauteur comptoir)"
+        },
+        {
+          "label" : "Matériau",
+          "value" : "Cuir reconstitué et fer"
+        },
+        {
+          "label" : "Quantité",
+          "value" : "Lot de 2"
+        }
+      ],
+      "stockCount" : 45,
+      "tags" : [
+
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Brown",
+          "id" : "V-006A",
+          "isInStock" : true,
+          "name" : "Brown"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Black",
+          "id" : "V-006B",
+          "isInStock" : true,
+          "name" : "Black"
+        }
+      ]
+    },
+    {
+      "brand" : "Moen",
+      "category" : {
+        "path" : [
+          "Salle de bain",
+          "Pommes de douche"
+        ]
+      },
+      "createdAt" : 1766797391.026257,
+      "currency" : "CAD",
+      "description" : "Transformez votre douche quotidienne avec cette pomme de douche effet pluie dotée d'un système d'arrimage magnétique. Six réglages de jet.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.026257,
+        "latest" : 1777424591.026257
+      },
+      "id" : "PRD-007",
+      "images" : [
+        {
+          "alt" : "Rainfall shower head",
+          "url" : "https:\/\/picsum.photos\/seed\/showerhead\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Pomme de douche Moen Magnetix effet pluie",
+      "price" : 122.39,
+      "rating" : 4.8,
+      "reviewCount" : 4521,
+      "salePrice" : 95.19,
+      "specs" : [
+        {
+          "label" : "Diamètre",
+          "value" : "20 cm"
+        },
+        {
+          "label" : "Réglages",
+          "value" : "6"
+        },
+        {
+          "label" : "Fini",
+          "value" : "Chrome"
+        }
+      ],
+      "stockCount" : 89,
+      "tags" : [
+        "top-rated",
+        "bestseller"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "NICETOWN",
+      "category" : {
+        "path" : [
+          "Décoration",
+          "Habillage de fenêtres",
+          "Rideaux"
+        ]
+      },
+      "createdAt" : 1761613391.026263,
+      "currency" : "CAD",
+      "description" : "Bloquez la lumière et réduisez le bruit avec ces rideaux occultants à isolation thermique. Technologie triple tissage pour une efficacité énergétique maximale.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.026262,
+        "latest" : 1777424591.026262
+      },
+      "id" : "PRD-008",
+      "images" : [
+        {
+          "alt" : "Blackout curtains",
+          "url" : "https:\/\/picsum.photos\/seed\/curtains\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Rideaux occultants thermiques NICETOWN",
+      "price" : 61.19,
+      "rating" : 4.6,
+      "reviewCount" : 7234,
+      "specs" : [
+        {
+          "label" : "Taille",
+          "value" : "132 cm L x 213 cm H (paire)"
+        },
+        {
+          "label" : "Matériau",
+          "value" : "Polyester triple tissage"
+        },
+        {
+          "label" : "Accroche",
+          "value" : "Œillets"
+        }
+      ],
+      "stockCount" : 312,
+      "tags" : [
+        "energy-efficient"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Black",
+          "id" : "V-008A",
+          "isInStock" : true,
+          "name" : "Jet Black"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Navy",
+          "id" : "V-008B",
+          "isInStock" : true,
+          "name" : "Navy"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Red",
+          "id" : "V-008C",
+          "isInStock" : true,
+          "name" : "Burgundy"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Blue",
+          "id" : "V-008D",
+          "isInStock" : true,
+          "name" : "Stone Blue"
+        }
+      ]
+    },
+    {
+      "brand" : "Glacier Bay",
+      "category" : {
+        "path" : [
+          "Salle de bain",
+          "Meubles-lavabos"
+        ]
+      },
+      "createdAt" : 1776906191.026266,
+      "currency" : "CAD",
+      "description" : "Ensemble complet de meuble-lavabo avec dessus en marbre synthétique et lavabo pré-installé. Portes à fermeture douce et tiroirs à extension complète.",
+      "estimatedDelivery" : {
+        "earliest" : 1777770191.026266,
+        "latest" : 1778374991.026266
+      },
+      "id" : "PRD-009",
+      "images" : [
+        {
+          "alt" : "Bathroom vanity",
+          "url" : "https:\/\/picsum.photos\/seed\/vanity\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : true,
+      "name" : "Meuble-lavabo Glacier Bay 91 cm",
+      "price" : 747.99,
+      "rating" : 4.1,
+      "reviewCount" : 567,
+      "salePrice" : 611.99,
+      "specs" : [
+        {
+          "label" : "Largeur",
+          "value" : "91 cm"
+        },
+        {
+          "label" : "Matériau",
+          "value" : "Bois d'ingénierie"
+        },
+        {
+          "label" : "Dessus",
+          "value" : "Marbre synthétique"
+        }
+      ],
+      "stockCount" : 18,
+      "tags" : [
+        "free-shipping"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "White",
+          "id" : "V-009A",
+          "isInStock" : true,
+          "name" : "White"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Brown",
+          "id" : "V-009B",
+          "isInStock" : true,
+          "name" : "Espresso"
+        }
+      ]
+    },
+    {
+      "brand" : "Pyradecor",
+      "category" : {
+        "path" : [
+          "Décoration",
+          "Art mural"
+        ]
+      },
+      "createdAt" : 1775869391.026268,
+      "currency" : "CAD",
+      "description" : "Impressions d'art abstrait sur toile, tendues et encadrées, prêtes à accrocher. Impression giclée haute définition sur toile de qualité supérieure.",
+      "estimatedDelivery" : {
+        "earliest" : 1777424591.026268,
+        "latest" : 1777683791.026268
+      },
+      "id" : "PRD-010",
+      "images" : [
+        {
+          "alt" : "Abstract canvas wall art",
+          "url" : "https:\/\/picsum.photos\/seed\/wallart\/600\/600"
+        }
+      ],
+      "isFeatured" : true,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Art mural abstrait sur toile Pyradecor",
+      "price" : 108.79,
+      "rating" : 4.5,
+      "reviewCount" : 1892,
+      "specs" : [
+        {
+          "label" : "Taille",
+          "value" : "152 cm L x 76 cm H (total)"
+        },
+        {
+          "label" : "Panneaux",
+          "value" : "5 pièces"
+        },
+        {
+          "label" : "Matériau",
+          "value" : "Toile sur cadre en bois"
+        }
+      ],
+      "stockCount" : 76,
+      "tags" : [
+
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "HON",
+      "category" : {
+        "path" : [
+          "Mobilier",
+          "Bureau",
+          "Chaises"
+        ]
+      },
+      "createdAt" : 1770685391.02627,
+      "currency" : "CAD",
+      "description" : "Conçue pour le confort toute la journée avec inclinaison synchro avancée et support lombaire réglable. Certifiée BIFMA pour la durabilité.",
+      "estimatedDelivery" : {
+        "earliest" : 1777597391.02627,
+        "latest" : 1777942991.02627
+      },
+      "id" : "PRD-011",
+      "images" : [
+        {
+          "alt" : "Ergonomic office chair",
+          "url" : "https:\/\/picsum.photos\/seed\/officechair\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Chaise de bureau ergonomique HON Ignition 2.0",
+      "price" : 625.59,
+      "rating" : 4.4,
+      "reviewCount" : 2156,
+      "specs" : [
+        {
+          "label" : "Capacité",
+          "value" : "136 kg"
+        },
+        {
+          "label" : "Accoudoirs",
+          "value" : "4D réglables"
+        },
+        {
+          "label" : "Garantie",
+          "value" : "12 ans"
+        }
+      ],
+      "stockCount" : 34,
+      "tags" : [
+        "bestseller"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Black",
+          "id" : "V-011A",
+          "isInStock" : true,
+          "name" : "Black Mesh"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Gray",
+          "id" : "V-011B",
+          "isInStock" : true,
+          "name" : "Fog Mesh"
+        }
+      ]
+    },
+    {
+      "brand" : "Mkono",
+      "category" : {
+        "path" : [
+          "Extérieur",
+          "Jardinières"
+        ]
+      },
+      "createdAt" : 1773709391.026272,
+      "currency" : "CAD",
+      "description" : "Jardinières minimalistes modernes en céramique avec soucoupes en bambou. Trou de drainage inclus. Trois tailles pour un affichage polyvalent.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.026272,
+        "latest" : 1777424591.026272
+      },
+      "id" : "PRD-012",
+      "images" : [
+        {
+          "alt" : "Ceramic plant pots",
+          "url" : "https:\/\/picsum.photos\/seed\/planters\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Pots en céramique Mkono (lot de 3)",
+      "price" : 47.59,
+      "rating" : 4.7,
+      "reviewCount" : 3456,
+      "salePrice" : 38.07,
+      "specs" : [
+        {
+          "label" : "Tailles",
+          "value" : "10, 13, 15 cm de diamètre"
+        },
+        {
+          "label" : "Matériau",
+          "value" : "Céramique avec soucoupe en bambou"
+        },
+        {
+          "label" : "Drainage",
+          "value" : "Oui"
+        }
+      ],
+      "stockCount" : 523,
+      "tags" : [
+        "top-rated"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "White",
+          "id" : "V-012A",
+          "isInStock" : true,
+          "name" : "White"
+        },
+        {
+          "additionalPrice" : 4.08,
+          "color" : "Orange",
+          "id" : "V-012B",
+          "isInStock" : true,
+          "name" : "Terracotta"
+        }
+      ]
+    },
+    {
+      "brand" : "Delta",
+      "category" : {
+        "path" : [
+          "Cuisine",
+          "Robinets"
+        ]
+      },
+      "createdAt" : 1772413391.026279,
+      "currency" : "CAD",
+      "description" : "Robinet de cuisine professionnel avec technologie Touch2O. Touchez n'importe où sur le robinet pour démarrer et arrêter le débit d'eau.",
+      "estimatedDelivery" : {
+        "earliest" : 1777338191.026279,
+        "latest" : 1777597391.026279
+      },
+      "id" : "PRD-013",
+      "images" : [
+        {
+          "alt" : "Kitchen faucet",
+          "url" : "https:\/\/picsum.photos\/seed\/faucet\/600\/600"
+        }
+      ],
+      "isFeatured" : true,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Robinet de cuisine Delta Trinsic",
+      "price" : 516.79,
+      "rating" : 4.6,
+      "reviewCount" : 1567,
+      "salePrice" : 448.79,
+      "specs" : [
+        {
+          "label" : "Fini",
+          "value" : "Inox arctique"
+        },
+        {
+          "label" : "Technologie",
+          "value" : "Touch2O"
+        },
+        {
+          "label" : "Longueur du tuyau",
+          "value" : "150 cm"
+        }
+      ],
+      "stockCount" : 28,
+      "tags" : [
+        "smart-home"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "Barefoot Dreams",
+      "category" : {
+        "path" : [
+          "Literie",
+          "Jetés et couvertures"
+        ]
+      },
+      "createdAt" : 1759885391.0262818,
+      "currency" : "CAD",
+      "description" : "Jeté ultra-doux en microfibre qui devient plus doux à chaque lavage. Lavable en machine pour un luxe quotidien.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.0262809,
+        "latest" : 1777424591.0262809
+      },
+      "id" : "PRD-014",
+      "images" : [
+        {
+          "alt" : "Cozy throw blanket",
+          "url" : "https:\/\/picsum.photos\/seed\/blanket\/600\/600"
+        }
+      ],
+      "isFeatured" : true,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Jeté Barefoot Dreams CozyChic",
+      "price" : 199.92,
+      "rating" : 4.9,
+      "reviewCount" : 8912,
+      "specs" : [
+        {
+          "label" : "Taille",
+          "value" : "137 cm x 183 cm"
+        },
+        {
+          "label" : "Matériau",
+          "value" : "Microfibre polyester"
+        },
+        {
+          "label" : "Entretien",
+          "value" : "Lavable en machine"
+        }
+      ],
+      "stockCount" : 156,
+      "tags" : [
+        "luxury",
+        "top-rated",
+        "bestseller"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Beige",
+          "id" : "V-014A",
+          "isInStock" : true,
+          "name" : "Stone\/Cream"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Gray",
+          "id" : "V-014B",
+          "isInStock" : true,
+          "name" : "Graphite\/Carbon"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Pink",
+          "id" : "V-014C",
+          "isInStock" : true,
+          "name" : "Dusty Rose"
+        }
+      ]
+    },
+    {
+      "brand" : "TP-Link",
+      "category" : {
+        "path" : [
+          "Maison intelligente",
+          "Prises intelligentes"
+        ]
+      },
+      "createdAt" : 1776560591.0262852,
+      "currency" : "CAD",
+      "description" : "Contrôlez vos appareils de n'importe où avec ces prises intelligentes WiFi. Compatible avec Alexa, Google Home et Apple HomeKit.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.0262852,
+        "latest" : 1777338191.0262852
+      },
+      "id" : "PRD-015",
+      "images" : [
+        {
+          "alt" : "Smart plug set",
+          "url" : "https:\/\/picsum.photos\/seed\/smartplug\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : true,
+      "name" : "Prise intelligente Kasa (lot de 4)",
+      "price" : 40.79,
+      "rating" : 4.7,
+      "reviewCount" : 12456,
+      "salePrice" : 31.27,
+      "specs" : [
+        {
+          "label" : "Quantité",
+          "value" : "Lot de 4"
+        },
+        {
+          "label" : "Connectivité",
+          "value" : "WiFi 2,4 GHz"
+        },
+        {
+          "label" : "Compatibilité",
+          "value" : "Alexa, Google, HomeKit"
+        }
+      ],
+      "stockCount" : 890,
+      "tags" : [
+        "smart-home",
+        "bestseller",
+        "value-pack"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "VASAGLE",
+      "category" : {
+        "path" : [
+          "Mobilier",
+          "Salon",
+          "Étagères"
+        ]
+      },
+      "createdAt" : 1772845391.026288,
+      "currency" : "CAD",
+      "description" : "Étagère industrielle à concept ouvert avec tablettes brun rustique et cadre en métal noir mat. Parfaite pour le salon, le bureau ou la chambre.",
+      "estimatedDelivery" : {
+        "earliest" : 1777338191.026288,
+        "latest" : 1777597391.026288
+      },
+      "id" : "PRD-016",
+      "images" : [
+        {
+          "alt" : "Industrial bookshelf",
+          "url" : "https:\/\/picsum.photos\/seed\/bookshelf\/600\/600"
+        }
+      ],
+      "isFeatured" : true,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Étagère industrielle VASAGLE 5 niveaux",
+      "price" : 176.79,
+      "rating" : 4.5,
+      "reviewCount" : 4230,
+      "salePrice" : 135.99,
+      "specs" : [
+        {
+          "label" : "Dimensions",
+          "value" : "80 cm L x 30 cm P x 168 cm H"
+        },
+        {
+          "label" : "Matériau",
+          "value" : "Panneau de particules et acier"
+        },
+        {
+          "label" : "Capacité",
+          "value" : "15 kg par tablette"
+        }
+      ],
+      "stockCount" : 112,
+      "tags" : [
+        "bestseller"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "Nathan James",
+      "category" : {
+        "path" : [
+          "Mobilier",
+          "Salon",
+          "Tables d'appoint"
+        ]
+      },
+      "createdAt" : 1776819791.02629,
+      "currency" : "CAD",
+      "description" : "Table d'appoint élégante avec un véritable dessus en marbre et une base en métal doré. Une pièce d'accent magnifique pour toute pièce.",
+      "estimatedDelivery" : {
+        "earliest" : 1777338191.02629,
+        "latest" : 1777510991.02629
+      },
+      "id" : "PRD-017",
+      "images" : [
+        {
+          "alt" : "Marble side table",
+          "url" : "https:\/\/picsum.photos\/seed\/sidetable\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : true,
+      "name" : "Table d'appoint ronde en marbre",
+      "price" : 122.39,
+      "rating" : 4.6,
+      "reviewCount" : 1892,
+      "specs" : [
+        {
+          "label" : "Diamètre du dessus",
+          "value" : "38 cm"
+        },
+        {
+          "label" : "Hauteur",
+          "value" : "61 cm"
+        },
+        {
+          "label" : "Matériau",
+          "value" : "Marbre et métal doré"
+        }
+      ],
+      "stockCount" : 78,
+      "tags" : [
+        "trending"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "Globe Electric",
+      "category" : {
+        "path" : [
+          "Éclairage",
+          "Suspensions"
+        ]
+      },
+      "createdAt" : 1776474191.026293,
+      "currency" : "CAD",
+      "description" : "Suspension moderne en noir mat avec design à ampoule apparente. Parfaite au-dessus de l'îlot de cuisine, de la table à manger ou de l'entrée.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.026293,
+        "latest" : 1777424591.026293
+      },
+      "id" : "PRD-018",
+      "images" : [
+        {
+          "alt" : "Pendant light",
+          "url" : "https:\/\/picsum.photos\/seed\/pendantlight\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : true,
+      "name" : "Suspension Globe Electric Harrow",
+      "price" : 67.99,
+      "rating" : 4.4,
+      "reviewCount" : 1567,
+      "salePrice" : 54.39,
+      "specs" : [
+        {
+          "label" : "Diamètre",
+          "value" : "25 cm"
+        },
+        {
+          "label" : "Longueur du câble",
+          "value" : "152 cm (réglable)"
+        },
+        {
+          "label" : "Type d'ampoule",
+          "value" : "E26 (non incluse)"
+        }
+      ],
+      "stockCount" : 210,
+      "tags" : [
+        "trending"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Black",
+          "id" : "V-018A",
+          "isInStock" : true,
+          "name" : "Matte Black"
+        },
+        {
+          "additionalPrice" : 13.6,
+          "color" : "Gold",
+          "id" : "V-018B",
+          "isInStock" : true,
+          "name" : "Brass"
+        }
+      ]
+    },
+    {
+      "brand" : "Lalia Home",
+      "category" : {
+        "path" : [
+          "Éclairage",
+          "Lampes de table"
+        ]
+      },
+      "createdAt" : 1771549391.026295,
+      "currency" : "CAD",
+      "description" : "Lampe de table élégante en céramique avec abat-jour tambour en lin. Ajoute une lumière ambiante chaude et un style sophistiqué.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.026295,
+        "latest" : 1777424591.026295
+      },
+      "id" : "PRD-019",
+      "images" : [
+        {
+          "alt" : "Table lamp",
+          "url" : "https:\/\/picsum.photos\/seed\/tablelamp\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Lampe de table sculptée Lalia Home",
+      "price" : 58.47,
+      "rating" : 4.3,
+      "reviewCount" : 890,
+      "specs" : [
+        {
+          "label" : "Hauteur",
+          "value" : "47 cm"
+        },
+        {
+          "label" : "Abat-jour",
+          "value" : "25 cm en lin"
+        },
+        {
+          "label" : "Matériau",
+          "value" : "Céramique et lin"
+        }
+      ],
+      "stockCount" : 156,
+      "tags" : [
+
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "Chakir",
+      "category" : {
+        "path" : [
+          "Salle de bain",
+          "Serviettes"
+        ]
+      },
+      "createdAt" : 1774141391.026298,
+      "currency" : "CAD",
+      "description" : "Serviettes de luxe en coton turc 700 g\/m². L'ensemble de 6 comprend 2 serviettes de bain, 2 serviettes à mains et 2 débarbouillettes. Ultra-absorbantes et à séchage rapide.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.026298,
+        "latest" : 1777424591.026298
+      },
+      "id" : "PRD-020",
+      "images" : [
+        {
+          "alt" : "Turkish towel set",
+          "url" : "https:\/\/picsum.photos\/seed\/towels\/600\/600"
+        }
+      ],
+      "isFeatured" : true,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Ensemble de serviettes Chakir Turkish Linens",
+      "price" : 81.59,
+      "rating" : 4.7,
+      "reviewCount" : 6432,
+      "salePrice" : 61.19,
+      "specs" : [
+        {
+          "label" : "GSM",
+          "value" : "700"
+        },
+        {
+          "label" : "Matériau",
+          "value" : "100 % coton turc"
+        },
+        {
+          "label" : "L'ensemble comprend",
+          "value" : "6 pièces"
+        }
+      ],
+      "stockCount" : 340,
+      "tags" : [
+        "top-rated",
+        "value-pack"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "White",
+          "id" : "V-020A",
+          "isInStock" : true,
+          "name" : "White"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Navy",
+          "id" : "V-020B",
+          "isInStock" : true,
+          "name" : "Navy"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Green",
+          "id" : "V-020C",
+          "isInStock" : true,
+          "name" : "Sage Green"
+        }
+      ]
+    },
+    {
+      "brand" : "BEAUTYPEAK",
+      "category" : {
+        "path" : [
+          "Décoration",
+          "Miroirs"
+        ]
+      },
+      "createdAt" : 1776128591.0263019,
+      "currency" : "CAD",
+      "description" : "Miroir pleine longueur élégant à arche avec cadre en alliage d'aluminium. À appuyer contre le mur ou à accrocher. Verre incassable pour la sécurité.",
+      "estimatedDelivery" : {
+        "earliest" : 1777424591.0263019,
+        "latest" : 1777683791.0263019
+      },
+      "id" : "PRD-021",
+      "images" : [
+        {
+          "alt" : "Arched floor mirror",
+          "url" : "https:\/\/picsum.photos\/seed\/mirror\/600\/600"
+        }
+      ],
+      "isFeatured" : true,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Miroir pleine longueur arqué BEAUTYPEAK",
+      "price" : 135.99,
+      "rating" : 4.6,
+      "reviewCount" : 3421,
+      "salePrice" : 108.79,
+      "specs" : [
+        {
+          "label" : "Taille",
+          "value" : "165 cm x 56 cm"
+        },
+        {
+          "label" : "Cadre",
+          "value" : "Alliage d'aluminium"
+        },
+        {
+          "label" : "Verre",
+          "value" : "HD incassable"
+        }
+      ],
+      "stockCount" : 95,
+      "tags" : [
+        "trending",
+        "bestseller"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Gold",
+          "id" : "V-021A",
+          "isInStock" : true,
+          "name" : "Gold"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Black",
+          "id" : "V-021B",
+          "isInStock" : true,
+          "name" : "Black"
+        }
+      ]
+    },
+    {
+      "brand" : "MIULEE",
+      "category" : {
+        "path" : [
+          "Décoration",
+          "Coussins et jetés"
+        ]
+      },
+      "createdAt" : 1768525391.026304,
+      "currency" : "CAD",
+      "description" : "Housses de coussin en velours luxueusement douces dans des combinaisons de couleurs assorties. Fermeture à glissière cachée. Lavable en machine.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.026304,
+        "latest" : 1777338191.026304
+      },
+      "id" : "PRD-022",
+      "images" : [
+        {
+          "alt" : "Velvet pillow covers",
+          "url" : "https:\/\/picsum.photos\/seed\/throwpillows\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Housses de coussins en velours MIULEE (lot de 4)",
+      "price" : 31.27,
+      "rating" : 4.5,
+      "reviewCount" : 8932,
+      "specs" : [
+        {
+          "label" : "Taille",
+          "value" : "46 cm x 46 cm"
+        },
+        {
+          "label" : "Matériau",
+          "value" : "Velours"
+        },
+        {
+          "label" : "Quantité",
+          "value" : "Lot de 4 housses"
+        }
+      ],
+      "stockCount" : 670,
+      "tags" : [
+        "value-pack"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "UDPATIO",
+      "category" : {
+        "path" : [
+          "Extérieur",
+          "Mobilier de patio"
+        ]
+      },
+      "createdAt" : 1776646991.026307,
+      "currency" : "CAD",
+      "description" : "Ensemble de mobilier de patio résistant aux intempéries comprenant causeuse, 2 fauteuils et table basse avec dessus en verre trempé. Coussins à séchage rapide inclus.",
+      "estimatedDelivery" : {
+        "earliest" : 1777597391.026307,
+        "latest" : 1778029391.026307
+      },
+      "id" : "PRD-023",
+      "images" : [
+        {
+          "alt" : "Patio conversation set",
+          "url" : "https:\/\/picsum.photos\/seed\/patioset\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : true,
+      "name" : "Ensemble de patio UDPATIO 4 pièces",
+      "price" : 611.99,
+      "rating" : 4.3,
+      "reviewCount" : 2134,
+      "salePrice" : 475.99,
+      "specs" : [
+        {
+          "label" : "Matériau",
+          "value" : "Rotin PE"
+        },
+        {
+          "label" : "Coussin",
+          "value" : "Tissu oléfine (amovible)"
+        },
+        {
+          "label" : "Structure",
+          "value" : "Acier enduit de poudre"
+        }
+      ],
+      "stockCount" : 24,
+      "tags" : [
+        "free-shipping"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Brown",
+          "id" : "V-023A",
+          "isInStock" : true,
+          "name" : "Dark Brown \/ Beige"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Gray",
+          "id" : "V-023B",
+          "isInStock" : true,
+          "name" : "Gray \/ Blue"
+        }
+      ]
+    },
+    {
+      "brand" : "Brightown",
+      "category" : {
+        "path" : [
+          "Extérieur",
+          "Éclairage extérieur"
+        ]
+      },
+      "createdAt" : 1775005391.026308,
+      "currency" : "CAD",
+      "description" : "Créez une ambiance magique en extérieur avec ces guirlandes LED blanc chaud. Ampoules incassables, étanches pour une utilisation toute l'année.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.026308,
+        "latest" : 1777424591.026308
+      },
+      "id" : "PRD-024",
+      "images" : [
+        {
+          "alt" : "Outdoor string lights",
+          "url" : "https:\/\/picsum.photos\/seed\/stringlights\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Guirlandes LED étanches Brightown 30 m",
+      "price" : 48.95,
+      "rating" : 4.6,
+      "reviewCount" : 5678,
+      "specs" : [
+        {
+          "label" : "Longueur",
+          "value" : "30 mètres"
+        },
+        {
+          "label" : "Ampoules",
+          "value" : "50 LED (incassables)"
+        },
+        {
+          "label" : "Indice",
+          "value" : "IP65 étanche"
+        }
+      ],
+      "stockCount" : 430,
+      "tags" : [
+        "top-rated"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "CGK Unlimited",
+      "category" : {
+        "path" : [
+          "Literie",
+          "Ensembles de draps"
+        ]
+      },
+      "createdAt" : 1764205391.02631,
+      "currency" : "CAD",
+      "description" : "Draps en microfibre brossée avec poches profondes. Infroissables, résistants à la décoloration et hypoallergéniques. Comprend drap plat, drap-housse et 2 taies d'oreiller.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.02631,
+        "latest" : 1777338191.02631
+      },
+      "id" : "PRD-025",
+      "images" : [
+        {
+          "alt" : "Sheet set",
+          "url" : "https:\/\/picsum.photos\/seed\/sheetset\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Ensemble de draps CGK Unlimited",
+      "price" : 54.39,
+      "rating" : 4.5,
+      "reviewCount" : 12340,
+      "salePrice" : 40.79,
+      "specs" : [
+        {
+          "label" : "Nombre de fils",
+          "value" : "1800"
+        },
+        {
+          "label" : "Matériau",
+          "value" : "Microfibre brossée"
+        },
+        {
+          "label" : "Poches profondes",
+          "value" : "Jusqu'à 41 cm"
+        }
+      ],
+      "stockCount" : 890,
+      "tags" : [
+        "bestseller",
+        "value-pack"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "White",
+          "id" : "V-025A",
+          "isInStock" : true,
+          "name" : "Queen - White",
+          "size" : "Queen"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Gray",
+          "id" : "V-025B",
+          "isInStock" : true,
+          "name" : "Queen - Gray",
+          "size" : "Queen"
+        },
+        {
+          "additionalPrice" : 13.6,
+          "color" : "White",
+          "id" : "V-025C",
+          "isInStock" : true,
+          "name" : "King - White",
+          "size" : "King"
+        }
+      ]
+    },
+    {
+      "brand" : "ReaLife",
+      "category" : {
+        "path" : [
+          "Tapis",
+          "Tapis de passage"
+        ]
+      },
+      "createdAt" : 1776387791.0263119,
+      "currency" : "CAD",
+      "description" : "Tapis de passage résistant aux taches et lavable en machine pour couloirs, cuisines et entrées. Fabriqué à partir de 100 % coton recyclé.",
+      "estimatedDelivery" : {
+        "earliest" : 1777338191.0263119,
+        "latest" : 1777510991.0263119
+      },
+      "id" : "PRD-026",
+      "images" : [
+        {
+          "alt" : "Runner rug",
+          "url" : "https:\/\/picsum.photos\/seed\/runnerrug\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : true,
+      "name" : "Tapis de passage lavable ReaLife",
+      "price" : 67.99,
+      "rating" : 4.3,
+      "reviewCount" : 2345,
+      "specs" : [
+        {
+          "label" : "Taille",
+          "value" : "61 cm x 213 cm"
+        },
+        {
+          "label" : "Matériau",
+          "value" : "100 % coton recyclé"
+        },
+        {
+          "label" : "Entretien",
+          "value" : "Lavable en machine"
+        }
+      ],
+      "stockCount" : 190,
+      "tags" : [
+        "eco-friendly"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "Henckels",
+      "category" : {
+        "path" : [
+          "Cuisine",
+          "Coutellerie"
+        ]
+      },
+      "createdAt" : 1770253391.026315,
+      "currency" : "CAD",
+      "description" : "Couteaux professionnels en acier inoxydable allemand. Bloc auto-affûtant pour maintenir le tranchant. Comprend couteaux de chef, à pain, utilitaire, à éplucher, à steak et plus.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.026315,
+        "latest" : 1777424591.026315
+      },
+      "id" : "PRD-027",
+      "images" : [
+        {
+          "alt" : "Knife block set",
+          "url" : "https:\/\/picsum.photos\/seed\/knifeset\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Bloc de couteaux Henckels Modernist 14 pièces",
+      "price" : 271.99,
+      "rating" : 4.7,
+      "reviewCount" : 3678,
+      "salePrice" : 203.99,
+      "specs" : [
+        {
+          "label" : "Pièces",
+          "value" : "14"
+        },
+        {
+          "label" : "Matériau",
+          "value" : "Acier inoxydable allemand"
+        },
+        {
+          "label" : "Bloc",
+          "value" : "Auto-affûtant"
+        }
+      ],
+      "stockCount" : 56,
+      "tags" : [
+        "bestseller",
+        "free-shipping"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "KitchenAid",
+      "category" : {
+        "path" : [
+          "Cuisine",
+          "Électroménagers"
+        ]
+      },
+      "createdAt" : 1768525391.0263171,
+      "currency" : "CAD",
+      "description" : "Batteur sur socle emblématique à tête inclinable avec 10 vitesses. Comprend batteur plat, crochet pétrisseur et fouet. Plus de 15 accessoires optionnels.",
+      "estimatedDelivery" : {
+        "earliest" : 1777338191.0263171,
+        "latest" : 1777597391.0263171
+      },
+      "id" : "PRD-028",
+      "images" : [
+        {
+          "alt" : "Stand mixer",
+          "url" : "https:\/\/picsum.photos\/seed\/standmixer\/600\/600"
+        }
+      ],
+      "isFeatured" : true,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Batteur sur socle KitchenAid Artisan 4,7 L",
+      "price" : 611.99,
+      "rating" : 4.8,
+      "reviewCount" : 15230,
+      "specs" : [
+        {
+          "label" : "Capacité",
+          "value" : "4,7 litres"
+        },
+        {
+          "label" : "Moteur",
+          "value" : "325 watts"
+        },
+        {
+          "label" : "Vitesses",
+          "value" : "10"
+        }
+      ],
+      "stockCount" : 42,
+      "tags" : [
+        "luxury",
+        "top-rated"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Red",
+          "id" : "V-028A",
+          "isInStock" : true,
+          "name" : "Empire Red"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Black",
+          "id" : "V-028B",
+          "isInStock" : true,
+          "name" : "Onyx Black"
+        },
+        {
+          "additionalPrice" : 27.2,
+          "color" : "Green",
+          "id" : "V-028C",
+          "isInStock" : true,
+          "name" : "Pistachio"
+        }
+      ]
+    },
+    {
+      "brand" : "ecobee",
+      "category" : {
+        "path" : [
+          "Maison intelligente",
+          "Thermostats"
+        ]
+      },
+      "createdAt" : 1773277391.02632,
+      "currency" : "CAD",
+      "description" : "Économisez jusqu'à 26 % sur vos coûts d'énergie avec des capteurs intelligents, Alexa intégré et surveillance de la qualité de l'air. Compatible Apple HomeKit.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.02632,
+        "latest" : 1777424591.02632
+      },
+      "id" : "PRD-029",
+      "images" : [
+        {
+          "alt" : "Smart thermostat",
+          "url" : "https:\/\/picsum.photos\/seed\/thermostat\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Thermostat intelligent ecobee Premium",
+      "price" : 339.99,
+      "rating" : 4.5,
+      "reviewCount" : 4567,
+      "salePrice" : 299.19,
+      "specs" : [
+        {
+          "label" : "Écran",
+          "value" : "Tactile 8,9 cm"
+        },
+        {
+          "label" : "Capteurs",
+          "value" : "SmartSensor inclus"
+        },
+        {
+          "label" : "Compatibilité",
+          "value" : "HomeKit, Alexa intégré"
+        }
+      ],
+      "stockCount" : 63,
+      "tags" : [
+        "smart-home",
+        "energy-efficient"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "mDesign",
+      "category" : {
+        "path" : [
+          "Rangement",
+          "Organisation de placard"
+        ]
+      },
+      "createdAt" : 1771981391.0263228,
+      "currency" : "CAD",
+      "description" : "Bacs de rangement en tissu avec fenêtres transparentes et poignées renforcées. Empilez et organisez placards, étagères et armoires.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.0263228,
+        "latest" : 1777424591.0263228
+      },
+      "id" : "PRD-030",
+      "images" : [
+        {
+          "alt" : "Storage bins",
+          "url" : "https:\/\/picsum.photos\/seed\/storagebins\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Bacs de rangement mDesign empilables (lot de 6)",
+      "price" : 61.19,
+      "rating" : 4.4,
+      "reviewCount" : 5890,
+      "salePrice" : 47.59,
+      "specs" : [
+        {
+          "label" : "Taille",
+          "value" : "28 cm x 28 cm x 28 cm chacun"
+        },
+        {
+          "label" : "Matériau",
+          "value" : "Tissu polyester"
+        },
+        {
+          "label" : "Quantité",
+          "value" : "Lot de 6"
+        }
+      ],
+      "stockCount" : 412,
+      "tags" : [
+        "value-pack"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Gray",
+          "id" : "V-030A",
+          "isInStock" : true,
+          "name" : "Charcoal Gray"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Beige",
+          "id" : "V-030B",
+          "isInStock" : true,
+          "name" : "Linen"
+        }
+      ]
+    }
+  ],
+  "version" : "1.0.0"
+}

@@ -10,6 +10,8 @@ enum PreferencesStore {
         case notificationsEnabled
         case biometricAuthEnabled
         case selectedRegion
+        case lastIngestionTimestamp
+        case currentAssortmentVersion
     }
 
     private static let defaults = UserDefaults.standard

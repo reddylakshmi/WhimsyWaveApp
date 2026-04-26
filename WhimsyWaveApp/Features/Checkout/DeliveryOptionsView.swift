@@ -18,7 +18,7 @@ struct DeliveryOptionsView: View {
                                     HStack {
                                         Text(option.name).font(.headline)
                                         if option.isExpress {
-                                            Text("EXPRESS")
+                                            Text("delivery.express")
                                                 .font(.caption2.bold())
                                                 .padding(.horizontal, AppSpacing.sm)
                                                 .background(Capsule().fill(.orange))
@@ -30,7 +30,7 @@ struct DeliveryOptionsView: View {
                                         .foregroundStyle(.secondary)
                                 }
                                 Spacer()
-                                Text(option.price == 0 ? "FREE" : PriceFormatter.format(option.price))
+                                Text(option.price == 0 ? String(localized: "price.free", locale: RegionManager.shared.currentRegion.locale) : PriceFormatter.format(option.price))
                                     .font(.subheadline.bold())
                                     .foregroundStyle(option.price == 0 ? .green : .primary)
                                 Image(systemName: selected.id == option.id ? "checkmark.circle.fill" : "circle")
@@ -50,14 +50,14 @@ struct DeliveryOptionsView: View {
             Spacer()
             HStack(spacing: AppSpacing.md) {
                 Button(action: onBack) {
-                    Text("Back")
+                    Text("nav.back")
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, AppSpacing.md)
                         .background(RoundedRectangle(cornerRadius: AppConstants.Layout.buttonCornerRadius).stroke(.blue))
                 }
                 Button(action: onNext) {
-                    Text("Continue to Payment")
+                    Text("checkout.continueToPayment")
                         .font(.headline)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)

@@ -20,7 +20,7 @@ struct AccountView: View {
                             }
 
                         VStack(alignment: .leading, spacing: AppSpacing.xxs) {
-                            Text(feature.user?.fullName ?? String(localized: "guest.user", defaultValue: "Guest User"))
+                            Text(feature.user?.fullName ?? String(localized: "guest.user", defaultValue: "Guest User", locale: RegionManager.shared.currentRegion.locale))
                                 .font(.headline)
                             Text(feature.user?.email ?? "")
                                 .font(.subheadline)
@@ -40,32 +40,32 @@ struct AccountView: View {
 
                 RegionPickerSection(onRegionChanged: onRegionChanged)
 
-                Section(String(localized: "account.shopping", defaultValue: "Shopping")) {
+                Section("account.shopping") {
                     Button(action: onOrdersTapped) {
-                        Label(String(localized: "account.orderHistory", defaultValue: "Order History"), systemImage: "bag")
+                        Label("account.orderHistory", systemImage: "bag")
                     }
                     NavigationLink {
                         AddressListView(feature: feature)
                     } label: {
-                        Label(String(localized: "account.addresses", defaultValue: "Addresses"), systemImage: "mappin.and.ellipse")
+                        Label("account.addresses", systemImage: "mappin.and.ellipse")
                     }
                     NavigationLink {
                         PaymentMethodsView(feature: feature)
                     } label: {
-                        Label(String(localized: "account.paymentMethods", defaultValue: "Payment Methods"), systemImage: "creditcard")
+                        Label("account.paymentMethods", systemImage: "creditcard")
                     }
                 }
 
-                Section(String(localized: "account.preferences", defaultValue: "Preferences")) {
+                Section("account.preferences") {
                     NavigationLink {
                         SettingsView()
                     } label: {
-                        Label(String(localized: "account.settings", defaultValue: "Settings"), systemImage: "gearshape")
+                        Label("account.settings", systemImage: "gearshape")
                     }
                     NavigationLink {
-                        Text(String(localized: "account.helpSupport", defaultValue: "Help & Support"))
+                        Text("account.helpSupport")
                     } label: {
-                        Label(String(localized: "account.helpSupport", defaultValue: "Help & Support"), systemImage: "questionmark.circle")
+                        Label("account.helpSupport", systemImage: "questionmark.circle")
                     }
                 }
 
@@ -96,7 +96,7 @@ struct RegionPickerSection: View {
     private var regionManager: RegionManager { RegionManager.shared }
 
     var body: some View {
-        Section(String(localized: "region.title", defaultValue: "Country / Region")) {
+        Section("region.title") {
             Button {
                 showingRegionPicker = true
             } label: {
@@ -117,8 +117,8 @@ struct RegionPickerSection: View {
                         .foregroundStyle(.tertiary)
                 }
             }
-            .accessibilityLabel(String(localized: "region.title", defaultValue: "Country / Region") + ": \(regionManager.currentRegion.displayName), \(regionManager.currentRegion.currencyCode)")
-            .accessibilityHint(String(localized: "accessibility.changeRegion", defaultValue: "Tap to change your country and currency"))
+            .accessibilityLabel("\(regionManager.currentRegion.displayName), \(regionManager.currentRegion.currencyCode)")
+            .accessibilityHint(Text("accessibility.changeRegion"))
         }
         .sheet(isPresented: $showingRegionPicker) {
             RegionPickerView(onRegionChanged: onRegionChanged)
@@ -145,7 +145,9 @@ struct RegionPickerView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button(String(localized: "nav.cancel", defaultValue: "Cancel")) { dismiss() }
+                    Button { dismiss() } label: {
+                        Text("nav.cancel")
+                    }
                 }
             }
         }
@@ -170,7 +172,7 @@ struct RegionPickerView: View {
                     Text(region.displayName)
                         .font(.headline)
                         .foregroundStyle(.primary)
-                    Text("\(String(localized: "region.currency", defaultValue: "Currency")): \(region.currencyCode) (\(region.currencySymbol))")
+                    Text("\(region.currencyCode) (\(region.currencySymbol))")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }

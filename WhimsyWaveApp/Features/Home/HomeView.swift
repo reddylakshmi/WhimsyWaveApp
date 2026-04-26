@@ -148,7 +148,7 @@ struct HomeView: View {
                 }
             }
             Spacer()
-            Button(String(localized: "action.seeAll", defaultValue: "See All")) { onSeeAllTapped(section) }
+            Button { onSeeAllTapped(section) } label: { Text("action.seeAll") }
                 .font(.subheadline.bold())
         }
         .padding(.horizontal, AppSpacing.md)
@@ -210,11 +210,11 @@ struct HomeView: View {
 
     private func errorView(_ message: String) -> some View {
         ContentUnavailableView {
-            Label(String(localized: "error.title", defaultValue: "Something Went Wrong"), systemImage: "exclamationmark.triangle")
+            Label("error.title", systemImage: "exclamationmark.triangle")
         } description: {
             Text(message)
         } actions: {
-            Button(String(localized: "action.tryAgain", defaultValue: "Try Again")) { Task { await feature.refresh() } }
+            Button { Task { await feature.refresh() } } label: { Text("action.tryAgain") }
                 .buttonStyle(.borderedProminent)
         }
     }

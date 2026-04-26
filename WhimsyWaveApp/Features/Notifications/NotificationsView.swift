@@ -7,7 +7,7 @@ struct NotificationsView: View {
         NavigationStack {
             Group {
                 if feature.notifications.isEmpty {
-                    ContentUnavailableView("No notifications", systemImage: "bell.slash", description: Text("You're all caught up!"))
+                    ContentUnavailableView("notifications.empty.title", systemImage: "bell.slash", description: Text("notifications.empty.description"))
                 } else {
                     List(feature.notifications) { notification in
                         notificationRow(notification)
@@ -16,11 +16,11 @@ struct NotificationsView: View {
                     .listStyle(.plain)
                 }
             }
-            .navigationTitle("Notifications")
+            .navigationTitle("notifications.title")
             .toolbar {
                 if feature.unreadCount > 0 {
                     ToolbarItem(placement: .topBarTrailing) {
-                        Button("Mark All Read") { feature.markAllAsRead() }
+                        Button("notifications.markAllRead") { feature.markAllAsRead() }
                             .font(.subheadline)
                     }
                 }
@@ -59,8 +59,8 @@ struct NotificationsView: View {
         }
         .padding(.vertical, AppSpacing.xs)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("\(notification.isRead ? "" : "Unread. ")\(notification.title). \(notification.body)")
-        .accessibilityHint(notification.isRead ? "" : "Double tap to mark as read")
+        .accessibilityLabel("\(notification.isRead ? "" : String(localized: "accessibility.unread", locale: RegionManager.shared.currentRegion.locale) + ". ")\(notification.title). \(notification.body)")
+        .accessibilityHint(notification.isRead ? "" : String(localized: "accessibility.markAsReadHint", locale: RegionManager.shared.currentRegion.locale))
     }
 
     private func iconForType(_ type: AppNotificationType) -> String {

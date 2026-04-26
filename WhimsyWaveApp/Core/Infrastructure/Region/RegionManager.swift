@@ -8,6 +8,10 @@ final class RegionManager {
     var currentRegion: Region {
         didSet {
             PreferencesStore.set(currentRegion.rawValue, for: .selectedRegion)
+            // Trigger data ingestion for the new region
+            Task {
+                await ServiceContainer.current.ingestionWorker.handleRegionChange(to: currentRegion)
+            }
         }
     }
 

@@ -18,8 +18,8 @@ struct SearchView: View {
                         .zIndex(1)
                 }
             }
-            .navigationTitle("Search")
-            .searchable(text: $feature.query, prompt: "Search products...")
+            .navigationTitle("search.title")
+            .searchable(text: $feature.query, prompt: Text("search.prompt"))
             .onSubmit(of: .search) {
                 Task { await feature.search() }
             }
@@ -49,7 +49,7 @@ struct SearchView: View {
             VStack(alignment: .leading, spacing: AppSpacing.lg) {
                 if !feature.suggestions.isEmpty {
                     VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                        Text("Suggestions").font(.headline)
+                        Text("search.suggestions").font(.headline)
                         ForEach(feature.suggestions, id: \.self) { suggestion in
                             Button {
                                 feature.query = suggestion
@@ -71,10 +71,12 @@ struct SearchView: View {
                 if !feature.recentSearches.isEmpty {
                     VStack(alignment: .leading, spacing: AppSpacing.sm) {
                         HStack {
-                            Text("Recent Searches").font(.headline)
+                            Text("search.recentSearches").font(.headline)
                             Spacer()
-                            Button("Clear") { Task { await feature.clearRecentSearches() } }
-                                .font(.subheadline)
+                            Button { Task { await feature.clearRecentSearches() } } label: {
+                                Text("action.clear")
+                            }
+                            .font(.subheadline)
                         }
                         ForEach(feature.recentSearches, id: \.self) { search in
                             Button {
@@ -149,17 +151,17 @@ struct SearchView: View {
                     .background(Circle().fill(.blue))
             }
             .buttonStyle(.plain)
-            .accessibilityLabel("Add \(product.name) to cart")
+            .accessibilityLabel("accessibility.addToCart \(product.name)")
         }
         .padding(.vertical, AppSpacing.xs)
         .accessibilityElement(children: .contain)
-        .accessibilityLabel("\(product.name) by \(product.brand), \(product.displayPrice)")
+        .accessibilityLabel("\(product.name), \(product.brand), \(product.displayPrice)")
     }
 
     private func toastView(name: String) -> some View {
         HStack(spacing: AppSpacing.sm) {
             Image(systemName: "checkmark.circle.fill").foregroundStyle(.green)
-            Text("Added \(name)")
+            Text("search.addedToCart \(name)")
                 .lineLimit(1)
         }
         .font(.subheadline.bold())

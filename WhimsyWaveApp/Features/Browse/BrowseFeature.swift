@@ -26,7 +26,7 @@ final class BrowseFeature {
         isLoading = true
         do {
             let sections = try await productRepository.fetchHomeSections()
-            categories = sections.first(where: { $0.type == .categories })?.categories ?? Category.mockCategories
+            categories = sections.first(where: { $0.type == .categories })?.categories ?? []
             if let first = categories.first {
                 await selectCategory(first)
             }

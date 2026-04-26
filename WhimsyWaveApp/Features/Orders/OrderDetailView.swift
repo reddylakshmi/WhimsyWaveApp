@@ -18,7 +18,7 @@ struct OrderDetailView: View {
                     }
                     if let tracking = order.trackingNumber {
                         HStack {
-                            Text("Tracking:").font(.subheadline).foregroundStyle(.secondary)
+                            Text("order.tracking").font(.subheadline).foregroundStyle(.secondary)
                             Text(tracking).font(.subheadline.monospaced())
                         }
                     }
@@ -26,14 +26,14 @@ struct OrderDetailView: View {
 
                 // Items
                 VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                    Text("Items").font(.headline)
+                    Text("order.items").font(.headline)
                     ForEach(order.items) { item in
                         HStack(spacing: AppSpacing.md) {
                             RemoteImageView(url: item.image, cornerRadius: AppConstants.Layout.cornerRadius)
                                 .frame(width: 50, height: 50)
                             VStack(alignment: .leading) {
                                 Text(item.name).font(.subheadline).lineLimit(1)
-                                Text("Qty: \(item.quantity)").font(.caption).foregroundStyle(.secondary)
+                                Text("order.quantity \(item.quantity)").font(.caption).foregroundStyle(.secondary)
                             }
                             Spacer()
                             Text(PriceFormatter.format(item.lineTotal)).font(.subheadline)
@@ -43,19 +43,19 @@ struct OrderDetailView: View {
 
                 // Shipping
                 VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                    Text("Shipping Address").font(.headline)
+                    Text("checkout.shippingAddress").font(.headline)
                     Text(order.shippingAddress.fullName).font(.subheadline)
                     Text(order.shippingAddress.formattedAddress).font(.subheadline).foregroundStyle(.secondary)
                 }
 
                 // Summary
                 VStack(spacing: AppSpacing.sm) {
-                    priceRow("Subtotal", value: order.subtotal)
-                    priceRow("Shipping", value: order.shippingCost)
-                    priceRow("Tax", value: order.tax)
+                    priceSummaryRow("cart.subtotal", value: order.subtotal)
+                    priceSummaryRow("cart.shipping", value: order.shippingCost)
+                    priceSummaryRow("cart.tax", value: order.tax)
                     Divider()
                     HStack {
-                        Text("Total").font(.headline)
+                        Text("cart.total").font(.headline)
                         Spacer()
                         Text(order.displayTotal).font(.headline)
                     }
@@ -66,7 +66,7 @@ struct OrderDetailView: View {
                     Button(role: .destructive) {
                         showingCancelConfirmation = true
                     } label: {
-                        Text("Cancel Order")
+                        Text("order.cancelOrder")
                             .font(.headline)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, AppSpacing.md)
@@ -76,24 +76,24 @@ struct OrderDetailView: View {
             }
             .padding(AppSpacing.md)
         }
-        .navigationTitle("Order #\(order.orderNumber)")
+        .navigationTitle("order.number \(order.orderNumber)")
         .navigationBarTitleDisplayMode(.inline)
-        .confirmationDialog("Cancel Order", isPresented: $showingCancelConfirmation, titleVisibility: .visible) {
-            Button("Cancel Order", role: .destructive) {
+        .confirmationDialog("order.cancelOrder", isPresented: $showingCancelConfirmation, titleVisibility: .visible) {
+            Button("order.cancelOrder", role: .destructive) {
                 HapticFeedback.medium()
                 onCancel()
             }
-            Button("Keep Order", role: .cancel) {}
+            Button("order.keepOrder", role: .cancel) {}
         } message: {
-            Text("Are you sure you want to cancel this order? This action cannot be undone.")
+            Text("order.cancelConfirmation")
         }
     }
 
-    private func priceRow(_ label: String, value: Decimal) -> some View {
+    private func priceSummaryRow(_ label: LocalizedStringKey, value: Decimal) -> some View {
         HStack {
             Text(label).font(.subheadline).foregroundStyle(.secondary)
             Spacer()
-            Text(value == 0 ? "FREE" : PriceFormatter.format(value)).font(.subheadline)
+            Text(value == 0 ? String(localized: "price.free", locale: RegionManager.shared.currentRegion.locale) : PriceFormatter.format(value)).font(.subheadline)
         }
     }
 

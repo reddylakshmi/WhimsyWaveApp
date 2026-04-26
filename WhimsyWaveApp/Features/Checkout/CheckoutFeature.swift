@@ -8,11 +8,12 @@ enum CheckoutStepType: Int, CaseIterable, Sendable {
     case review = 3
 
     var title: String {
+        let locale = RegionManager.shared.currentRegion.locale
         switch self {
-        case .shipping: return String(localized: "checkout.shipping", defaultValue: "Shipping")
-        case .delivery: return String(localized: "checkout.delivery", defaultValue: "Delivery")
-        case .payment: return String(localized: "checkout.payment", defaultValue: "Payment")
-        case .review: return String(localized: "checkout.review", defaultValue: "Review")
+        case .shipping: return String(localized: "checkout.shipping", defaultValue: "Shipping", locale: locale)
+        case .delivery: return String(localized: "checkout.delivery", defaultValue: "Delivery", locale: locale)
+        case .payment: return String(localized: "checkout.payment", defaultValue: "Payment", locale: locale)
+        case .review: return String(localized: "checkout.review", defaultValue: "Review", locale: locale)
         }
     }
 }
@@ -24,18 +25,19 @@ struct DeliveryOption: Identifiable, Equatable, Sendable {
     let price: Decimal
     let isExpress: Bool
 
-    static let standard = DeliveryOption(id: "DEL-001", name: String(localized: "checkout.standard", defaultValue: "Standard Shipping"), estimatedDays: String(localized: "checkout.days.5to7", defaultValue: "5-7 business days"), price: 0, isExpress: false)
-    static let expedited = DeliveryOption(id: "DEL-002", name: String(localized: "checkout.expedited", defaultValue: "Expedited Shipping"), estimatedDays: String(localized: "checkout.days.2to3", defaultValue: "2-3 business days"), price: AppConstants.Shipping.expeditedCost, isExpress: false)
-    static let express = DeliveryOption(id: "DEL-003", name: String(localized: "checkout.express", defaultValue: "Express Shipping"), estimatedDays: String(localized: "checkout.days.1", defaultValue: "1 business day"), price: AppConstants.Shipping.expressCost, isExpress: true)
+    static let standard = DeliveryOption(id: "DEL-001", name: String(localized: "checkout.standard", defaultValue: "Standard Shipping", locale: RegionManager.shared.currentRegion.locale), estimatedDays: String(localized: "checkout.days.5to7", defaultValue: "5-7 business days", locale: RegionManager.shared.currentRegion.locale), price: 0, isExpress: false)
+    static let expedited = DeliveryOption(id: "DEL-002", name: String(localized: "checkout.expedited", defaultValue: "Expedited Shipping", locale: RegionManager.shared.currentRegion.locale), estimatedDays: String(localized: "checkout.days.2to3", defaultValue: "2-3 business days", locale: RegionManager.shared.currentRegion.locale), price: AppConstants.Shipping.expeditedCost, isExpress: false)
+    static let express = DeliveryOption(id: "DEL-003", name: String(localized: "checkout.express", defaultValue: "Express Shipping", locale: RegionManager.shared.currentRegion.locale), estimatedDays: String(localized: "checkout.days.1", defaultValue: "1 business day", locale: RegionManager.shared.currentRegion.locale), price: AppConstants.Shipping.expressCost, isExpress: true)
 
     static let allOptions: [DeliveryOption] = [.standard, .expedited, .express]
 
     static func options(for region: Region) -> [DeliveryOption] {
         let multiplier = region.priceMultiplier
+        let locale = region.locale
         return [
-            DeliveryOption(id: "DEL-001", name: String(localized: "checkout.standard", defaultValue: "Standard Shipping"), estimatedDays: String(localized: "checkout.days.5to7", defaultValue: "5-7 business days"), price: 0, isExpress: false),
-            DeliveryOption(id: "DEL-002", name: String(localized: "checkout.expedited", defaultValue: "Expedited Shipping"), estimatedDays: String(localized: "checkout.days.2to3", defaultValue: "2-3 business days"), price: (Decimal(string: "14.99")! * multiplier).roundedToTwo, isExpress: false),
-            DeliveryOption(id: "DEL-003", name: String(localized: "checkout.express", defaultValue: "Express Shipping"), estimatedDays: String(localized: "checkout.days.1", defaultValue: "1 business day"), price: (Decimal(string: "29.99")! * multiplier).roundedToTwo, isExpress: true)
+            DeliveryOption(id: "DEL-001", name: String(localized: "checkout.standard", defaultValue: "Standard Shipping", locale: locale), estimatedDays: String(localized: "checkout.days.5to7", defaultValue: "5-7 business days", locale: locale), price: 0, isExpress: false),
+            DeliveryOption(id: "DEL-002", name: String(localized: "checkout.expedited", defaultValue: "Expedited Shipping", locale: locale), estimatedDays: String(localized: "checkout.days.2to3", defaultValue: "2-3 business days", locale: locale), price: (Decimal(string: "14.99")! * multiplier).roundedToTwo, isExpress: false),
+            DeliveryOption(id: "DEL-003", name: String(localized: "checkout.express", defaultValue: "Express Shipping", locale: locale), estimatedDays: String(localized: "checkout.days.1", defaultValue: "1 business day", locale: locale), price: (Decimal(string: "29.99")! * multiplier).roundedToTwo, isExpress: true)
         ]
     }
 }
@@ -84,7 +86,7 @@ final class CheckoutFeature {
             paymentMethods = user.paymentMethods
             selectedPayment = paymentMethods.first(where: { $0.isDefault }) ?? paymentMethods.first
         } catch {
-            self.error = String(localized: "checkout.loadError", defaultValue: "Failed to load checkout data")
+            self.error = String(localized: "checkout.loadError", defaultValue: "Failed to load checkout data", locale: region.locale)
         }
         analytics.track(.checkoutStarted(cartValue: cart.totalPrice, itemCount: cart.itemCount))
     }
@@ -105,7 +107,7 @@ final class CheckoutFeature {
 
     func placeOrder() async {
         guard let address = selectedAddress, let payment = selectedPayment else {
-            error = String(localized: "checkout.incomplete", defaultValue: "Please complete all checkout steps")
+            error = String(localized: "checkout.incomplete", defaultValue: "Please complete all checkout steps", locale: region.locale)
             return
         }
         isPlacingOrder = true

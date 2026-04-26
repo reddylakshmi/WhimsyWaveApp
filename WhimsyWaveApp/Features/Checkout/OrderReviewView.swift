@@ -8,24 +8,24 @@ struct OrderReviewView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: AppSpacing.lg) {
                     if let address = feature.selectedAddress {
-                        reviewSection(title: "Shipping Address", icon: "mappin.circle") {
+                        reviewSection(title: "checkout.shippingAddress", icon: "mappin.circle") {
                             Text(address.fullName).font(.subheadline)
                             Text(address.formattedAddress).font(.subheadline).foregroundStyle(.secondary)
                         }
                     }
 
-                    reviewSection(title: "Delivery", icon: "shippingbox") {
+                    reviewSection(title: "checkout.delivery", icon: "shippingbox") {
                         Text(feature.selectedDelivery.name).font(.subheadline)
                         Text(feature.selectedDelivery.estimatedDays).font(.caption).foregroundStyle(.secondary)
                     }
 
                     if let payment = feature.selectedPayment {
-                        reviewSection(title: "Payment", icon: "creditcard") {
+                        reviewSection(title: "checkout.payment", icon: "creditcard") {
                             Text(payment.displayName).font(.subheadline)
                         }
                     }
 
-                    reviewSection(title: "Items (\(feature.cart.itemCount))", icon: "bag") {
+                    reviewSection(title: "checkout.items \(feature.cart.itemCount)", icon: "bag") {
                         ForEach(feature.cart.items) { item in
                             HStack {
                                 Text(item.product.name).font(.subheadline).lineLimit(1)
@@ -37,12 +37,12 @@ struct OrderReviewView: View {
                     }
 
                     VStack(spacing: AppSpacing.sm) {
-                        priceRow("Subtotal", value: feature.subtotal)
-                        priceRow("Shipping", value: feature.shippingCost, highlight: feature.shippingCost == 0)
-                        priceRow("Tax", value: feature.tax)
+                        priceSummaryRow("cart.subtotal", value: feature.subtotal)
+                        priceSummaryRow("cart.shipping", value: feature.shippingCost, highlight: feature.shippingCost == 0)
+                        priceSummaryRow("cart.tax", value: feature.tax)
                         Divider()
                         HStack {
-                            Text("Total").font(.headline)
+                            Text("cart.total").font(.headline)
                             Spacer()
                             Text(PriceFormatter.format(feature.total)).font(.title3.bold())
                         }
@@ -55,7 +55,7 @@ struct OrderReviewView: View {
             Spacer()
             HStack(spacing: AppSpacing.md) {
                 Button { feature.previousStep() } label: {
-                    Text("Back")
+                    Text("nav.back")
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, AppSpacing.md)
@@ -68,7 +68,7 @@ struct OrderReviewView: View {
                         if feature.isPlacingOrder {
                             ProgressView().tint(.white)
                         } else {
-                            Text("Place Order")
+                            Text("checkout.placeOrder")
                         }
                     }
                     .font(.headline)
@@ -83,18 +83,18 @@ struct OrderReviewView: View {
         }
     }
 
-    private func reviewSection<Content: View>(title: String, icon: String, @ViewBuilder content: () -> Content) -> some View {
+    private func reviewSection<Content: View>(title: LocalizedStringKey, icon: String, @ViewBuilder content: () -> Content) -> some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
             Label(title, systemImage: icon).font(.headline)
             content()
         }
     }
 
-    private func priceRow(_ label: String, value: Decimal, highlight: Bool = false) -> some View {
+    private func priceSummaryRow(_ label: LocalizedStringKey, value: Decimal, highlight: Bool = false) -> some View {
         HStack {
             Text(label).font(.subheadline).foregroundStyle(.secondary)
             Spacer()
-            Text(highlight && value == 0 ? "FREE" : PriceFormatter.format(value))
+            Text(highlight && value == 0 ? String(localized: "price.free", locale: RegionManager.shared.currentRegion.locale) : PriceFormatter.format(value))
                 .font(.subheadline)
                 .foregroundStyle(highlight && value == 0 ? .green : .primary)
         }

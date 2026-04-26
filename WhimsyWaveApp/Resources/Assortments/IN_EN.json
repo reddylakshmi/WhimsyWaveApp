@@ -1,0 +1,2167 @@
+{
+  "banners" : [
+    {
+      "backgroundColor" : "#E8F5E9",
+      "deepLink" : "whimsywave:\/\/promotion\/mega-home",
+      "id" : "BNR-IN-001",
+      "imageURL" : "https:\/\/picsum.photos\/seed\/insale\/800\/400",
+      "subtitle" : "Up to 60% off on furniture & decor",
+      "title" : "Mega Home Festival"
+    },
+    {
+      "backgroundColor" : "#E3F2FD",
+      "deepLink" : "whimsywave:\/\/category\/CAT-004",
+      "id" : "BNR-IN-002",
+      "imageURL" : "https:\/\/picsum.photos\/seed\/innew\/800\/400",
+      "subtitle" : "Trending home styles for you",
+      "title" : "New Arrivals"
+    },
+    {
+      "backgroundColor" : "#FFF3E0",
+      "id" : "BNR-IN-003",
+      "imageURL" : "https:\/\/picsum.photos\/seed\/indelivery\/800\/400",
+      "subtitle" : "On orders over ₹999.00",
+      "title" : "Free Delivery"
+    },
+    {
+      "backgroundColor" : "#FFF9C4",
+      "id" : "BNR-IN-004",
+      "imageURL" : "https:\/\/picsum.photos\/seed\/madeinindia\/800\/400",
+      "subtitle" : "Celebrate Indian craftsmanship",
+      "title" : "Made in India"
+    }
+  ],
+  "categories" : [
+    {
+      "id" : "CAT-001",
+      "image" : "sofa.fill",
+      "name" : "Furniture",
+      "productCount" : 2450,
+      "subcategories" : [
+        {
+          "id" : "CAT-001-1",
+          "image" : "sofa.fill",
+          "name" : "Living Room",
+          "parentId" : "CAT-001",
+          "productCount" : 850,
+          "subcategories" : [
+
+          ]
+        },
+        {
+          "id" : "CAT-001-2",
+          "image" : "bed.double.fill",
+          "name" : "Bedroom",
+          "parentId" : "CAT-001",
+          "productCount" : 620,
+          "subcategories" : [
+
+          ]
+        },
+        {
+          "id" : "CAT-001-3",
+          "image" : "fork.knife",
+          "name" : "Dining Room",
+          "parentId" : "CAT-001",
+          "productCount" : 430,
+          "subcategories" : [
+
+          ]
+        },
+        {
+          "id" : "CAT-001-4",
+          "image" : "desktopcomputer",
+          "name" : "Office",
+          "parentId" : "CAT-001",
+          "productCount" : 350,
+          "subcategories" : [
+
+          ]
+        },
+        {
+          "id" : "CAT-001-5",
+          "image" : "refrigerator.fill",
+          "name" : "Kitchen",
+          "parentId" : "CAT-001",
+          "productCount" : 200,
+          "subcategories" : [
+
+          ]
+        }
+      ]
+    },
+    {
+      "id" : "CAT-002",
+      "image" : "lamp.desk.fill",
+      "name" : "Lighting",
+      "productCount" : 1230,
+      "subcategories" : [
+
+      ]
+    },
+    {
+      "id" : "CAT-003",
+      "image" : "bathtub.fill",
+      "name" : "Bath",
+      "productCount" : 890,
+      "subcategories" : [
+
+      ]
+    },
+    {
+      "id" : "CAT-004",
+      "image" : "photo.artframe",
+      "name" : "Decor",
+      "productCount" : 3200,
+      "subcategories" : [
+
+      ]
+    },
+    {
+      "id" : "CAT-005",
+      "image" : "leaf.fill",
+      "name" : "Outdoor",
+      "productCount" : 1560,
+      "subcategories" : [
+
+      ]
+    },
+    {
+      "id" : "CAT-006",
+      "image" : "bed.double.fill",
+      "name" : "Bedding",
+      "productCount" : 980,
+      "subcategories" : [
+
+      ]
+    },
+    {
+      "id" : "CAT-007",
+      "image" : "square.grid.3x3.fill",
+      "name" : "Rugs",
+      "productCount" : 720,
+      "subcategories" : [
+
+      ]
+    },
+    {
+      "id" : "CAT-008",
+      "image" : "fork.knife",
+      "name" : "Kitchen",
+      "productCount" : 1450,
+      "subcategories" : [
+
+      ]
+    },
+    {
+      "id" : "CAT-009",
+      "image" : "homekit",
+      "name" : "Smart Home",
+      "productCount" : 340,
+      "subcategories" : [
+
+      ]
+    },
+    {
+      "id" : "CAT-010",
+      "image" : "archivebox.fill",
+      "name" : "Storage",
+      "productCount" : 670,
+      "subcategories" : [
+
+      ]
+    }
+  ],
+  "checksum" : "",
+  "homeSections" : [
+    {
+      "bannerIds" : [
+        "BNR-IN-001",
+        "BNR-IN-002",
+        "BNR-IN-003",
+        "BNR-IN-004"
+      ],
+      "categoryIds" : [
+
+      ],
+      "id" : "HS-IN_EN-001",
+      "productIds" : [
+
+      ],
+      "sortOrder" : 0,
+      "title" : "Featured",
+      "type" : "heroBanner"
+    },
+    {
+      "bannerIds" : [
+
+      ],
+      "categoryIds" : [
+        "CAT-001",
+        "CAT-002",
+        "CAT-003",
+        "CAT-004",
+        "CAT-005",
+        "CAT-006",
+        "CAT-007",
+        "CAT-008",
+        "CAT-009",
+        "CAT-010"
+      ],
+      "id" : "HS-IN_EN-002",
+      "productIds" : [
+
+      ],
+      "sortOrder" : 1,
+      "title" : "Shop by Category",
+      "type" : "categories"
+    },
+    {
+      "bannerIds" : [
+
+      ],
+      "categoryIds" : [
+
+      ],
+      "id" : "HS-IN_EN-003",
+      "productIds" : [
+        "PRD-001",
+        "PRD-003",
+        "PRD-005",
+        "PRD-010",
+        "PRD-013",
+        "PRD-014",
+        "PRD-016",
+        "PRD-020",
+        "PRD-021",
+        "PRD-028"
+      ],
+      "sortOrder" : 2,
+      "subtitle" : "Curated just for you",
+      "title" : "Top Picks For You",
+      "type" : "featuredProducts"
+    },
+    {
+      "bannerIds" : [
+
+      ],
+      "categoryIds" : [
+
+      ],
+      "id" : "HS-IN_EN-004",
+      "productIds" : [
+        "PRD-001",
+        "PRD-003",
+        "PRD-005",
+        "PRD-007",
+        "PRD-009",
+        "PRD-012",
+        "PRD-013",
+        "PRD-015",
+        "PRD-016",
+        "PRD-018",
+        "PRD-020",
+        "PRD-021",
+        "PRD-023",
+        "PRD-025",
+        "PRD-027",
+        "PRD-029",
+        "PRD-030"
+      ],
+      "sortOrder" : 3,
+      "subtitle" : "Limited time offers",
+      "title" : "Deals of the Day",
+      "type" : "onSale"
+    },
+    {
+      "bannerIds" : [
+
+      ],
+      "categoryIds" : [
+
+      ],
+      "id" : "HS-IN_EN-005",
+      "productIds" : [
+        "PRD-006",
+        "PRD-009",
+        "PRD-015",
+        "PRD-017",
+        "PRD-018",
+        "PRD-023",
+        "PRD-026"
+      ],
+      "sortOrder" : 4,
+      "title" : "Just Arrived",
+      "type" : "newArrivals"
+    },
+    {
+      "bannerIds" : [
+
+      ],
+      "categoryIds" : [
+
+      ],
+      "id" : "HS-IN_EN-006",
+      "productIds" : [
+        "PRD-001",
+        "PRD-002",
+        "PRD-003",
+        "PRD-004",
+        "PRD-005",
+        "PRD-006",
+        "PRD-007",
+        "PRD-008"
+      ],
+      "sortOrder" : 5,
+      "title" : "Trending Now",
+      "type" : "trendingNow"
+    }
+  ],
+  "products" : [
+    {
+      "brand" : "Serta",
+      "category" : {
+        "path" : [
+          "Furniture",
+          "Living Room",
+          "Sofas"
+        ]
+      },
+      "createdAt" : 1774573391.026222,
+      "currency" : "INR",
+      "description" : "Transform your living space with this versatile convertible sofa. Features plush memory foam cushions, easy-convert mechanism, and durable performance fabric that resists stains and wear.",
+      "estimatedDelivery" : {
+        "earliest" : 1777424591.026221,
+        "latest" : 1777770191.026221
+      },
+      "id" : "PRD-001",
+      "images" : [
+        {
+          "alt" : "Serta sofa front view",
+          "url" : "https:\/\/picsum.photos\/seed\/sofa\/600\/600"
+        },
+        {
+          "alt" : "Serta sofa side view",
+          "url" : "https:\/\/picsum.photos\/seed\/sofa2\/600\/600"
+        }
+      ],
+      "isFeatured" : true,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Serta Upholstered Convertible Sofa",
+      "price" : 75149.17,
+      "rating" : 4.6,
+      "reviewCount" : 1284,
+      "salePrice" : 54274.17,
+      "specs" : [
+        {
+          "label" : "Dimensions",
+          "value" : "84\"W x 36\"D x 34\"H"
+        },
+        {
+          "label" : "Material",
+          "value" : "Performance Fabric"
+        },
+        {
+          "label" : "Weight Capacity",
+          "value" : "600 lbs"
+        },
+        {
+          "label" : "Assembly",
+          "value" : "Required"
+        }
+      ],
+      "stockCount" : 23,
+      "tags" : [
+        "bestseller",
+        "free-shipping"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Gray",
+          "id" : "V-001A",
+          "isInStock" : true,
+          "name" : "Charcoal Gray"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Blue",
+          "id" : "V-001B",
+          "isInStock" : true,
+          "name" : "Navy Blue"
+        },
+        {
+          "additionalPrice" : 4175,
+          "color" : "Cream",
+          "id" : "V-001C",
+          "isInStock" : false,
+          "name" : "Cream"
+        }
+      ]
+    },
+    {
+      "brand" : "Walker Edison",
+      "category" : {
+        "path" : [
+          "Furniture",
+          "Dining Room",
+          "Tables"
+        ]
+      },
+      "createdAt" : 1771981391.026235,
+      "currency" : "INR",
+      "description" : "Bring warmth and character to your dining room with this solid wood farmhouse table. Hand-distressed finish gives each piece a unique look.",
+      "estimatedDelivery" : {
+        "earliest" : 1777597391.026235,
+        "latest" : 1778029391.026235
+      },
+      "id" : "PRD-002",
+      "images" : [
+        {
+          "alt" : "Farmhouse dining table",
+          "url" : "https:\/\/picsum.photos\/seed\/diningtable\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Walker Edison Rustic Farmhouse Dining Table",
+      "price" : 41749.17,
+      "rating" : 4.3,
+      "reviewCount" : 856,
+      "specs" : [
+        {
+          "label" : "Dimensions",
+          "value" : "72\"W x 36\"D x 30\"H"
+        },
+        {
+          "label" : "Material",
+          "value" : "Solid Pine Wood"
+        },
+        {
+          "label" : "Seats",
+          "value" : "6-8 people"
+        }
+      ],
+      "stockCount" : 15,
+      "tags" : [
+        "eco-friendly"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "Brightech",
+      "category" : {
+        "path" : [
+          "Lighting",
+          "Floor Lamps"
+        ]
+      },
+      "createdAt" : 1773277391.026242,
+      "currency" : "INR",
+      "description" : "Illuminate any room with this sleek modern floor lamp. Features dimmable LED light with three color temperatures and a slim profile that fits anywhere.",
+      "estimatedDelivery" : {
+        "earliest" : 1777338191.026242,
+        "latest" : 1777510991.026242
+      },
+      "id" : "PRD-003",
+      "images" : [
+        {
+          "alt" : "Floor lamp in living room",
+          "url" : "https:\/\/picsum.photos\/seed\/floorlamp\/600\/600"
+        }
+      ],
+      "isFeatured" : true,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Brightech Sky LED Torchiere Floor Lamp",
+      "price" : 5844.17,
+      "rating" : 4.7,
+      "reviewCount" : 2341,
+      "salePrice" : 4591.67,
+      "specs" : [
+        {
+          "label" : "Height",
+          "value" : "72 inches"
+        },
+        {
+          "label" : "Wattage",
+          "value" : "30W LED"
+        },
+        {
+          "label" : "Color Temps",
+          "value" : "3000K\/4000K\/5000K"
+        }
+      ],
+      "stockCount" : 142,
+      "tags" : [
+        "energy-efficient",
+        "top-rated"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Black",
+          "id" : "V-003A",
+          "isInStock" : true,
+          "name" : "Matte Black"
+        },
+        {
+          "additionalPrice" : 835,
+          "color" : "Silver",
+          "id" : "V-003B",
+          "isInStock" : true,
+          "name" : "Brushed Nickel"
+        }
+      ]
+    },
+    {
+      "brand" : "Zinus",
+      "category" : {
+        "path" : [
+          "Furniture",
+          "Bedroom",
+          "Beds"
+        ]
+      },
+      "createdAt" : 1769389391.026245,
+      "currency" : "INR",
+      "description" : "Sleep in style with this upholstered platform bed frame. No box spring needed. Tool-free assembly in under an hour.",
+      "estimatedDelivery" : {
+        "earliest" : 1777424591.0262442,
+        "latest" : 1777770191.026245
+      },
+      "id" : "PRD-004",
+      "images" : [
+        {
+          "alt" : "Platform bed frame",
+          "url" : "https:\/\/picsum.photos\/seed\/bedframe\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Zinus Upholstered Platform Bed Frame",
+      "price" : 25049.17,
+      "rating" : 4.5,
+      "reviewCount" : 3412,
+      "specs" : [
+        {
+          "label" : "Size",
+          "value" : "Queen"
+        },
+        {
+          "label" : "Material",
+          "value" : "Upholstered Fabric"
+        },
+        {
+          "label" : "Weight Capacity",
+          "value" : "700 lbs"
+        }
+      ],
+      "stockCount" : 67,
+      "tags" : [
+        "bestseller"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : -8350,
+          "id" : "V-004A",
+          "isInStock" : true,
+          "name" : "Twin",
+          "size" : "Twin"
+        },
+        {
+          "additionalPrice" : 0,
+          "id" : "V-004B",
+          "isInStock" : true,
+          "name" : "Queen",
+          "size" : "Queen"
+        },
+        {
+          "additionalPrice" : 8350,
+          "id" : "V-004C",
+          "isInStock" : true,
+          "name" : "King",
+          "size" : "King"
+        }
+      ]
+    },
+    {
+      "brand" : "nuLOOM",
+      "category" : {
+        "path" : [
+          "Rugs",
+          "Area Rugs"
+        ]
+      },
+      "createdAt" : 1775437391.0262508,
+      "currency" : "INR",
+      "description" : "Add texture and warmth to any room with this popular Moroccan-inspired area rug. Machine-made for durability with a soft polypropylene pile.",
+      "estimatedDelivery" : {
+        "earliest" : 1777338191.0262508,
+        "latest" : 1777597391.0262508
+      },
+      "id" : "PRD-005",
+      "images" : [
+        {
+          "alt" : "Moroccan area rug",
+          "url" : "https:\/\/picsum.photos\/seed\/arearug\/600\/600"
+        }
+      ],
+      "isFeatured" : true,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "nuLOOM Moroccan Blythe Area Rug",
+      "price" : 15029.17,
+      "rating" : 4.4,
+      "reviewCount" : 5678,
+      "salePrice" : 10854.17,
+      "specs" : [
+        {
+          "label" : "Size",
+          "value" : "8' x 10'"
+        },
+        {
+          "label" : "Material",
+          "value" : "Polypropylene"
+        },
+        {
+          "label" : "Pile Height",
+          "value" : "0.37 inches"
+        }
+      ],
+      "stockCount" : 200,
+      "tags" : [
+        "top-rated",
+        "free-shipping"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "Christopher Knight",
+      "category" : {
+        "path" : [
+          "Furniture",
+          "Kitchen",
+          "Bar Stools"
+        ]
+      },
+      "createdAt" : 1776733391.0262542,
+      "currency" : "INR",
+      "description" : "Elevate your kitchen island or bar with these sleek bonded leather counter stools. Sturdy iron legs with protective floor caps.",
+      "estimatedDelivery" : {
+        "earliest" : 1777510991.026253,
+        "latest" : 1777856591.026253
+      },
+      "id" : "PRD-006",
+      "images" : [
+        {
+          "alt" : "Bar stools set",
+          "url" : "https:\/\/picsum.photos\/seed\/barstools\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : true,
+      "name" : "Christopher Knight Home Lopez Counter Stools (Set of 2)",
+      "price" : 13359.17,
+      "rating" : 4.2,
+      "reviewCount" : 923,
+      "specs" : [
+        {
+          "label" : "Height",
+          "value" : "26 inches (counter height)"
+        },
+        {
+          "label" : "Material",
+          "value" : "Bonded Leather & Iron"
+        },
+        {
+          "label" : "Quantity",
+          "value" : "Set of 2"
+        }
+      ],
+      "stockCount" : 45,
+      "tags" : [
+
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Brown",
+          "id" : "V-006A",
+          "isInStock" : true,
+          "name" : "Brown"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Black",
+          "id" : "V-006B",
+          "isInStock" : true,
+          "name" : "Black"
+        }
+      ]
+    },
+    {
+      "brand" : "Moen",
+      "category" : {
+        "path" : [
+          "Bath",
+          "Shower Heads"
+        ]
+      },
+      "createdAt" : 1766797391.026257,
+      "currency" : "INR",
+      "description" : "Transform your daily shower with this rainfall shower head featuring magnetic docking system. Six spray settings for a customized experience.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.026257,
+        "latest" : 1777424591.026257
+      },
+      "id" : "PRD-007",
+      "images" : [
+        {
+          "alt" : "Rainfall shower head",
+          "url" : "https:\/\/picsum.photos\/seed\/showerhead\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Moen Magnetix Rainfall Shower Head",
+      "price" : 7514.17,
+      "rating" : 4.8,
+      "reviewCount" : 4521,
+      "salePrice" : 5844.17,
+      "specs" : [
+        {
+          "label" : "Diameter",
+          "value" : "8 inches"
+        },
+        {
+          "label" : "Spray Settings",
+          "value" : "6"
+        },
+        {
+          "label" : "Finish",
+          "value" : "Chrome"
+        }
+      ],
+      "stockCount" : 89,
+      "tags" : [
+        "top-rated",
+        "bestseller"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "NICETOWN",
+      "category" : {
+        "path" : [
+          "Decor",
+          "Window Treatments",
+          "Curtains"
+        ]
+      },
+      "createdAt" : 1761613391.026263,
+      "currency" : "INR",
+      "description" : "Block out light and reduce noise with these thermal insulated blackout curtains. Triple weave technology for maximum energy efficiency.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.026262,
+        "latest" : 1777424591.026262
+      },
+      "id" : "PRD-008",
+      "images" : [
+        {
+          "alt" : "Blackout curtains",
+          "url" : "https:\/\/picsum.photos\/seed\/curtains\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "NICETOWN Thermal Insulated Blackout Curtains",
+      "price" : 3756.67,
+      "rating" : 4.6,
+      "reviewCount" : 7234,
+      "specs" : [
+        {
+          "label" : "Size",
+          "value" : "52\"W x 84\"L (pair)"
+        },
+        {
+          "label" : "Material",
+          "value" : "Triple Weave Polyester"
+        },
+        {
+          "label" : "Hanging",
+          "value" : "Grommet Top"
+        }
+      ],
+      "stockCount" : 312,
+      "tags" : [
+        "energy-efficient"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Black",
+          "id" : "V-008A",
+          "isInStock" : true,
+          "name" : "Jet Black"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Navy",
+          "id" : "V-008B",
+          "isInStock" : true,
+          "name" : "Navy"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Red",
+          "id" : "V-008C",
+          "isInStock" : true,
+          "name" : "Burgundy"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Blue",
+          "id" : "V-008D",
+          "isInStock" : true,
+          "name" : "Stone Blue"
+        }
+      ]
+    },
+    {
+      "brand" : "Glacier Bay",
+      "category" : {
+        "path" : [
+          "Bath",
+          "Vanities"
+        ]
+      },
+      "createdAt" : 1776906191.026266,
+      "currency" : "INR",
+      "description" : "Complete bathroom vanity set with cultured marble top and pre-installed sink. Soft-close doors and full-extension drawers.",
+      "estimatedDelivery" : {
+        "earliest" : 1777770191.026266,
+        "latest" : 1778374991.026266
+      },
+      "id" : "PRD-009",
+      "images" : [
+        {
+          "alt" : "Bathroom vanity",
+          "url" : "https:\/\/picsum.photos\/seed\/vanity\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : true,
+      "name" : "Glacier Bay 36\" Bath Vanity with Top",
+      "price" : 45924.17,
+      "rating" : 4.1,
+      "reviewCount" : 567,
+      "salePrice" : 37574.17,
+      "specs" : [
+        {
+          "label" : "Width",
+          "value" : "36 inches"
+        },
+        {
+          "label" : "Material",
+          "value" : "Engineered Wood"
+        },
+        {
+          "label" : "Top",
+          "value" : "Cultured Marble"
+        }
+      ],
+      "stockCount" : 18,
+      "tags" : [
+        "free-shipping"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "White",
+          "id" : "V-009A",
+          "isInStock" : true,
+          "name" : "White"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Brown",
+          "id" : "V-009B",
+          "isInStock" : true,
+          "name" : "Espresso"
+        }
+      ]
+    },
+    {
+      "brand" : "Pyradecor",
+      "category" : {
+        "path" : [
+          "Decor",
+          "Wall Art"
+        ]
+      },
+      "createdAt" : 1775869391.026268,
+      "currency" : "INR",
+      "description" : "Modern abstract canvas art prints stretched and framed, ready to hang. High-definition giclee printing on premium canvas.",
+      "estimatedDelivery" : {
+        "earliest" : 1777424591.026268,
+        "latest" : 1777683791.026268
+      },
+      "id" : "PRD-010",
+      "images" : [
+        {
+          "alt" : "Abstract canvas wall art",
+          "url" : "https:\/\/picsum.photos\/seed\/wallart\/600\/600"
+        }
+      ],
+      "isFeatured" : true,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Pyradecor Large Abstract Canvas Wall Art",
+      "price" : 6679.17,
+      "rating" : 4.5,
+      "reviewCount" : 1892,
+      "specs" : [
+        {
+          "label" : "Size",
+          "value" : "60\"W x 30\"H (total)"
+        },
+        {
+          "label" : "Panels",
+          "value" : "5 pieces"
+        },
+        {
+          "label" : "Material",
+          "value" : "Canvas on Wood Frame"
+        }
+      ],
+      "stockCount" : 76,
+      "tags" : [
+
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "HON",
+      "category" : {
+        "path" : [
+          "Furniture",
+          "Office",
+          "Chairs"
+        ]
+      },
+      "createdAt" : 1770685391.02627,
+      "currency" : "INR",
+      "description" : "Engineered for all-day comfort with advanced synchro-tilt recline and adjustable lumbar support. BIFMA certified for durability.",
+      "estimatedDelivery" : {
+        "earliest" : 1777597391.02627,
+        "latest" : 1777942991.02627
+      },
+      "id" : "PRD-011",
+      "images" : [
+        {
+          "alt" : "Ergonomic office chair",
+          "url" : "https:\/\/picsum.photos\/seed\/officechair\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "HON Ignition 2.0 Ergonomic Office Chair",
+      "price" : 38409.17,
+      "rating" : 4.4,
+      "reviewCount" : 2156,
+      "specs" : [
+        {
+          "label" : "Weight Capacity",
+          "value" : "300 lbs"
+        },
+        {
+          "label" : "Adjustable Arms",
+          "value" : "4D"
+        },
+        {
+          "label" : "Warranty",
+          "value" : "12 years"
+        }
+      ],
+      "stockCount" : 34,
+      "tags" : [
+        "bestseller"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Black",
+          "id" : "V-011A",
+          "isInStock" : true,
+          "name" : "Black Mesh"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Gray",
+          "id" : "V-011B",
+          "isInStock" : true,
+          "name" : "Fog Mesh"
+        }
+      ]
+    },
+    {
+      "brand" : "Mkono",
+      "category" : {
+        "path" : [
+          "Outdoor",
+          "Planters"
+        ]
+      },
+      "createdAt" : 1773709391.026272,
+      "currency" : "INR",
+      "description" : "Modern minimalist ceramic planters with bamboo saucers. Drainage hole included for healthy plants. Three sizes for versatile display.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.026272,
+        "latest" : 1777424591.026272
+      },
+      "id" : "PRD-012",
+      "images" : [
+        {
+          "alt" : "Ceramic plant pots",
+          "url" : "https:\/\/picsum.photos\/seed\/planters\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Mkono Ceramic Plant Pots Set of 3",
+      "price" : 2921.67,
+      "rating" : 4.7,
+      "reviewCount" : 3456,
+      "salePrice" : 2337.17,
+      "specs" : [
+        {
+          "label" : "Sizes",
+          "value" : "4\", 5\", 6\" diameter"
+        },
+        {
+          "label" : "Material",
+          "value" : "Ceramic with Bamboo Saucer"
+        },
+        {
+          "label" : "Drainage",
+          "value" : "Yes"
+        }
+      ],
+      "stockCount" : 523,
+      "tags" : [
+        "top-rated"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "White",
+          "id" : "V-012A",
+          "isInStock" : true,
+          "name" : "White"
+        },
+        {
+          "additionalPrice" : 250.5,
+          "color" : "Orange",
+          "id" : "V-012B",
+          "isInStock" : true,
+          "name" : "Terracotta"
+        }
+      ]
+    },
+    {
+      "brand" : "Delta",
+      "category" : {
+        "path" : [
+          "Kitchen",
+          "Faucets"
+        ]
+      },
+      "createdAt" : 1772413391.026279,
+      "currency" : "INR",
+      "description" : "Professional-grade kitchen faucet with Touch2O Technology. Simply touch anywhere on the faucet to start and stop water flow.",
+      "estimatedDelivery" : {
+        "earliest" : 1777338191.026279,
+        "latest" : 1777597391.026279
+      },
+      "id" : "PRD-013",
+      "images" : [
+        {
+          "alt" : "Kitchen faucet",
+          "url" : "https:\/\/picsum.photos\/seed\/faucet\/600\/600"
+        }
+      ],
+      "isFeatured" : true,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Delta Trinsic Pull-Down Kitchen Faucet",
+      "price" : 31729.17,
+      "rating" : 4.6,
+      "reviewCount" : 1567,
+      "salePrice" : 27554.17,
+      "specs" : [
+        {
+          "label" : "Finish",
+          "value" : "Arctic Stainless"
+        },
+        {
+          "label" : "Technology",
+          "value" : "Touch2O"
+        },
+        {
+          "label" : "Hose Length",
+          "value" : "59 inches"
+        }
+      ],
+      "stockCount" : 28,
+      "tags" : [
+        "smart-home"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "Barefoot Dreams",
+      "category" : {
+        "path" : [
+          "Bedding",
+          "Throws & Blankets"
+        ]
+      },
+      "createdAt" : 1759885391.0262818,
+      "currency" : "INR",
+      "description" : "Ultra-soft microfiber throw blanket that gets softer with every wash. Machine washable luxury for your sofa or bed.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.0262809,
+        "latest" : 1777424591.0262809
+      },
+      "id" : "PRD-014",
+      "images" : [
+        {
+          "alt" : "Cozy throw blanket",
+          "url" : "https:\/\/picsum.photos\/seed\/blanket\/600\/600"
+        }
+      ],
+      "isFeatured" : true,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Barefoot Dreams CozyChic Throw Blanket",
+      "price" : 12274.5,
+      "rating" : 4.9,
+      "reviewCount" : 8912,
+      "specs" : [
+        {
+          "label" : "Size",
+          "value" : "54\" x 72\""
+        },
+        {
+          "label" : "Material",
+          "value" : "Microfiber Polyester"
+        },
+        {
+          "label" : "Care",
+          "value" : "Machine Washable"
+        }
+      ],
+      "stockCount" : 156,
+      "tags" : [
+        "luxury",
+        "top-rated",
+        "bestseller"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Beige",
+          "id" : "V-014A",
+          "isInStock" : true,
+          "name" : "Stone\/Cream"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Gray",
+          "id" : "V-014B",
+          "isInStock" : true,
+          "name" : "Graphite\/Carbon"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Pink",
+          "id" : "V-014C",
+          "isInStock" : true,
+          "name" : "Dusty Rose"
+        }
+      ]
+    },
+    {
+      "brand" : "TP-Link",
+      "category" : {
+        "path" : [
+          "Smart Home",
+          "Plugs & Outlets"
+        ]
+      },
+      "createdAt" : 1776560591.0262852,
+      "currency" : "INR",
+      "description" : "Control your home appliances from anywhere with these WiFi smart plugs. Works with Alexa, Google Home, and Apple HomeKit.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.0262852,
+        "latest" : 1777338191.0262852
+      },
+      "id" : "PRD-015",
+      "images" : [
+        {
+          "alt" : "Smart plug set",
+          "url" : "https:\/\/picsum.photos\/seed\/smartplug\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : true,
+      "name" : "Kasa Smart Plug (4-Pack)",
+      "price" : 2504.17,
+      "rating" : 4.7,
+      "reviewCount" : 12456,
+      "salePrice" : 1919.67,
+      "specs" : [
+        {
+          "label" : "Quantity",
+          "value" : "4 pack"
+        },
+        {
+          "label" : "Connectivity",
+          "value" : "WiFi 2.4GHz"
+        },
+        {
+          "label" : "Compatibility",
+          "value" : "Alexa, Google, HomeKit"
+        }
+      ],
+      "stockCount" : 890,
+      "tags" : [
+        "smart-home",
+        "bestseller",
+        "value-pack"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "VASAGLE",
+      "category" : {
+        "path" : [
+          "Furniture",
+          "Living Room",
+          "Shelving"
+        ]
+      },
+      "createdAt" : 1772845391.026288,
+      "currency" : "INR",
+      "description" : "Open concept industrial bookshelf with rustic brown shelves and matte black metal frame. Perfect for living room, office, or bedroom.",
+      "estimatedDelivery" : {
+        "earliest" : 1777338191.026288,
+        "latest" : 1777597391.026288
+      },
+      "id" : "PRD-016",
+      "images" : [
+        {
+          "alt" : "Industrial bookshelf",
+          "url" : "https:\/\/picsum.photos\/seed\/bookshelf\/600\/600"
+        }
+      ],
+      "isFeatured" : true,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "VASAGLE Industrial Bookshelf 5-Tier",
+      "price" : 10854.17,
+      "rating" : 4.5,
+      "reviewCount" : 4230,
+      "salePrice" : 8349.17,
+      "specs" : [
+        {
+          "label" : "Dimensions",
+          "value" : "31.5\"W x 11.8\"D x 66.1\"H"
+        },
+        {
+          "label" : "Material",
+          "value" : "Particleboard & Steel"
+        },
+        {
+          "label" : "Weight Capacity",
+          "value" : "33 lbs per shelf"
+        }
+      ],
+      "stockCount" : 112,
+      "tags" : [
+        "bestseller"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "Nathan James",
+      "category" : {
+        "path" : [
+          "Furniture",
+          "Living Room",
+          "Side Tables"
+        ]
+      },
+      "createdAt" : 1776819791.02629,
+      "currency" : "INR",
+      "description" : "Elegant round side table with genuine marble top and gold metal base. A stunning accent piece for any room.",
+      "estimatedDelivery" : {
+        "earliest" : 1777338191.02629,
+        "latest" : 1777510991.02629
+      },
+      "id" : "PRD-017",
+      "images" : [
+        {
+          "alt" : "Marble side table",
+          "url" : "https:\/\/picsum.photos\/seed\/sidetable\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : true,
+      "name" : "Round Marble Top Side Table",
+      "price" : 7514.17,
+      "rating" : 4.6,
+      "reviewCount" : 1892,
+      "specs" : [
+        {
+          "label" : "Top Diameter",
+          "value" : "15 inches"
+        },
+        {
+          "label" : "Height",
+          "value" : "24 inches"
+        },
+        {
+          "label" : "Material",
+          "value" : "Marble & Gold Metal"
+        }
+      ],
+      "stockCount" : 78,
+      "tags" : [
+        "trending"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "Globe Electric",
+      "category" : {
+        "path" : [
+          "Lighting",
+          "Pendant Lights"
+        ]
+      },
+      "createdAt" : 1776474191.026293,
+      "currency" : "INR",
+      "description" : "Modern matte black pendant light with exposed bulb design. Perfect over kitchen island, dining table, or entryway.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.026293,
+        "latest" : 1777424591.026293
+      },
+      "id" : "PRD-018",
+      "images" : [
+        {
+          "alt" : "Pendant light",
+          "url" : "https:\/\/picsum.photos\/seed\/pendantlight\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : true,
+      "name" : "Globe Electric Harrow 1-Light Pendant",
+      "price" : 4174.17,
+      "rating" : 4.4,
+      "reviewCount" : 1567,
+      "salePrice" : 3339.17,
+      "specs" : [
+        {
+          "label" : "Diameter",
+          "value" : "10 inches"
+        },
+        {
+          "label" : "Cord Length",
+          "value" : "60 inches (adjustable)"
+        },
+        {
+          "label" : "Bulb Type",
+          "value" : "E26 (not included)"
+        }
+      ],
+      "stockCount" : 210,
+      "tags" : [
+        "trending"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Black",
+          "id" : "V-018A",
+          "isInStock" : true,
+          "name" : "Matte Black"
+        },
+        {
+          "additionalPrice" : 835,
+          "color" : "Gold",
+          "id" : "V-018B",
+          "isInStock" : true,
+          "name" : "Brass"
+        }
+      ]
+    },
+    {
+      "brand" : "Lalia Home",
+      "category" : {
+        "path" : [
+          "Lighting",
+          "Table Lamps"
+        ]
+      },
+      "createdAt" : 1771549391.026295,
+      "currency" : "INR",
+      "description" : "Elegant ceramic table lamp with linen drum shade. Adds warm ambient light and sophisticated style to nightstands or console tables.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.026295,
+        "latest" : 1777424591.026295
+      },
+      "id" : "PRD-019",
+      "images" : [
+        {
+          "alt" : "Table lamp",
+          "url" : "https:\/\/picsum.photos\/seed\/tablelamp\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Lalia Home Sculpted Table Lamp",
+      "price" : 3589.67,
+      "rating" : 4.3,
+      "reviewCount" : 890,
+      "specs" : [
+        {
+          "label" : "Height",
+          "value" : "18.5 inches"
+        },
+        {
+          "label" : "Shade",
+          "value" : "10\" Linen Drum"
+        },
+        {
+          "label" : "Material",
+          "value" : "Ceramic & Linen"
+        }
+      ],
+      "stockCount" : 156,
+      "tags" : [
+
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "Chakir",
+      "category" : {
+        "path" : [
+          "Bath",
+          "Towels"
+        ]
+      },
+      "createdAt" : 1774141391.026298,
+      "currency" : "INR",
+      "description" : "Luxury 700 GSM Turkish cotton towels. Set of 6 includes 2 bath towels, 2 hand towels, and 2 washcloths. Ultra-absorbent and quick-drying.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.026298,
+        "latest" : 1777424591.026298
+      },
+      "id" : "PRD-020",
+      "images" : [
+        {
+          "alt" : "Turkish towel set",
+          "url" : "https:\/\/picsum.photos\/seed\/towels\/600\/600"
+        }
+      ],
+      "isFeatured" : true,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Chakir Turkish Linens Hotel Collection Towel Set",
+      "price" : 5009.17,
+      "rating" : 4.7,
+      "reviewCount" : 6432,
+      "salePrice" : 3756.67,
+      "specs" : [
+        {
+          "label" : "GSM",
+          "value" : "700"
+        },
+        {
+          "label" : "Material",
+          "value" : "100% Turkish Cotton"
+        },
+        {
+          "label" : "Set Includes",
+          "value" : "6 pieces"
+        }
+      ],
+      "stockCount" : 340,
+      "tags" : [
+        "top-rated",
+        "value-pack"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "White",
+          "id" : "V-020A",
+          "isInStock" : true,
+          "name" : "White"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Navy",
+          "id" : "V-020B",
+          "isInStock" : true,
+          "name" : "Navy"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Green",
+          "id" : "V-020C",
+          "isInStock" : true,
+          "name" : "Sage Green"
+        }
+      ]
+    },
+    {
+      "brand" : "BEAUTYPEAK",
+      "category" : {
+        "path" : [
+          "Decor",
+          "Mirrors"
+        ]
+      },
+      "createdAt" : 1776128591.0263019,
+      "currency" : "INR",
+      "description" : "Elegant arched full-length floor mirror with aluminum alloy frame. Lean against wall or hang. Shatterproof glass for safety.",
+      "estimatedDelivery" : {
+        "earliest" : 1777424591.0263019,
+        "latest" : 1777683791.0263019
+      },
+      "id" : "PRD-021",
+      "images" : [
+        {
+          "alt" : "Arched floor mirror",
+          "url" : "https:\/\/picsum.photos\/seed\/mirror\/600\/600"
+        }
+      ],
+      "isFeatured" : true,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "BEAUTYPEAK Arched Full-Length Mirror",
+      "price" : 8349.17,
+      "rating" : 4.6,
+      "reviewCount" : 3421,
+      "salePrice" : 6679.17,
+      "specs" : [
+        {
+          "label" : "Size",
+          "value" : "65\" x 22\""
+        },
+        {
+          "label" : "Frame",
+          "value" : "Aluminum Alloy"
+        },
+        {
+          "label" : "Glass",
+          "value" : "HD Shatterproof"
+        }
+      ],
+      "stockCount" : 95,
+      "tags" : [
+        "trending",
+        "bestseller"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Gold",
+          "id" : "V-021A",
+          "isInStock" : true,
+          "name" : "Gold"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Black",
+          "id" : "V-021B",
+          "isInStock" : true,
+          "name" : "Black"
+        }
+      ]
+    },
+    {
+      "brand" : "MIULEE",
+      "category" : {
+        "path" : [
+          "Decor",
+          "Pillows & Throws"
+        ]
+      },
+      "createdAt" : 1768525391.026304,
+      "currency" : "INR",
+      "description" : "Luxuriously soft velvet pillow covers in curated color combinations. Hidden zipper closure. Machine washable.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.026304,
+        "latest" : 1777338191.026304
+      },
+      "id" : "PRD-022",
+      "images" : [
+        {
+          "alt" : "Velvet pillow covers",
+          "url" : "https:\/\/picsum.photos\/seed\/throwpillows\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "MIULEE Velvet Throw Pillow Covers (Set of 4)",
+      "price" : 1919.67,
+      "rating" : 4.5,
+      "reviewCount" : 8932,
+      "specs" : [
+        {
+          "label" : "Size",
+          "value" : "18\" x 18\""
+        },
+        {
+          "label" : "Material",
+          "value" : "Velvet"
+        },
+        {
+          "label" : "Quantity",
+          "value" : "Set of 4 covers"
+        }
+      ],
+      "stockCount" : 670,
+      "tags" : [
+        "value-pack"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "UDPATIO",
+      "category" : {
+        "path" : [
+          "Outdoor",
+          "Patio Furniture"
+        ]
+      },
+      "createdAt" : 1776646991.026307,
+      "currency" : "INR",
+      "description" : "Weather-resistant wicker patio furniture set includes loveseat, 2 chairs, and coffee table with tempered glass top. Quick-dry cushions included.",
+      "estimatedDelivery" : {
+        "earliest" : 1777597391.026307,
+        "latest" : 1778029391.026307
+      },
+      "id" : "PRD-023",
+      "images" : [
+        {
+          "alt" : "Patio conversation set",
+          "url" : "https:\/\/picsum.photos\/seed\/patioset\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : true,
+      "name" : "UDPATIO 4-Piece Outdoor Conversation Set",
+      "price" : 37574.17,
+      "rating" : 4.3,
+      "reviewCount" : 2134,
+      "salePrice" : 29224.17,
+      "specs" : [
+        {
+          "label" : "Material",
+          "value" : "PE Rattan Wicker"
+        },
+        {
+          "label" : "Cushion",
+          "value" : "Olefin Fabric (removable)"
+        },
+        {
+          "label" : "Frame",
+          "value" : "Powder-Coated Steel"
+        }
+      ],
+      "stockCount" : 24,
+      "tags" : [
+        "free-shipping"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Brown",
+          "id" : "V-023A",
+          "isInStock" : true,
+          "name" : "Dark Brown \/ Beige"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Gray",
+          "id" : "V-023B",
+          "isInStock" : true,
+          "name" : "Gray \/ Blue"
+        }
+      ]
+    },
+    {
+      "brand" : "Brightown",
+      "category" : {
+        "path" : [
+          "Outdoor",
+          "Outdoor Lighting"
+        ]
+      },
+      "createdAt" : 1775005391.026308,
+      "currency" : "INR",
+      "description" : "Create a magical outdoor ambiance with these warm white LED string lights. Shatterproof bulbs, waterproof for year-round use.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.026308,
+        "latest" : 1777424591.026308
+      },
+      "id" : "PRD-024",
+      "images" : [
+        {
+          "alt" : "Outdoor string lights",
+          "url" : "https:\/\/picsum.photos\/seed\/stringlights\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Brightown Waterproof LED String Lights 100ft",
+      "price" : 3005.17,
+      "rating" : 4.6,
+      "reviewCount" : 5678,
+      "specs" : [
+        {
+          "label" : "Length",
+          "value" : "100 feet"
+        },
+        {
+          "label" : "Bulbs",
+          "value" : "50 LED (shatterproof)"
+        },
+        {
+          "label" : "Rating",
+          "value" : "IP65 Waterproof"
+        }
+      ],
+      "stockCount" : 430,
+      "tags" : [
+        "top-rated"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "CGK Unlimited",
+      "category" : {
+        "path" : [
+          "Bedding",
+          "Sheet Sets"
+        ]
+      },
+      "createdAt" : 1764205391.02631,
+      "currency" : "INR",
+      "description" : "Brushed microfiber sheets with deep pockets. Wrinkle-free, fade-resistant, and hypoallergenic. Includes flat sheet, fitted sheet, and 2 pillowcases.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.02631,
+        "latest" : 1777338191.02631
+      },
+      "id" : "PRD-025",
+      "images" : [
+        {
+          "alt" : "Sheet set",
+          "url" : "https:\/\/picsum.photos\/seed\/sheetset\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "CGK Unlimited Luxury Hotel Sheet Set",
+      "price" : 3339.17,
+      "rating" : 4.5,
+      "reviewCount" : 12340,
+      "salePrice" : 2504.17,
+      "specs" : [
+        {
+          "label" : "Thread Count",
+          "value" : "1800"
+        },
+        {
+          "label" : "Material",
+          "value" : "Brushed Microfiber"
+        },
+        {
+          "label" : "Deep Pockets",
+          "value" : "Up to 16 inches"
+        }
+      ],
+      "stockCount" : 890,
+      "tags" : [
+        "bestseller",
+        "value-pack"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "White",
+          "id" : "V-025A",
+          "isInStock" : true,
+          "name" : "Queen - White",
+          "size" : "Queen"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Gray",
+          "id" : "V-025B",
+          "isInStock" : true,
+          "name" : "Queen - Gray",
+          "size" : "Queen"
+        },
+        {
+          "additionalPrice" : 835,
+          "color" : "White",
+          "id" : "V-025C",
+          "isInStock" : true,
+          "name" : "King - White",
+          "size" : "King"
+        }
+      ]
+    },
+    {
+      "brand" : "ReaLife",
+      "category" : {
+        "path" : [
+          "Rugs",
+          "Runner Rugs"
+        ]
+      },
+      "createdAt" : 1776387791.0263119,
+      "currency" : "INR",
+      "description" : "Stain-resistant, machine-washable runner rug for hallways, kitchens, and entryways. Made from 100% recycled cotton.",
+      "estimatedDelivery" : {
+        "earliest" : 1777338191.0263119,
+        "latest" : 1777510991.0263119
+      },
+      "id" : "PRD-026",
+      "images" : [
+        {
+          "alt" : "Runner rug",
+          "url" : "https:\/\/picsum.photos\/seed\/runnerrug\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : true,
+      "name" : "ReaLife Washable Runner Rug 2x7",
+      "price" : 4174.17,
+      "rating" : 4.3,
+      "reviewCount" : 2345,
+      "specs" : [
+        {
+          "label" : "Size",
+          "value" : "2' x 7'"
+        },
+        {
+          "label" : "Material",
+          "value" : "100% Recycled Cotton"
+        },
+        {
+          "label" : "Care",
+          "value" : "Machine Washable"
+        }
+      ],
+      "stockCount" : 190,
+      "tags" : [
+        "eco-friendly"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "Henckels",
+      "category" : {
+        "path" : [
+          "Kitchen",
+          "Cutlery"
+        ]
+      },
+      "createdAt" : 1770253391.026315,
+      "currency" : "INR",
+      "description" : "Professional-quality German stainless steel knives. Self-sharpening block maintains blade edge. Includes chef, bread, utility, paring, steak knives and more.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.026315,
+        "latest" : 1777424591.026315
+      },
+      "id" : "PRD-027",
+      "images" : [
+        {
+          "alt" : "Knife block set",
+          "url" : "https:\/\/picsum.photos\/seed\/knifeset\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "Henckels Modernist 14-Piece Knife Block Set",
+      "price" : 16699.17,
+      "rating" : 4.7,
+      "reviewCount" : 3678,
+      "salePrice" : 12524.17,
+      "specs" : [
+        {
+          "label" : "Pieces",
+          "value" : "14"
+        },
+        {
+          "label" : "Material",
+          "value" : "German Stainless Steel"
+        },
+        {
+          "label" : "Block",
+          "value" : "Self-Sharpening"
+        }
+      ],
+      "stockCount" : 56,
+      "tags" : [
+        "bestseller",
+        "free-shipping"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "KitchenAid",
+      "category" : {
+        "path" : [
+          "Kitchen",
+          "Appliances"
+        ]
+      },
+      "createdAt" : 1768525391.0263171,
+      "currency" : "INR",
+      "description" : "Iconic tilt-head stand mixer with 10 speeds. Includes flat beater, dough hook, and wire whip. 15+ optional attachments available.",
+      "estimatedDelivery" : {
+        "earliest" : 1777338191.0263171,
+        "latest" : 1777597391.0263171
+      },
+      "id" : "PRD-028",
+      "images" : [
+        {
+          "alt" : "Stand mixer",
+          "url" : "https:\/\/picsum.photos\/seed\/standmixer\/600\/600"
+        }
+      ],
+      "isFeatured" : true,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "KitchenAid Artisan Stand Mixer 5-Qt",
+      "price" : 37574.17,
+      "rating" : 4.8,
+      "reviewCount" : 15230,
+      "specs" : [
+        {
+          "label" : "Capacity",
+          "value" : "5 quart"
+        },
+        {
+          "label" : "Motor",
+          "value" : "325 watt"
+        },
+        {
+          "label" : "Speeds",
+          "value" : "10"
+        }
+      ],
+      "stockCount" : 42,
+      "tags" : [
+        "luxury",
+        "top-rated"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Red",
+          "id" : "V-028A",
+          "isInStock" : true,
+          "name" : "Empire Red"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Black",
+          "id" : "V-028B",
+          "isInStock" : true,
+          "name" : "Onyx Black"
+        },
+        {
+          "additionalPrice" : 1670,
+          "color" : "Green",
+          "id" : "V-028C",
+          "isInStock" : true,
+          "name" : "Pistachio"
+        }
+      ]
+    },
+    {
+      "brand" : "ecobee",
+      "category" : {
+        "path" : [
+          "Smart Home",
+          "Thermostats"
+        ]
+      },
+      "createdAt" : 1773277391.02632,
+      "currency" : "INR",
+      "description" : "Save up to 26% on energy costs with smart sensors, built-in Alexa, and air quality monitoring. Works with Apple HomeKit.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.02632,
+        "latest" : 1777424591.02632
+      },
+      "id" : "PRD-029",
+      "images" : [
+        {
+          "alt" : "Smart thermostat",
+          "url" : "https:\/\/picsum.photos\/seed\/thermostat\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "ecobee Smart Thermostat Premium",
+      "price" : 20874.17,
+      "rating" : 4.5,
+      "reviewCount" : 4567,
+      "salePrice" : 18369.17,
+      "specs" : [
+        {
+          "label" : "Display",
+          "value" : "3.5\" Touchscreen"
+        },
+        {
+          "label" : "Sensors",
+          "value" : "SmartSensor included"
+        },
+        {
+          "label" : "Compatibility",
+          "value" : "HomeKit, Alexa built-in"
+        }
+      ],
+      "stockCount" : 63,
+      "tags" : [
+        "smart-home",
+        "energy-efficient"
+      ],
+      "variants" : [
+
+      ]
+    },
+    {
+      "brand" : "mDesign",
+      "category" : {
+        "path" : [
+          "Storage",
+          "Closet Organization"
+        ]
+      },
+      "createdAt" : 1771981391.0263228,
+      "currency" : "INR",
+      "description" : "Fabric storage bins with clear windows and reinforced handles. Stack and organize closets, shelves, and cabinets.",
+      "estimatedDelivery" : {
+        "earliest" : 1777251791.0263228,
+        "latest" : 1777424591.0263228
+      },
+      "id" : "PRD-030",
+      "images" : [
+        {
+          "alt" : "Storage bins",
+          "url" : "https:\/\/picsum.photos\/seed\/storagebins\/600\/600"
+        }
+      ],
+      "isFeatured" : false,
+      "isInStock" : true,
+      "isNew" : false,
+      "name" : "mDesign Stackable Closet Storage Bins (Set of 6)",
+      "price" : 3756.67,
+      "rating" : 4.4,
+      "reviewCount" : 5890,
+      "salePrice" : 2921.67,
+      "specs" : [
+        {
+          "label" : "Size",
+          "value" : "11\" x 11\" x 11\" each"
+        },
+        {
+          "label" : "Material",
+          "value" : "Polyester Fabric"
+        },
+        {
+          "label" : "Quantity",
+          "value" : "Set of 6"
+        }
+      ],
+      "stockCount" : 412,
+      "tags" : [
+        "value-pack"
+      ],
+      "variants" : [
+        {
+          "additionalPrice" : 0,
+          "color" : "Gray",
+          "id" : "V-030A",
+          "isInStock" : true,
+          "name" : "Charcoal Gray"
+        },
+        {
+          "additionalPrice" : 0,
+          "color" : "Beige",
+          "id" : "V-030B",
+          "isInStock" : true,
+          "name" : "Linen"
+        }
+      ]
+    }
+  ],
+  "version" : "1.0.0"
+}

@@ -13,18 +13,18 @@ struct OrderConfirmationView: View {
                 .foregroundStyle(.green)
 
             VStack(spacing: AppSpacing.sm) {
-                Text("Order Placed!")
+                Text("order.placed")
                     .font(.title.bold())
-                Text("Order #\(order.orderNumber)")
+                Text("order.number \(order.orderNumber)")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
 
             VStack(spacing: AppSpacing.sm) {
-                Text("Your order has been placed successfully.")
+                Text("order.placedSuccessfully")
                     .multilineTextAlignment(.center)
                 if let delivery = order.estimatedDelivery {
-                    Text("Estimated delivery: \(delivery.earliest.formatted(.dateTime.month().day())) - \(delivery.latest.formatted(.dateTime.month().day()))")
+                    Text("order.estimatedDelivery \(delivery.earliest.formatted(.dateTime.month().day())) \(delivery.latest.formatted(.dateTime.month().day()))")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }
@@ -37,7 +37,7 @@ struct OrderConfirmationView: View {
             Spacer()
 
             Button(action: onDone) {
-                Text("Continue Shopping")
+                Text("action.continueShopping")
                     .font(.headline)
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)

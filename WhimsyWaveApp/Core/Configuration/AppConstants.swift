@@ -74,4 +74,15 @@ enum AppConstants {
     enum Order {
         static let numberPrefix = "HF-2026-"
     }
+
+    enum Storage {
+        static let maxImageCacheMB = 200
+        static let sqliteWALCheckpointInterval = 50
+        static let databaseFileName = "whimsywave.sqlite"
+    }
+
+    enum DataIngestion {
+        static let defaultTimeoutSeconds: Double = 30
+        static let maxRetryAttempts = 3
+    }
 }

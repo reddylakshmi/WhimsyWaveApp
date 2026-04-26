@@ -13,6 +13,9 @@ enum MockServiceProvider {
     static var wishlistRepository: IWishlistRepository { ServiceContainer.current.wishlistRepository }
     static var analyticsClient: AnalyticsClient { ServiceContainer.current.analyticsClient }
     static var featureFlagClient: FeatureFlagClient { ServiceContainer.current.featureFlagClient }
+    static var sqliteStore: SQLiteStore { ServiceContainer.current.sqliteStore }
+    static var dataRepository: DataRepository { ServiceContainer.current.dataRepository }
+    static var ingestionWorker: DataIngestionWorker { ServiceContainer.current.ingestionWorker }
 }
 
 final class MockSearchRepository: ISearchRepository, @unchecked Sendable {
@@ -20,7 +23,11 @@ final class MockSearchRepository: ISearchRepository, @unchecked Sendable {
 
     func search(query: String, filter: ProductFilter?, page: Int) async throws -> SearchResult {
         try await Task.sleep(for: .milliseconds(300))
-        let filtered = Product.mockProducts.filter {
+        let locale = RegionLocale.resolve(from: RegionManager.shared.currentRegion)
+        let allProducts = try await ServiceContainer.current.sqliteStore.fetchProducts(
+            regionLocale: locale, page: 1, pageSize: 100
+        )
+        let filtered = allProducts.filter {
             query.isEmpty || $0.name.localizedCaseInsensitiveContains(query)
                 || $0.brand.localizedCaseInsensitiveContains(query)
                 || $0.category.path.joined().localizedCaseInsensitiveContains(query)

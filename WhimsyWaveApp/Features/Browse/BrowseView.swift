@@ -11,7 +11,7 @@ struct BrowseView: View {
                     ProductGridSkeleton()
                         .padding(.top, AppSpacing.md)
                 }
-                .navigationTitle("Browse")
+                .navigationTitle("tab.browse")
             } else {
                 ScrollView {
                     LazyVStack(spacing: 0, pinnedViews: .sectionHeaders) {
@@ -27,7 +27,7 @@ struct BrowseView: View {
                     }
                 }
                 .refreshable { await feature.refresh() }
-                .navigationTitle("Browse")
+                .navigationTitle("tab.browse")
             }
         }
         .task { await feature.loadCategories() }
@@ -69,7 +69,7 @@ struct BrowseView: View {
                         .frame(width: 72)
                     }
                     .buttonStyle(.plain)
-                    .accessibilityLabel("Browse \(category.name), \(category.productCount) items")
+                    .accessibilityLabel("accessibility.browseCategory \(category.name) \(category.productCount)")
                 }
             }
             .padding(.horizontal, AppSpacing.md)
@@ -83,10 +83,10 @@ struct BrowseView: View {
             ProductGridSkeleton(itemCount: 4)
                 .padding(.top, AppSpacing.md)
         } else if feature.products.isEmpty && feature.selectedCategory != nil {
-            ContentUnavailableView("No products found", systemImage: "magnifyingglass", description: Text("Try selecting a different category"))
+            ContentUnavailableView("browse.noProducts", systemImage: "magnifyingglass", description: Text("browse.tryDifferentCategory"))
                 .padding(.top, AppSpacing.xl)
         } else if feature.selectedCategory == nil {
-            ContentUnavailableView("Select a category", systemImage: "square.grid.2x2", description: Text("Choose a category above to browse products"))
+            ContentUnavailableView("browse.selectCategory", systemImage: "square.grid.2x2", description: Text("browse.selectCategoryDescription"))
                 .padding(.top, AppSpacing.xl)
         } else {
             ProductGridView(products: feature.products, onProductTapped: onProductTapped)

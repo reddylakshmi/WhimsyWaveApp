@@ -20,7 +20,7 @@ struct ShippingAddressView: View {
                                     HStack {
                                         Text(address.label).font(.headline)
                                         if address.isDefault {
-                                            Text("Default")
+                                            Text("badge.default")
                                                 .font(.caption2)
                                                 .padding(.horizontal, AppSpacing.sm)
                                                 .background(Capsule().fill(.blue.opacity(0.1)))
@@ -40,7 +40,7 @@ struct ShippingAddressView: View {
                                     Button {
                                         editingAddress = address
                                     } label: {
-                                        Text("Edit")
+                                        Text("action.edit")
                                             .font(.caption)
                                             .foregroundStyle(.blue)
                                     }
@@ -61,7 +61,7 @@ struct ShippingAddressView: View {
                         HStack {
                             Image(systemName: "plus.circle.fill")
                                 .font(.title3)
-                            Text("Add New Address")
+                            Text("address.addNew")
                                 .font(.headline)
                         }
                         .frame(maxWidth: .infinity)
@@ -79,7 +79,7 @@ struct ShippingAddressView: View {
             }
             Spacer()
             Button(action: onNext) {
-                Text("Continue to Delivery")
+                Text("checkout.continueToDelivery")
                     .font(.headline)
                     .foregroundStyle(.white)
                     .frame(maxWidth: .infinity)
@@ -130,55 +130,55 @@ struct CheckoutAddressFormView: View {
 
     var body: some View {
         Form {
-            Section("Address Label") {
-                Picker("Label", selection: $label) {
-                    Text("Home").tag("Home")
-                    Text("Office").tag("Office")
-                    Text("Other").tag("Other")
+            Section("form.addressLabel") {
+                Picker("form.label", selection: $label) {
+                    Text("form.home").tag("Home")
+                    Text("form.office").tag("Office")
+                    Text("form.other").tag("Other")
                 }
                 .pickerStyle(.segmented)
             }
-            Section("Contact") {
-                TextField("Full Name", text: $fullName)
+            Section("form.contact") {
+                TextField(text: $fullName) { Text("form.fullName") }
                     .textContentType(.name)
                 if hasAttemptedSave && fullName.isEmpty {
-                    Text("Full name is required")
+                    Text("validation.fullNameRequired")
                         .font(.caption).foregroundStyle(.red)
                 }
-                TextField("Phone", text: $phone)
+                TextField(text: $phone) { Text("form.phone") }
                     .textContentType(.telephoneNumber)
                     .keyboardType(.phonePad)
                 if hasAttemptedSave && !isPhoneValid {
-                    Text("Enter a valid 10-digit phone number")
+                    Text("validation.phoneInvalid")
                         .font(.caption).foregroundStyle(.red)
                 }
             }
-            Section("Address") {
-                TextField("Street Address", text: $street)
+            Section("form.address") {
+                TextField(text: $street) { Text("form.streetAddress") }
                     .textContentType(.streetAddressLine1)
-                TextField("Apt, Suite, Unit (optional)", text: $apartment)
+                TextField(text: $apartment) { Text("form.apartment") }
                     .textContentType(.streetAddressLine2)
-                TextField("City", text: $city)
+                TextField(text: $city) { Text("form.city") }
                     .textContentType(.addressCity)
-                TextField("State", text: $state)
+                TextField(text: $state) { Text("form.state") }
                     .textContentType(.addressState)
-                TextField("ZIP Code", text: $zipCode)
+                TextField(text: $zipCode) { Text("form.zipCode") }
                     .textContentType(.postalCode)
                     .keyboardType(.numberPad)
                 if hasAttemptedSave && (zipCode.count != 5 || !zipCode.allSatisfy(\.isNumber)) {
-                    Text("Enter a valid 5-digit ZIP code")
+                    Text("validation.zipInvalid")
                         .font(.caption).foregroundStyle(.red)
                 }
             }
         }
-        .navigationTitle(isEditing ? "Edit Address" : "Add Address")
+        .navigationTitle(isEditing ? "address.edit" : "address.add")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel") { dismiss() }
+                Button("nav.cancel") { dismiss() }
             }
             ToolbarItem(placement: .confirmationAction) {
-                Button("Save") {
+                Button("action.save") {
                     hasAttemptedSave = true
                     if isFormValid { save() }
                 }

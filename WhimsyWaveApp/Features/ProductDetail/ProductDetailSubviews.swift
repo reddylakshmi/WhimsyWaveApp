@@ -32,7 +32,7 @@ struct ProductInfoSection: View {
             if let delivery = product.estimatedDelivery {
                 HStack(spacing: AppSpacing.xs) {
                     Image(systemName: "shippingbox")
-                    Text("Delivery \(delivery.earliest.formatted(.dateTime.month().day())) - \(delivery.latest.formatted(.dateTime.month().day()))")
+                    Text("product.delivery \(delivery.earliest.formatted(.dateTime.month().day())) \(delivery.latest.formatted(.dateTime.month().day()))")
                         .font(.subheadline)
                 }
                 .foregroundStyle(.secondary)
@@ -47,7 +47,7 @@ struct ProductInfoSection: View {
                 Text(sale).font(.title3.bold()).foregroundStyle(.red)
                 Text(product.displayPrice).font(.body).strikethrough().foregroundStyle(.secondary)
                 if let discount = product.discountPercentage {
-                    Text("\(discount)% off")
+                    Text("product.percentOff \(discount)")
                         .font(.caption.bold())
                         .padding(.horizontal, AppSpacing.sm)
                         .padding(.vertical, AppSpacing.xxs)
@@ -68,7 +68,7 @@ struct ProductInfoSection: View {
                     .font(.caption)
             }
             Text(String(format: "%.1f", product.rating)).font(.subheadline.bold())
-            Text("(\(product.reviewCount) reviews)").font(.subheadline).foregroundStyle(.secondary)
+            Text("product.reviews \(product.reviewCount)").font(.subheadline).foregroundStyle(.secondary)
         }
     }
 
@@ -76,7 +76,7 @@ struct ProductInfoSection: View {
         HStack(spacing: AppSpacing.xs) {
             Image(systemName: product.isInStock ? "checkmark.circle.fill" : "xmark.circle.fill")
                 .foregroundStyle(product.isInStock ? .green : .red)
-            Text(product.isInStock ? "In Stock" : "Out of Stock")
+            Text(product.isInStock ? "product.inStock" : "product.outOfStock")
                 .font(.subheadline)
                 .foregroundStyle(product.isInStock ? .green : .red)
         }
@@ -93,7 +93,7 @@ struct ProductVariantPicker: View {
     var body: some View {
         if !variants.isEmpty {
             VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                Text("Options").font(.headline)
+                Text("product.options").font(.headline)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: AppSpacing.sm) {
                         ForEach(variants) { variant in
@@ -132,7 +132,7 @@ struct ProductQuantityPicker: View {
 
     var body: some View {
         HStack(spacing: AppSpacing.md) {
-            Text("Quantity").font(.headline)
+            Text("product.quantity").font(.headline)
             Spacer()
             HStack(spacing: AppSpacing.md) {
                 Button(action: onDecrement) {
@@ -140,7 +140,7 @@ struct ProductQuantityPicker: View {
                         .frame(width: AppConstants.Layout.minTapTarget, height: AppConstants.Layout.minTapTarget)
                         .background(Circle().fill(.ultraThinMaterial))
                 }
-                .accessibilityLabel("Decrease quantity")
+                .accessibilityLabel("accessibility.decreaseQuantity")
                 .accessibilityValue("\(quantity)")
                 Text("\(quantity)")
                     .font(.headline.monospacedDigit())
@@ -151,7 +151,7 @@ struct ProductQuantityPicker: View {
                         .frame(width: AppConstants.Layout.minTapTarget, height: AppConstants.Layout.minTapTarget)
                         .background(Circle().fill(.ultraThinMaterial))
                 }
-                .accessibilityLabel("Increase quantity")
+                .accessibilityLabel("accessibility.increaseQuantity")
                 .accessibilityValue("\(quantity)")
             }
             .buttonStyle(.plain)
@@ -167,7 +167,7 @@ struct ProductDescriptionSection: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: AppSpacing.sm) {
-            Text("Description").font(.headline)
+            Text("product.description").font(.headline)
             Text(text)
                 .font(.body)
                 .foregroundStyle(.secondary)
@@ -184,7 +184,7 @@ struct ProductSpecsSection: View {
     var body: some View {
         if !specs.isEmpty {
             VStack(alignment: .leading, spacing: AppSpacing.sm) {
-                Text("Specifications").font(.headline)
+                Text("product.specifications").font(.headline)
                 ForEach(specs, id: \.label) { spec in
                     HStack {
                         Text(spec.label).foregroundStyle(.secondary)

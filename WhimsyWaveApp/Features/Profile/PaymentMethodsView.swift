@@ -21,16 +21,16 @@ struct PaymentMethodsView: View {
                 }
             } else {
                 ContentUnavailableView {
-                    Label("No Payment Methods", systemImage: "creditcard.trianglebadge.exclamationmark")
+                    Label("payment.empty.title", systemImage: "creditcard.trianglebadge.exclamationmark")
                 } description: {
-                    Text("Add a credit or debit card to get started.")
+                    Text("payment.empty.description")
                 } actions: {
-                    Button("Add Card") { showingAddForm = true }
+                    Button("payment.addCard") { showingAddForm = true }
                         .buttonStyle(.borderedProminent)
                 }
             }
         }
-        .navigationTitle("Payment Methods")
+        .navigationTitle("account.paymentMethods")
         .toolbar {
             if feature.user?.paymentMethods.isEmpty == false {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -59,7 +59,7 @@ struct PaymentMethodsView: View {
                     Text(method.displayName)
                         .font(.headline)
                     if method.isDefault {
-                        Text("Default")
+                        Text("badge.default")
                             .font(.caption2.bold())
                             .padding(.horizontal, AppSpacing.sm)
                             .padding(.vertical, 2)
@@ -68,7 +68,7 @@ struct PaymentMethodsView: View {
                     }
                 }
                 if !method.expiryDate.isEmpty {
-                    Text("Expires \(method.expiryDate)")
+                    Text("payment.expires \(method.expiryDate)")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -94,19 +94,21 @@ struct AddCardFormView: View {
 
     var body: some View {
         Form {
-            Section("Card Type") {
-                Picker("Type", selection: $cardType) {
+            Section("form.cardType") {
+                Picker(selection: $cardType) {
                     Text("Visa").tag(PaymentType.visa)
                     Text("Mastercard").tag(PaymentType.mastercard)
                     Text("Amex").tag(PaymentType.amex)
+                } label: {
+                    Text("form.type")
                 }
                 .pickerStyle(.segmented)
             }
 
-            Section("Card Details") {
-                TextField("Cardholder Name", text: $cardholderName)
+            Section("form.cardDetails") {
+                TextField(text: $cardholderName) { Text("form.cardholderName") }
                     .textContentType(.name)
-                TextField("Card Number", text: $cardNumber)
+                TextField(text: $cardNumber) { Text("form.cardNumber") }
                     .textContentType(.creditCardNumber)
                     .keyboardType(.numberPad)
                 HStack {
@@ -120,17 +122,17 @@ struct AddCardFormView: View {
             }
 
             Section {
-                Toggle("Set as default payment method", isOn: $isDefault)
+                Toggle("form.setDefaultPayment", isOn: $isDefault)
             }
         }
-        .navigationTitle("Add Card")
+        .navigationTitle("payment.addCard")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel") { dismiss() }
+                Button("nav.cancel") { dismiss() }
             }
             ToolbarItem(placement: .confirmationAction) {
-                Button("Save") { save() }
+                Button("action.save") { save() }
                     .disabled(cardholderName.isEmpty || cardNumber.count < 4 || expiryDate.isEmpty || cvv.isEmpty)
             }
         }

@@ -9,7 +9,7 @@ struct OrdersListView: View {
                 if feature.isLoading && feature.orders.isEmpty {
                     ProgressView()
                 } else if feature.orders.isEmpty {
-                    ContentUnavailableView("No orders yet", systemImage: "bag", description: Text("Your orders will appear here"))
+                    ContentUnavailableView("orders.empty.title", systemImage: "bag", description: Text("orders.empty.description"))
                 } else {
                     List(feature.orders) { order in
                         NavigationLink {
@@ -21,7 +21,7 @@ struct OrdersListView: View {
                     .listStyle(.plain)
                 }
             }
-            .navigationTitle("Orders")
+            .navigationTitle("orders.title")
             .refreshable { await feature.loadOrders() }
             .task { await feature.loadOrders() }
         }
@@ -43,7 +43,7 @@ struct OrdersListView: View {
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
             HStack {
-                Text("\(order.items.count) item(s)")
+                Text("orders.itemCount \(order.items.count)")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                 Spacer()
@@ -52,8 +52,8 @@ struct OrdersListView: View {
         }
         .padding(.vertical, AppSpacing.xs)
         .accessibilityElement(children: .combine)
-        .accessibilityLabel("Order \(order.orderNumber), \(order.status.displayName), \(order.items.count) items, \(order.displayTotal)")
-        .accessibilityHint("Double tap to view order details")
+        .accessibilityLabel("accessibility.orderSummary \(order.orderNumber) \(order.status.displayName) \(order.items.count) \(order.displayTotal)")
+        .accessibilityHint(Text("accessibility.viewOrderDetails"))
     }
 
     private func statusColor(_ status: OrderStatus) -> Color {

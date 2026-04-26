@@ -10,7 +10,7 @@ struct WishlistView: View {
                 if feature.isLoading && feature.items.isEmpty {
                     ProgressView()
                 } else if feature.items.isEmpty {
-                    ContentUnavailableView("Your wishlist is empty", systemImage: "heart", description: Text("Save items you love"))
+                    ContentUnavailableView("wishlist.empty.title", systemImage: "heart", description: Text("wishlist.empty.description"))
                 } else {
                     List(feature.items) { item in
                         HStack(spacing: AppSpacing.md) {
@@ -26,7 +26,7 @@ struct WishlistView: View {
                                 HStack {
                                     Text(item.product.displayPrice).font(.subheadline.bold())
                                     if item.hasPriceDropped {
-                                        Text("Price dropped!")
+                                        Text("wishlist.priceDropped")
                                             .font(.caption2)
                                             .foregroundStyle(.green)
                                     }
@@ -42,22 +42,22 @@ struct WishlistView: View {
                                     .frame(width: AppConstants.Layout.minTapTarget, height: AppConstants.Layout.minTapTarget)
                             }
                             .buttonStyle(.borderless)
-                            .accessibilityLabel("Move \(item.product.name) to cart")
+                            .accessibilityLabel("accessibility.moveToCart \(item.product.name)")
                         }
                         .accessibilityElement(children: .combine)
-                        .accessibilityHint("Double tap to view. Swipe left to remove.")
+                        .accessibilityHint(Text("accessibility.wishlistItemHint"))
                         .swipeActions(edge: .trailing) {
                             Button(role: .destructive) {
                                 Task { await feature.removeItem(productId: item.product.id) }
                             } label: {
-                                Label("Remove", systemImage: "trash")
+                                Label("action.remove", systemImage: "trash")
                             }
                         }
                     }
                     .listStyle(.plain)
                 }
             }
-            .navigationTitle("Wishlist")
+            .navigationTitle("tab.wishlist")
             .refreshable { await feature.loadWishlist() }
             .task { await feature.loadWishlist() }
             .errorAlert($feature.error)

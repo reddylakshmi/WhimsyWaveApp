@@ -21,7 +21,7 @@ struct ProductDetailView: View {
                     Image(systemName: feature.isInWishlist ? "heart.fill" : "heart")
                         .foregroundStyle(feature.isInWishlist ? .red : .primary)
                 }
-                .accessibilityLabel(feature.isInWishlist ? "Remove from wishlist" : "Add to wishlist")
+                .accessibilityLabel(feature.isInWishlist ? "accessibility.removeFromWishlist" : "accessibility.addToWishlist")
             }
         }
         .overlay(alignment: .bottom) {
@@ -59,7 +59,7 @@ struct ProductDetailView: View {
             Divider()
             HStack(spacing: AppSpacing.md) {
                 VStack(alignment: .leading) {
-                    Text("Total")
+                    Text("product.total")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                     if let product = feature.product {
@@ -79,7 +79,7 @@ struct ProductDetailView: View {
                             ProgressView().tint(.white)
                         } else {
                             Image(systemName: "cart.badge.plus")
-                            Text("Add to Cart")
+                            Text("product.addToCart")
                         }
                     }
                     .font(.headline)
@@ -102,7 +102,7 @@ struct ProductDetailView: View {
     private var addedToCartToast: some View {
         HStack(spacing: AppSpacing.sm) {
             Image(systemName: "checkmark.circle.fill").foregroundStyle(.green)
-            Text("Added to cart")
+            Text("product.addedToCart")
         }
         .font(.subheadline.bold())
         .padding(AppSpacing.md)

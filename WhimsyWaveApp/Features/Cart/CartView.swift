@@ -10,31 +10,31 @@ struct CartView: View {
         NavigationStack {
             VStack(spacing: 0) {
                 if feature.cart.isEmpty && !feature.isLoading {
-                    ContentUnavailableView("Your cart is empty", systemImage: "cart", description: Text("Items you add will appear here"))
+                    ContentUnavailableView("cart.empty.title", systemImage: "cart", description: Text("cart.empty.description"))
                 } else if feature.isLoading && feature.cart.isEmpty {
                     CartSkeleton()
                 } else {
                     cartContent
                 }
             }
-            .navigationTitle("Cart")
+            .navigationTitle("tab.cart")
             .refreshable { await feature.loadCart() }
             .task { await feature.loadCart() }
             .errorAlert($feature.error)
-            .confirmationDialog("Remove Item", isPresented: Binding(
+            .confirmationDialog("cart.removeItem", isPresented: Binding(
                 get: { itemToRemove != nil },
                 set: { if !$0 { itemToRemove = nil } }
             ), titleVisibility: .visible) {
-                Button("Remove", role: .destructive) {
+                Button("cart.remove", role: .destructive) {
                     if let item = itemToRemove {
                         HapticFeedback.medium()
                         Task { await feature.removeItem(item) }
                     }
                 }
-                Button("Cancel", role: .cancel) { itemToRemove = nil }
+                Button("nav.cancel", role: .cancel) { itemToRemove = nil }
             } message: {
                 if let item = itemToRemove {
-                    Text("Remove \(item.product.name) from your cart?")
+                    Text("cart.removeConfirmation \(item.product.name)")
                 }
             }
         }
@@ -64,7 +64,7 @@ struct CartView: View {
             Divider()
             HStack {
                 VStack(alignment: .leading) {
-                    Text("Total (\(feature.cart.itemCount) items)")
+                    Text("cart.totalItems \(feature.cart.itemCount)")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                     Text(feature.cart.displayTotal)
@@ -72,7 +72,7 @@ struct CartView: View {
                 }
                 Spacer()
                 Button(action: onCheckout) {
-                    Text("Checkout")
+                    Text("action.checkout")
                         .font(.headline)
                         .foregroundStyle(.white)
                         .frame(minWidth: 140)
@@ -82,7 +82,7 @@ struct CartView: View {
                                 .fill(.blue)
                         )
                 }
-                .accessibilityLabel("Checkout, \(feature.cart.itemCount) items, \(feature.cart.displayTotal)")
+                .accessibilityLabel("action.checkout")
             }
             .padding(.horizontal, AppSpacing.md)
             .padding(.bottom, AppSpacing.sm)
@@ -124,7 +124,7 @@ struct CartItemRow: View {
                                 .font(.caption.bold())
                         }
                         .buttonStyle(.borderless)
-                        .accessibilityLabel("Decrease quantity of \(item.product.name)")
+                        .accessibilityLabel("accessibility.decreaseQuantity \(item.product.name)")
                         .accessibilityValue("\(item.quantity)")
 
                         Text("\(item.quantity)")
@@ -136,7 +136,7 @@ struct CartItemRow: View {
                                 .font(.caption.bold())
                         }
                         .buttonStyle(.borderless)
-                        .accessibilityLabel("Increase quantity of \(item.product.name)")
+                        .accessibilityLabel("accessibility.increaseQuantity \(item.product.name)")
                         .accessibilityValue("\(item.quantity)")
                     }
                     .padding(.horizontal, AppSpacing.sm)
@@ -154,7 +154,7 @@ struct CartItemRow: View {
         .padding(.vertical, AppSpacing.xs)
         .swipeActions(edge: .trailing) {
             Button(role: .destructive, action: onRemove) {
-                Label("Remove", systemImage: "trash")
+                Label("cart.remove", systemImage: "trash")
             }
         }
     }

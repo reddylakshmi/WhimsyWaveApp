@@ -46,7 +46,7 @@ struct AppView: View {
             }
             .badge(app.cartFeature.cart.itemCount)
 
-            Tab(String(localized: "tab.wishlist", defaultValue: "Wishlist"), systemImage: "heart", value: .wishlist) {
+            Tab("tab.wishlist", systemImage: "heart", value: .wishlist) {
                 WishlistView(
                     feature: app.wishlistFeature,
                     onProductTapped: { app.showingProductDetail = $0 }
@@ -54,7 +54,7 @@ struct AppView: View {
             }
             .badge(app.wishlistFeature.items.count)
 
-            Tab(String(localized: "tab.account", defaultValue: "Account"), systemImage: "person", value: .account) {
+            Tab("tab.account", systemImage: "person", value: .account) {
                 if app.accountFeature.isAuthenticated {
                     AccountView(
                         feature: app.accountFeature,
@@ -151,13 +151,15 @@ struct AppView: View {
                 }
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
-                        Button(String(localized: "nav.cancel", defaultValue: "Cancel")) {
+                        Button {
                             app.showingLogin = false
                             app.pendingAuthAction = nil
+                        } label: {
+                            Text("nav.cancel")
                         }
                     }
                 }
-                .navigationTitle(app.pendingAuthAction == .checkout ? String(localized: "auth.signInToCheckout", defaultValue: "Sign In to Checkout") : String(localized: "action.signIn", defaultValue: "Sign In"))
+                .navigationTitle(app.pendingAuthAction == .checkout ? Text("auth.signInToCheckout") : Text("action.signIn"))
                 .navigationBarTitleDisplayMode(.inline)
             }
             .presentationDetents([.large])

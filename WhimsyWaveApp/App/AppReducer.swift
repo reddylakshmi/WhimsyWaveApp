@@ -81,9 +81,23 @@ final class AppReducer {
         }
     }
 
-    /// Reloads all feature content after a region change
+    /// Reloads all feature content after a region change.
+    /// Waits for data ingestion to complete before refreshing features.
     func reloadAllContent() {
         Task {
+            // Wait briefly for ingestion worker to complete the region switch
+            // The ingestion is triggered by RegionManager.didSet, so give it time to finish
+            let worker = ServiceContainer.current.ingestionWorker
+            let status = await worker.currentStatus
+            if status.isLoading {
+                // Poll until ingestion completes (up to 5 seconds)
+                for _ in 0..<50 {
+                    try? await Task.sleep(for: .milliseconds(100))
+                    let current = await worker.currentStatus
+                    if !current.isLoading { break }
+                }
+            }
+
             browseFeature.categories = []
             await homeFeature.refresh()
             await browseFeature.loadCategories()

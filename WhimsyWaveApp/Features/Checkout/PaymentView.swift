@@ -22,7 +22,7 @@ struct PaymentView: View {
                                 VStack(alignment: .leading) {
                                     Text(method.displayName).font(.headline)
                                     if !method.expiryDate.isEmpty {
-                                        Text("Expires \(method.expiryDate)")
+                                        Text("payment.expires \(method.expiryDate)")
                                             .font(.caption)
                                             .foregroundStyle(.secondary)
                                     }
@@ -46,7 +46,7 @@ struct PaymentView: View {
                         HStack {
                             Image(systemName: "plus.circle.fill")
                                 .font(.title3)
-                            Text("Add New Card")
+                            Text("payment.addNewCard")
                                 .font(.headline)
                         }
                         .frame(maxWidth: .infinity)
@@ -65,14 +65,14 @@ struct PaymentView: View {
             Spacer()
             HStack(spacing: AppSpacing.md) {
                 Button(action: onBack) {
-                    Text("Back")
+                    Text("nav.back")
                         .font(.headline)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, AppSpacing.md)
                         .background(RoundedRectangle(cornerRadius: AppConstants.Layout.buttonCornerRadius).stroke(.blue))
                 }
                 Button(action: onNext) {
-                    Text("Review Order")
+                    Text("checkout.reviewOrder")
                         .font(.headline)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
@@ -114,26 +114,28 @@ struct CheckoutAddCardFormView: View {
 
     var body: some View {
         Form {
-            Section("Card Type") {
-                Picker("Type", selection: $cardType) {
+            Section("form.cardType") {
+                Picker(selection: $cardType) {
                     Text("Visa").tag(PaymentType.visa)
                     Text("Mastercard").tag(PaymentType.mastercard)
                     Text("Amex").tag(PaymentType.amex)
+                } label: {
+                    Text("form.type")
                 }
                 .pickerStyle(.segmented)
             }
-            Section("Card Details") {
-                TextField("Cardholder Name", text: $cardholderName)
+            Section("form.cardDetails") {
+                TextField(text: $cardholderName) { Text("form.cardholderName") }
                     .textContentType(.name)
                 if hasAttemptedSave && cardholderName.isEmpty {
-                    Text("Cardholder name is required")
+                    Text("validation.cardholderRequired")
                         .font(.caption).foregroundStyle(.red)
                 }
-                TextField("Card Number", text: $cardNumber)
+                TextField(text: $cardNumber) { Text("form.cardNumber") }
                     .textContentType(.creditCardNumber)
                     .keyboardType(.numberPad)
                 if hasAttemptedSave && !isCardNumberValid {
-                    Text("Enter a valid card number")
+                    Text("validation.cardNumberInvalid")
                         .font(.caption).foregroundStyle(.red)
                 }
                 HStack {
@@ -145,19 +147,19 @@ struct CheckoutAddCardFormView: View {
                         .frame(maxWidth: 80)
                 }
                 if hasAttemptedSave && (!isExpiryValid || !isCVVValid) {
-                    Text("Enter valid expiry (MM/YY) and CVV")
+                    Text("validation.expiryOrCvvInvalid")
                         .font(.caption).foregroundStyle(.red)
                 }
             }
         }
-        .navigationTitle("Add Card")
+        .navigationTitle("payment.addCard")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel") { dismiss() }
+                Button("nav.cancel") { dismiss() }
             }
             ToolbarItem(placement: .confirmationAction) {
-                Button("Save") {
+                Button("action.save") {
                     hasAttemptedSave = true
                     if isFormValid { save() }
                 }
