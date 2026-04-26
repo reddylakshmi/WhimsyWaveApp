@@ -34,8 +34,12 @@ final class MockProductRepository: IProductRepository, @unchecked Sendable {
         try await Task.sleep(for: .milliseconds(300))
         let locale = regionLocale()
         let pageSize = AppConstants.Pagination.defaultPageSize
-        return try await sqliteStore.fetchProductsByCategory(
-            categoryId: categoryId,
+        // Resolve category name from ID, then match products by name
+        guard let category = try await sqliteStore.fetchCategory(id: categoryId, regionLocale: locale) else {
+            return []
+        }
+        return try await sqliteStore.fetchProductsByCategoryName(
+            categoryName: category.name,
             regionLocale: locale,
             page: page + 1,
             pageSize: pageSize

@@ -80,6 +80,18 @@ actor SQLiteStore {
         }.compactMap { $0 }
     }
 
+    /// Fetches products whose top-level category name matches. Uses JSON string matching
+    /// since category_json is stored as `{"path":["CategoryName",...]}`.
+    func fetchProductsByCategoryName(categoryName: String, regionLocale: RegionLocale, page: Int = 1, pageSize: Int = 20) throws -> [Product] {
+        let offset = (page - 1) * pageSize
+        let sql = "SELECT * FROM products WHERE region_locale = ? AND category_json LIKE ? ORDER BY created_at DESC LIMIT ? OFFSET ?;"
+        // Match exact quoted name in JSON — "Furniture" won't match "Patio Furniture" because the quote is before "Patio"
+        let pattern = "%\"\(categoryName)\"%"
+        return try connection.query(sql, params: [regionLocale.key, pattern, pageSize, offset]) { stmt in
+            SQLiteMapper.productFromRow(stmt)
+        }.compactMap { $0 }
+    }
+
     func fetchProductsByIds(_ ids: [String], regionLocale: RegionLocale) throws -> [Product] {
         guard !ids.isEmpty else { return [] }
         let placeholders = ids.map { _ in "?" }.joined(separator: ", ")
@@ -111,6 +123,13 @@ actor SQLiteStore {
         return try connection.query(sql, params: [regionLocale.key]) { stmt in
             SQLiteMapper.categoryFromRow(stmt)
         }.compactMap { $0 }
+    }
+
+    func fetchCategory(id: String, regionLocale: RegionLocale) throws -> Category? {
+        let sql = "SELECT * FROM categories WHERE id = ? AND region_locale = ?;"
+        return try connection.queryOne(sql, params: [id, regionLocale.key]) { stmt in
+            SQLiteMapper.categoryFromRow(stmt)
+        } ?? nil
     }
 
     // MARK: - Banner Operations
